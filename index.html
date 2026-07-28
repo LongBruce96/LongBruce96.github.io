@@ -1,86 +1,569 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Long Nguyen | Digital Growth Portfolio</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portfolio Digital Growth & Performance Marketing của Long Nguyen.">
+    <title>Long Nguyen | Digital Growth Portfolio</title>
+    <style>
+      :root {
+        --paper: #f6f5f1;
+        --ink: #15221f;
+        --muted: #5d6864;
+        --line: #d9dfda;
+        --green: #1f5d50;
+        --green-dark: #153f36;
+        --brick: #b6402c;
+        --brick-pale: #f5e2dd;
+        --gold: #c89a42;
+        --white: #ffffff;
+        --soft-green: #e3efeb;
+        --max: 1200px;
+      }
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+      * { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 32px;
-      font-family: Arial, sans-serif;
-      background: #f3f4f6;
-      color: white;
-    }
+      html { scroll-behavior: smooth; }
 
-    .hero {
-      width: 100%;
-      max-width: 1200px;
-      padding: 72px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, #111827, #243746);
-    }
-
-    .eyebrow {
-      color: #93c5fd;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 12px 0;
-      font-size: 56px;
-    }
-
-    h2 {
-      margin: 0 0 24px;
-      font-weight: 500;
-      color: #d1d5db;
-    }
-
-    p {
-      max-width: 780px;
-      font-size: 18px;
-      line-height: 1.7;
-      color: #e5e7eb;
-    }
-
-    @media (max-width: 700px) {
       body {
-        padding: 16px;
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.55;
       }
 
-      .hero {
-        padding: 40px 24px;
+      a { color: inherit; }
+
+      .shell { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(217, 223, 218, .82);
+        background: rgba(246, 245, 241, .96);
+        backdrop-filter: blur(12px);
       }
 
-      h1 {
-        font-size: 40px;
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 64px;
+        gap: 20px;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <section class="hero">
-    <div class="eyebrow">Digital Growth Portfolio</div>
-    <h1>Long Nguyen</h1>
-    <h2>Digital Growth & Performance Marketer</h2>
-    <p>
-      I build full-funnel growth systems connecting performance marketing,
-      content, SEO, website, CRM, events and sales follow-up to measurable
-      business outcomes.
-    </p>
-  </section>
-</body>
+      .wordmark { font-weight: 800; letter-spacing: 0; text-decoration: none; }
+      .wordmark span { color: var(--brick); }
+
+      .nav { display: flex; align-items: center; gap: 20px; font-size: 14px; color: var(--muted); }
+      .nav a { text-decoration: none; }
+      .nav a:hover { color: var(--ink); }
+
+      .section { padding: 96px 0; }
+      .section.white { background: var(--white); }
+      .section.dark { background: var(--green-dark); color: var(--white); }
+      .section.dark p, .section.dark .section-intro { color: #d6e2de; }
+
+      .eyebrow {
+        margin: 0 0 14px;
+        color: var(--brick);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: .09em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow.light { color: #e5b7ab; }
+
+      h1, h2, h3, p { margin-top: 0; }
+      h1, h2, h3 { letter-spacing: 0; line-height: 1.04; }
+
+      h1 { max-width: 760px; margin-bottom: 20px; font-size: clamp(52px, 8vw, 96px); }
+      h2 { margin-bottom: 18px; font-size: clamp(34px, 4.2vw, 58px); }
+      h3 { margin-bottom: 12px; font-size: 22px; }
+      p { color: var(--muted); }
+
+      .lead { max-width: 680px; margin-bottom: 0; color: #34423e; font-size: clamp(18px, 2.2vw, 24px); }
+      .section-intro { max-width: 700px; font-size: 18px; }
+
+      .hero { overflow: hidden; padding: 78px 0 72px; background: var(--paper); }
+      .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(350px, .95fr); gap: 58px; align-items: center; }
+
+      .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0; }
+      .pill { border: 1px solid #cbd8d2; border-radius: 999px; padding: 7px 11px; color: var(--green-dark); font-size: 13px; font-weight: 700; }
+
+      .action-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+      .button {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--ink);
+        padding: 10px 15px;
+        color: var(--ink);
+        background: transparent;
+        font-size: 14px;
+        font-weight: 800;
+        text-decoration: none;
+        transition: transform .18s ease, background .18s ease, color .18s ease;
+      }
+      .button:hover { transform: translateY(-2px); }
+      .button.primary { border-color: var(--green-dark); color: var(--white); background: var(--green-dark); }
+      .button.primary:hover { background: var(--green); }
+      .button.light { border-color: #b7ccc5; color: var(--white); }
+
+      .hero-visual { position: relative; min-height: 460px; }
+      .hero-dashboard {
+        position: absolute;
+        right: -42px;
+        bottom: 0;
+        width: min(620px, 90%);
+        border: 1px solid #cbd8d2;
+        box-shadow: 20px 22px 0 var(--soft-green);
+      }
+      .hero-portrait {
+        position: absolute;
+        bottom: -12px;
+        left: 0;
+        z-index: 2;
+        width: 236px;
+        height: 316px;
+        border: 10px solid var(--white);
+        object-fit: cover;
+        object-position: center top;
+        box-shadow: 0 20px 40px rgba(21, 34, 31, .18);
+      }
+      .hero-note {
+        position: absolute;
+        right: 0;
+        top: 20px;
+        width: 220px;
+        padding: 18px;
+        border-left: 4px solid var(--brick);
+        background: var(--white);
+        box-shadow: 0 16px 32px rgba(21, 34, 31, .11);
+      }
+      .hero-note strong { display: block; margin-bottom: 6px; font-size: 15px; }
+      .hero-note span { color: var(--muted); font-size: 13px; }
+
+      .contact-strip {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr 1fr;
+        gap: 1px;
+        margin-top: 64px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .contact-item { min-height: 108px; padding: 21px; background: var(--white); }
+      .contact-item b { display: block; margin-bottom: 5px; font-size: 14px; }
+      .contact-item span { color: var(--muted); font-size: 14px; }
+
+      .journey-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0 52px; }
+      .summary-number { padding: 22px 0; border-top: 2px solid var(--ink); }
+      .summary-number strong { display: block; margin-bottom: 5px; font-size: 28px; }
+      .summary-number span { color: var(--muted); font-size: 14px; }
+
+      .timeline { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+      .timeline::before { position: absolute; top: 8px; left: 0; right: 0; height: 1px; background: #b7c6bf; content: ""; }
+      .timeline-item { position: relative; padding-top: 34px; }
+      .timeline-dot { position: absolute; top: 0; left: 0; width: 17px; height: 17px; border: 4px solid var(--paper); border-radius: 50%; background: var(--brick); }
+      .timeline-year { margin-bottom: 7px; color: var(--brick); font-size: 14px; font-weight: 800; }
+      .timeline-item p { max-width: 320px; }
+
+      .experience-head { display: grid; grid-template-columns: 1fr minmax(230px, .45fr); gap: 36px; align-items: end; margin-bottom: 42px; }
+      .role-label { color: var(--green); font-size: 15px; font-weight: 800; }
+      .scope-list { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+
+      .experience-grid { display: grid; grid-template-columns: minmax(0, .93fr) minmax(400px, 1.07fr); gap: 42px; align-items: start; }
+      .story-copy { font-size: 18px; }
+      .story-copy b { color: var(--ink); }
+
+      .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 28px 0; border: 1px solid var(--line); background: var(--line); }
+      .metric { min-height: 124px; padding: 18px; background: var(--white); }
+      .metric strong { display: block; margin-bottom: 7px; color: var(--green-dark); font-size: clamp(22px, 3.1vw, 37px); line-height: 1; }
+      .metric span { color: var(--muted); font-size: 13px; }
+
+      .dashboard-frame { overflow: hidden; border: 1px solid var(--line); background: var(--white); }
+      .dashboard-frame img { display: block; width: 100%; height: auto; }
+      .caption { padding: 12px 15px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+
+      .case-section { border-top: 1px solid var(--line); }
+      .case-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 48px; }
+      .case-result { padding: 30px; border: 1px solid #bdd1ca; background: var(--soft-green); }
+      .case-result .big { display: block; margin-bottom: 4px; color: var(--green-dark); font-size: clamp(30px, 4vw, 54px); font-weight: 900; line-height: 1; }
+
+      .channel-flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; margin: 28px 0; border: 1px solid var(--line); background: var(--line); }
+      .flow-step { min-height: 122px; padding: 17px; background: var(--white); }
+      .flow-step strong { display: block; margin-bottom: 8px; color: var(--brick); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+      .flow-step span { font-size: 14px; font-weight: 700; }
+
+      .mix { display: grid; grid-template-columns: 4fr 1fr; gap: 2px; margin-top: 20px; color: var(--white); font-size: 13px; font-weight: 800; }
+      .mix span { padding: 11px; background: var(--brick); }
+      .mix span:last-child { background: var(--gold); }
+      .mix-2026 { grid-template-columns: 9fr 1fr; }
+
+      .cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .case { display: flex; min-height: 360px; flex-direction: column; padding: 26px; border-top: 4px solid var(--brick); background: var(--white); }
+      .case p { font-size: 15px; }
+      .case .case-meta { margin-top: auto; padding-top: 20px; color: var(--green); font-size: 14px; font-weight: 800; }
+
+      .research-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: center; }
+      .research-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; border: 1px solid #3b6c60; background: #3b6c60; }
+      .research-steps div { min-height: 146px; padding: 22px; background: #1c5045; }
+      .research-steps strong { display: block; margin-bottom: 8px; color: #f2cb7c; font-size: 15px; }
+      .research-steps span { color: #d6e2de; font-size: 14px; }
+
+      .capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border: 1px solid var(--line); background: var(--line); }
+      .capability { min-height: 218px; padding: 26px; background: var(--white); }
+      .capability-index { display: block; margin-bottom: 28px; color: var(--brick); font-size: 12px; font-weight: 900; letter-spacing: .1em; }
+
+      .details-grid { display: grid; grid-template-columns: 1fr 1.15fr .85fr; gap: 24px; }
+      .detail-block { border-top: 2px solid var(--ink); padding-top: 18px; }
+      .tool-list { display: flex; flex-wrap: wrap; gap: 8px; }
+      .tool { padding: 7px 10px; border: 1px solid var(--line); color: var(--muted); background: var(--white); font-size: 13px; }
+      .interest-list { margin: 0; padding: 0; list-style: none; }
+      .interest-list li { padding: 7px 0; border-bottom: 1px solid var(--line); color: var(--muted); }
+
+      .closing { padding: 112px 0; text-align: center; }
+      .closing h2 { max-width: 710px; margin-right: auto; margin-left: auto; }
+      .closing p { max-width: 620px; margin-right: auto; margin-left: auto; font-size: 19px; }
+      .closing .action-row { justify-content: center; }
+
+      @media (max-width: 980px) {
+        .hero-grid, .experience-grid, .case-layout, .research-grid { grid-template-columns: 1fr; }
+        .hero-visual { min-height: 370px; }
+        .hero-dashboard { right: 0; width: 88%; }
+        .hero-portrait { width: 190px; height: 255px; }
+        .experience-head { grid-template-columns: 1fr; }
+        .scope-list { justify-content: flex-start; }
+        .cases { grid-template-columns: 1fr; }
+        .case { min-height: auto; }
+      }
+
+      @media (max-width: 720px) {
+        .shell { width: min(100% - 34px, var(--max)); }
+        .topbar-inner { min-height: 56px; }
+        .nav { display: none; }
+        .section { padding: 68px 0; }
+        .hero { padding-top: 54px; }
+        .hero-visual { min-height: 300px; }
+        .hero-dashboard { width: 92%; box-shadow: 10px 12px 0 var(--soft-green); }
+        .hero-portrait { bottom: -8px; width: 148px; height: 198px; border-width: 6px; }
+        .hero-note { top: 0; width: 174px; padding: 14px; }
+        .contact-strip, .journey-summary, .timeline, .metric-grid, .channel-flow, .capability-grid, .details-grid { grid-template-columns: 1fr; }
+        .timeline::before { top: 0; bottom: 0; left: 8px; right: auto; width: 1px; height: auto; }
+        .timeline-item { padding: 5px 0 4px 30px; }
+        .timeline-dot { top: 4px; }
+        .research-steps { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="wordmark" href="#top">Long <span>Nguyen</span></a>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="#journey">Hành trình</a>
+          <a href="#np-education">NP Education</a>
+          <a href="#cms">CMS</a>
+          <a href="#cases">Case study</a>
+          <a href="#contact">Liên hệ</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="shell">
+          <div class="hero-grid">
+            <div>
+              <p class="eyebrow">Digital Growth &amp; Performance Marketing</p>
+              <h1>Biến Digital thành một hệ thống tăng trưởng có thể đo được.</h1>
+              <p class="lead">Tôi kết nối Paid Media, SEO, Content, Website, CRM, Event và Sales follow-up để Marketing không dừng ở traffic hay lead, mà tiến gần hơn đến demo, cơ hội bán hàng, pipeline và tăng trưởng kinh doanh.</p>
+              <div class="pill-row" aria-label="Specializations">
+                <span class="pill">B2B Performance</span>
+                <span class="pill">B2C Growth Leadership</span>
+                <span class="pill">Funnel &amp; CRO</span>
+                <span class="pill">Research &amp; Strategy</span>
+              </div>
+              <div class="action-row">
+                <a class="button primary" href="#journey">Xem hành trình</a>
+                <a class="button" href="#cases">Khám phá case study</a>
+                <a class="button" href="assets/long-nguyen-senior-digital-marketer.pdf" download>Tải CV</a>
+              </div>
+            </div>
+            <div class="hero-visual" aria-label="Portfolio dashboard preview">
+              <div class="hero-note">
+                <strong>Long Nguyen</strong>
+                <span>Digital Growth &amp; Performance Marketer<br>Hà Nội, Việt Nam</span>
+              </div>
+              <img class="hero-portrait" src="assets/long-nguyen-profile.jpg" alt="Chân dung Long Nguyen">
+              <img class="hero-dashboard" src="cms-logitech-dashboard.svg" alt="CMS x Logitech B2B campaign dashboard preview">
+            </div>
+          </div>
+          <div class="contact-strip" id="contact">
+            <div class="contact-item"><b>Liên hệ trực tiếp</b><span><a href="mailto:longhenry96.biz@gmail.com">longhenry96.biz@gmail.com</a><br><a href="tel:+84968331496">096 833 1496</a></span></div>
+            <div class="contact-item"><b>Định hướng cơ hội</b><span>Performance Marketing, Digital Growth, Demand Generation và Marketing Lead.</span></div>
+            <div class="contact-item"><b>LinkedIn</b><span><a href="https://www.linkedin.com/in/longbruce96" target="_blank" rel="noreferrer">linkedin.com/in/longbruce96</a><br>Hà Nội, Việt Nam</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section white" id="journey">
+        <div class="shell">
+          <p class="eyebrow">Hành trình nghề nghiệp</p>
+          <h2>Từ làm hệ thống B2C, đến tối ưu phễu B2B và tư duy bài toán kinh doanh.</h2>
+          <p class="section-intro">Mỗi chặng đường bổ sung một lớp năng lực: nền tảng vận hành và dữ liệu, growth ở quy mô lớn, performance B2B và cuối cùng là khả năng đưa research thành khung ra quyết định.</p>
+          <div class="journey-summary">
+            <div class="summary-number"><strong>3+ năm</strong><span>trực tiếp làm Digital Marketing cho B2C giáo dục và B2B công nghệ</span></div>
+            <div class="summary-number"><strong>B2C -&gt; B2B</strong><span>từ scale lead tuyển sinh đến phát triển partner, demo, đơn hàng và pipeline</span></div>
+            <div class="summary-number"><strong>Execution -&gt; Strategy</strong><span>từ vận hành kênh đến logic ngân sách, chất lượng funnel và research cơ hội</span></div>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-year">2018-2023 | Nền tảng</div>
+              <h3>Foxconn &amp; UniRealChain</h3>
+              <p>Xây nền tảng về e-learning, Power BI dashboard, đào tạo nội bộ, marketing cộng đồng Blockchain/FinTech 10.000+ thành viên và phối hợp với 200+ influencer quốc tế.</p>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-year">2023-2024 | Scale B2C</div>
+              <h3>Marketing Leader - NP Education</h3>
+              <p>Dẫn dắt tăng trưởng tại 3 trung tâm qua Paid Media, Website, Content, Community, Event và tối ưu conversion cho hành trình tuyển sinh.</p>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-year">2025-nay | Scale B2B</div>
+              <h3>Digital Marketing Executive - CMS</h3>
+              <p>Xây hệ thống B2B từ acquisition, qualification, nurturing đến Sales alignment; đồng thời nghiên cứu 10 ngành hàng tiềm năng cho định hướng kinh doanh mới.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="np-education">
+        <div class="shell">
+          <div class="experience-head">
+            <div>
+              <p class="eyebrow">Kinh nghiệm nổi bật 01 | 2023-2024</p>
+              <h2>NP Education: Xây hệ thống B2C Growth và dẫn dắt Marketing đa trung tâm</h2>
+            </div>
+            <div class="scope-list" aria-label="NP Education scope">
+              <span class="pill">Dẫn dắt team</span>
+              <span class="pill">Paid acquisition</span>
+              <span class="pill">Website &amp; CRO</span>
+              <span class="pill">Community &amp; Event</span>
+            </div>
+          </div>
+          <div class="experience-grid">
+            <div>
+              <p class="story-copy"><b>Vai trò:</b> Marketing Leader phụ trách 3 trung tâm. Tôi xây một hệ thống tăng trưởng B2C đa kênh, kết nối quảng cáo với website, landing page, content, community, event và đội ngũ tư vấn tuyển sinh.</p>
+              <p>Điểm đáng nói không nằm ở việc chạy nhiều kênh cùng lúc. Hệ thống này phải giúp các trung tâm có lead ổn định, có tài sản Digital để nuôi dưỡng phụ huynh và có dữ liệu để cải thiện conversion thay vì chỉ tăng ngân sách.</p>
+              <div class="metric-grid" aria-label="NP Education key metrics">
+                <div class="metric"><strong>500+</strong><span>MQL mỗi tháng</span></div>
+                <div class="metric"><strong>1.500</strong><span>lead mùa cao điểm</span></div>
+                <div class="metric"><strong>80M</strong><span>ngân sách mỗi tháng</span></div>
+                <div class="metric"><strong>20% -&gt; 50%</strong><span>cải thiện conversion</span></div>
+                <div class="metric"><strong>8</strong><span>nhân sự trong team</span></div>
+                <div class="metric"><strong>3</strong><span>trung tâm phụ trách</span></div>
+                <div class="metric"><strong>20.000+</strong><span>thành viên cộng đồng</span></div>
+                <div class="metric"><strong>200-300+</strong><span>người mỗi sự kiện</span></div>
+              </div>
+              <p><b>Xây để scale:</b> Organic social reach tăng 100%, brand awareness tăng 300%; website, landing page và sales kit được tối ưu để hỗ trợ tăng conversion khoảng 30% trong tổng thể hành trình.</p>
+            </div>
+            <figure class="dashboard-frame">
+              <img src="np-education-dashboard.svg" alt="NP Education B2C growth dashboard showing MQL, peak leads, budget, conversion, community and event metrics">
+              <figcaption class="caption">NP Education Digital Growth Dashboard - bức tranh về leadership, acquisition, community và conversion.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section white" id="cms">
+        <div class="shell">
+          <div class="experience-head">
+            <div>
+              <p class="eyebrow">Kinh nghiệm nổi bật 02 | 2025-nay</p>
+              <h2>CMS: Làm Performance B2B theo hướng tạo nhu cầu, hỗ trợ Sales và đo đến pipeline</h2>
+            </div>
+            <div class="scope-list" aria-label="CMS scope">
+              <span class="pill">Meta &amp; Google Ads</span>
+              <span class="pill">SEO &amp; AI Search</span>
+              <span class="pill">CRM &amp; Demand Gen</span>
+              <span class="pill">Sales Enablement</span>
+            </div>
+          </div>
+          <div class="experience-grid">
+            <div>
+              <p class="story-copy">Tại CMS, tôi xây <b>hệ thống tăng trưởng B2B đa điểm chạm</b> cho các giải pháp công nghệ: thu hút Partner và End-User, phân loại lead, nuôi dưỡng bằng Email/Community, tối ưu SEO, landing page, event proof, ecommerce và phối hợp Sales follow-up.</p>
+              <p>Nguyên tắc vận hành là: Digital không kết thúc ở form đăng ký. Mỗi lead cần đủ ngữ cảnh, độ tin cậy và điểm chạm tiếp theo để có thể trở thành cơ hội chất lượng, demo, đơn hàng hoặc pipeline.</p>
+              <div class="metric-grid" aria-label="CMS key metrics">
+                <div class="metric"><strong>282</strong><span>B2B lead Partner</span></div>
+                <div class="metric"><strong>210</strong><span>lead B2B chất lượng</span></div>
+                <div class="metric"><strong>2,71 tỷ</strong><span>pipeline/cơ hội</span></div>
+                <div class="metric"><strong>263,73M</strong><span>đơn Logitech ghi nhận</span></div>
+                <div class="metric"><strong>6.744</strong><span>USD vendor fund claim</span></div>
+                <div class="metric"><strong>252M</strong><span>ngân sách năm</span></div>
+                <div class="metric"><strong>75-80%</strong><span>mức giải ngân FY2025</span></div>
+                <div class="metric"><strong>10</strong><span>ngành hàng nghiên cứu</span></div>
+              </div>
+              <p><b>Logic phân bổ paid:</b> FY2025 dùng 80% Facebook / 20% Google; chiến dịch Logitech 2026 dùng 90% Facebook / 10% Google. Facebook là kênh scale chính cho tệp MD/SI, Google để bắt intent chủ động. Chất lượng downstream của lead và năng lực chăm sóc của Sales là điều kiện quyết định có scale tiếp hay không.</p>
+            </div>
+            <figure class="dashboard-frame">
+              <img src="cms-logitech-dashboard.svg" alt="CMS x Logitech B2B digital campaign dashboard showing partner leads, pipeline, order value and budget management">
+              <figcaption class="caption">CMS x Logitech Dashboard - acquisition Partner, kích cầu End-User, hỗ trợ pipeline và scale ngân sách có kiểm soát.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section case-section" id="logitech">
+        <div class="shell">
+          <p class="eyebrow">Flagship case</p>
+          <div class="case-layout">
+            <div>
+              <h2>Logitech B2B Growth System</h2>
+              <p class="section-intro">Một hệ thống full-funnel được xây để vừa củng cố vị thế CMS trong ngành hàng Logitech, vừa tuyển Đại lý/MD-SI và tạo nhu cầu từ End-User doanh nghiệp.</p>
+              <div class="case-result">
+                <span class="big">2,71 tỷ VND</span>
+                <p>Pipeline/cơ hội ghi nhận từ hệ thống B2B kết nối acquisition, qualification, Sales handoff và nurturing dài hạn.</p>
+              </div>
+            </div>
+            <div>
+              <h3>Digital đã được vận hành như thế nào?</h3>
+              <div class="channel-flow" aria-label="Logitech partner funnel">
+                <div class="flow-step"><strong>01 Thu hút</strong><span>Facebook Ads, Google Ads và content mang MD/SI prospect vào funnel.</span></div>
+                <div class="flow-step"><strong>02 Phân loại</strong><span>Kiểm tra intent và mức độ phù hợp trước khi chuyển Sales/BU chăm sóc.</span></div>
+                <div class="flow-step"><strong>03 Nuôi dưỡng</strong><span>Email, Zalo community, webinar và event duy trì các điểm chạm cần thiết.</span></div>
+                <div class="flow-step"><strong>04 Tạo bằng chứng</strong><span>Demo, lắp đặt và tư liệu thực tế giúp tăng trust trong B2B.</span></div>
+                <div class="flow-step"><strong>05 Chuyển hóa</strong><span>Sales follow-up đưa nhu cầu tiến đến đơn hàng và pipeline.</span></div>
+              </div>
+              <div class="metric-grid" aria-label="Logitech FY2025 results">
+                <div class="metric"><strong>282</strong><span>B2B lead Partner</span></div>
+                <div class="metric"><strong>210</strong><span>lead chất lượng</span></div>
+                <div class="metric"><strong>92</strong><span>account đang hợp tác/chăm sóc</span></div>
+                <div class="metric"><strong>108</strong><span>thành viên community</span></div>
+                <div class="metric"><strong>185M</strong><span>đơn MD/SI</span></div>
+                <div class="metric"><strong>78,73M</strong><span>đơn End-User</span></div>
+                <div class="metric"><strong>125</strong><span>liên hệ End-User B2B</span></div>
+                <div class="metric"><strong>44</strong><span>tín hiệu need/demo/survey</span></div>
+              </div>
+              <h3>Scale có kiểm soát, không chạy để tiêu hết ngân sách</h3>
+              <p>Ngân sách được vận hành theo chu trình test - tối ưu - scale. Mục tiêu không phải giải ngân 100% một cách cơ học, mà là chỉ tăng đầu tư khi chất lượng lead và năng lực follow-up của Sales vẫn bảo toàn được giá trị downstream.</p>
+              <div class="mix" aria-label="FY2025 paid media allocation"><span>FY2025: Facebook Ads 80%</span><span>Google Ads 20%</span></div>
+              <div class="mix mix-2026" aria-label="2026 paid media allocation"><span>2026: Facebook Ads 90%</span><span>Google Ads 10%</span></div>
+              <p>Khoản <b>6.744 USD vendor fund</b> từ Logitech được claim sau khi campaign đáp ứng tiêu chuẩn về hạng mục triển khai, content, chứng từ, timeline và điều kiện claim của hãng.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section white" id="cases">
+        <div class="shell">
+          <p class="eyebrow">Selected performance cases</p>
+          <h2>Performance không chỉ là media report. Đó là một hệ thống ra quyết định.</h2>
+          <p class="section-intro">Mỗi case được đặt trong bối cảnh ngân sách, chất lượng funnel và điều kiện kinh doanh thực tế, thay vì chỉ kể các chỉ số đẹp ở đầu phễu.</p>
+          <div class="cases">
+            <article class="case">
+              <p class="eyebrow">Promethean x CMS</p>
+              <h3>Demand Generation cho thị trường EdTech</h3>
+              <p>Triển khai đồng thời Facebook Ads, Google Ads, Content và SEO. Case duy trì Top 1-Top 2 ở nhóm từ khóa trọng điểm, tạo được nhu cầu B2B tự nhiên và theo dõi cơ hội đến sau SQL.</p>
+              <p><b>Ngân sách:</b> kế hoạch 40 triệu; thực chi khoảng 36 triệu.</p>
+              <p><b>Opportunity nổi bật:</b> Trường Marie Curie đã vượt SQL, đi demo và tiếp tục được nuôi dưỡng.</p>
+              <span class="case-meta">Ưu tiên chất lượng account và mức độ phù hợp</span>
+            </article>
+            <article class="case">
+              <p class="eyebrow">CMS X-Pro</p>
+              <h3>Demand B2B trong bối cảnh giá đầu vào biến động</h3>
+              <p>Tạo nhu cầu cho dòng máy tính CMS X-Pro qua content, SEO, AI Search visibility và các điểm chạm Paid/Owned.</p>
+              <p><b>Kết quả:</b> ngân sách 15 triệu, 25 bản tin, 46 B2B lead, 13 nhu cầu và nhiều từ khóa Top 1-Top 4 Google/AI.</p>
+              <p>Conversion bị chậm do giá RAM tăng đúng thời điểm. Lead được chuyển vào quy trình Sales nurturing thay vì bị xem là campaign thất bại.</p>
+              <span class="case-meta">Bối cảnh thị trường quyết định cách đọc conversion</span>
+            </article>
+            <article class="case">
+              <p class="eyebrow">Logitech x CMS</p>
+              <h3>TMĐT như một tài sản hỗ trợ conversion</h3>
+              <p>Xây dựng và vận hành <b>logitech.cms.com.vn</b>, tạo thêm một điểm chuyển đổi trực tuyến trong hệ sinh thái Digital của CMS.</p>
+              <p><b>Kết quả:</b> 4 đơn chuyển khoản thành công và 10 đơn phát sinh trong giỏ hàng.</p>
+              <p>Đây không được xem là một business TMĐT tách biệt, mà là điểm đến bổ sung cho hành trình tìm hiểu, tạo niềm tin và chuyển đổi.</p>
+              <span class="case-meta">Website tốt giúp kéo dài và khép kín funnel</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dark" id="research">
+        <div class="shell research-grid">
+          <div>
+            <p class="eyebrow light">Research &amp; Business Analysis</p>
+            <h2>Từ một đầu bài rộng của TGĐ đến một khung ra quyết định.</h2>
+            <p>Theo yêu cầu của Tổng Giám đốc, tôi nghiên cứu 10 ngành hàng tiềm năng để hỗ trợ định hướng phát triển kinh doanh mới. Giá trị của công việc không nằm ở việc tổng hợp thông tin, mà ở việc biến các cơ hội rất khác nhau thành những lựa chọn có thể so sánh.</p>
+            <p>Đây là work-in-progress, vì vậy portfolio chỉ chia sẻ phương pháp và năng lực phân tích thay vì công khai kết luận nội bộ của từng ngành.</p>
+          </div>
+          <div class="research-steps" aria-label="Business research framework">
+            <div><strong>Độ hấp dẫn thị trường</strong><span>Xu hướng nhu cầu, cấu trúc thị trường và khoảng trống có thể khai thác.</span></div>
+            <div><strong>Strategic fit</strong><span>Nơi năng lực CMS và route-to-market có thể tạo lợi thế.</span></div>
+            <div><strong>Business model</strong><span>Logic doanh thu, yêu cầu vận hành và giả định tài chính ban đầu.</span></div>
+            <div><strong>Risk &amp; decision gaps</strong><span>Cạnh tranh, rủi ro pháp lý/vận hành, giả định và dữ liệu cần kiểm chứng.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="capabilities">
+        <div class="shell">
+          <p class="eyebrow">Năng lực cốt lõi</p>
+          <h2>Một hệ thống tăng trưởng, không phải vài kênh chạy rời rạc.</h2>
+          <div class="capability-grid">
+            <article class="capability"><span class="capability-index">01</span><h3>Performance Marketing</h3><p>Meta Ads, Google Ads, LinkedIn Ads, framework testing, phân bổ ngân sách, tối ưu và scale có kiểm soát.</p></article>
+            <article class="capability"><span class="capability-index">02</span><h3>SEO &amp; AI Search</h3><p>Keyword và search intent research, Content SEO, Search Console, topic authority và AI-search visibility.</p></article>
+            <article class="capability"><span class="capability-index">03</span><h3>Funnel, Data &amp; CRO</h3><p>MQL, SQL, demo, order, pipeline, landing page, dashboard và phân tích conversion để đi đến action cụ thể.</p></article>
+            <article class="capability"><span class="capability-index">04</span><h3>CRM &amp; Demand Generation</h3><p>Email, lead nurturing, community, webinar, event và Sales follow-up cho hành trình mua dài hơn.</p></article>
+            <article class="capability"><span class="capability-index">05</span><h3>Website &amp; Digital Assets</h3><p>WordPress, landing page, TMĐT, content system, trust signal, UX và các điểm đến hỗ trợ conversion.</p></article>
+            <article class="capability"><span class="capability-index">06</span><h3>Research &amp; Strategy</h3><p>Market research, competitor mapping, opportunity assessment, tư duy business model và decision support.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section white" id="details">
+        <div class="shell details-grid">
+          <article class="detail-block">
+            <p class="eyebrow">Học vấn</p>
+            <h3>Cử nhân Quản trị Kinh doanh</h3>
+            <p>2014-2018 | GPA 3,45/4 | Tốt nghiệp loại Giỏi. Nền tảng này hỗ trợ tư duy về kinh doanh, nghiên cứu, quản trị dự án và cách đọc một vấn đề Marketing trong bối cảnh vận hành thực tế.</p>
+          </article>
+          <article class="detail-block">
+            <p class="eyebrow">Công cụ</p>
+            <div class="tool-list" aria-label="Tools used">
+              <span class="tool">Meta Ads Manager</span><span class="tool">Google Ads</span><span class="tool">Google Analytics</span><span class="tool">Search Console</span><span class="tool">Google Sheets</span><span class="tool">WordPress</span><span class="tool">Email Marketing</span><span class="tool">Canva</span><span class="tool">CapCut</span><span class="tool">AI research tools</span>
+            </div>
+          </article>
+          <article class="detail-block">
+            <p class="eyebrow">Ngoài công việc</p>
+            <ul class="interest-list">
+              <li>Công nghệ và AI</li>
+              <li>Research xu hướng thị trường, hành vi người dùng</li>
+              <li>Creative content và visual storytelling</li>
+              <li>Travel, coffee talk và theo dõi thị trường</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section dark closing">
+        <div class="shell">
+          <p class="eyebrow light">Kết nối</p>
+          <h2>Cùng xây tăng trưởng có thể nhìn thấy trên dữ liệu.</h2>
+          <p>Tôi đang mở rộng cơ hội ở các vị trí Performance Marketing, Digital Growth, Demand Generation và Marketing Lead.</p>
+          <div class="action-row">
+            <a class="button light" href="assets/long-nguyen-senior-digital-marketer.pdf" download>Tải CV</a>
+            <a class="button light" href="mailto:longhenry96.biz@gmail.com">Gửi email</a>
+            <a class="button light" href="https://www.linkedin.com/in/longbruce96" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="880" viewBox="0 0 1400 880">
+  <rect width="1400" height="880" fill="#f7f9fc"/>
+  <rect x="46" y="42" width="1308" height="796" rx="20" fill="#ffffff" stroke="#d8dee8"/>
+  <text x="86" y="108" font-family="Arial" font-size="34" font-weight="700" fill="#17202a">NP Education Digital Growth Dashboard</text>
+  <text x="86" y="145" font-family="Arial" font-size="18" fill="#667085">B2C growth leadership across paid media, website, content, community and event-led conversion</text>
+  <g font-family="Arial">
+    <rect x="86" y="196" width="278" height="132" rx="14" fill="#fff5f5" stroke="#fed7d7"/>
+    <text x="110" y="246" font-size="38" font-weight="700" fill="#b42318">500+</text>
+    <text x="110" y="282" font-size="18" fill="#667085">MQL per month</text>
+    <rect x="390" y="196" width="278" height="132" rx="14" fill="#f0f7ff" stroke="#c7dcff"/>
+    <text x="414" y="246" font-size="38" font-weight="700" fill="#1f6feb">1,500</text>
+    <text x="414" y="282" font-size="18" fill="#667085">peak-season leads</text>
+    <rect x="694" y="196" width="278" height="132" rx="14" fill="#f0fff6" stroke="#bce9d1"/>
+    <text x="718" y="246" font-size="38" font-weight="700" fill="#168a55">80M</text>
+    <text x="718" y="282" font-size="18" fill="#667085">VND monthly budget</text>
+    <rect x="998" y="196" width="278" height="132" rx="14" fill="#fffaf0" stroke="#f5d08a"/>
+    <text x="1022" y="246" font-size="38" font-weight="700" fill="#b7791f">20% -> 50%</text>
+    <text x="1022" y="282" font-size="18" fill="#667085">conversion improvement</text>
+    <rect x="86" y="374" width="570" height="290" rx="14" fill="#ffffff" stroke="#d8dee8"/>
+    <text x="118" y="424" font-size="24" font-weight="700" fill="#17202a">Growth Engine</text>
+    <rect x="124" y="482" width="84" height="140" rx="8" fill="#1f6feb"/><rect x="236" y="438" width="84" height="184" rx="8" fill="#168a55"/><rect x="348" y="506" width="84" height="116" rx="8" fill="#b42318"/><rect x="460" y="406" width="84" height="216" rx="8" fill="#b7791f"/>
+    <text x="122" y="654" font-size="16" fill="#667085">Paid</text><text x="236" y="654" font-size="16" fill="#667085">Website</text><text x="346" y="654" font-size="16" fill="#667085">Content</text><text x="456" y="654" font-size="16" fill="#667085">Event</text>
+    <rect x="694" y="374" width="582" height="290" rx="14" fill="#ffffff" stroke="#d8dee8"/>
+    <text x="726" y="424" font-size="24" font-weight="700" fill="#17202a">Operating Scope</text>
+    <text x="732" y="486" font-size="22" fill="#17202a">Team leadership</text><text x="1160" y="486" font-size="22" font-weight="700" fill="#1f6feb">8 people</text>
+    <line x1="732" y1="512" x2="1238" y2="512" stroke="#e7ebf2"/>
+    <text x="732" y="556" font-size="22" fill="#17202a">Centers managed</text><text x="1160" y="556" font-size="22" font-weight="700" fill="#1f6feb">3</text>
+    <line x1="732" y1="582" x2="1238" y2="582" stroke="#e7ebf2"/>
+    <text x="732" y="626" font-size="22" fill="#17202a">Community scale</text><text x="1090" y="626" font-size="22" font-weight="700" fill="#1f6feb">20,000+</text>
+    <rect x="86" y="704" width="1190" height="76" rx="14" fill="#17202a"/>
+    <text x="118" y="752" font-size="24" font-weight="700" fill="#ffffff">Key insight: Growth came from connecting media, website, community, event and consultation follow-up into one measurable funnel.</text>
+  </g>
+</svg>
