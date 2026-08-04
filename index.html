@@ -114,39 +114,112 @@
       .button.primary:hover { background: var(--green); }
       .button.light { border-color: #b7ccc5; color: var(--white); }
 
-      .hero-visual { position: relative; min-height: 460px; }
-      .hero-dashboard {
-        position: absolute;
-        right: -42px;
-        bottom: 0;
-        width: min(620px, 90%);
+      .hero-visual {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(190px, .85fr);
+        gap: 14px;
+        min-height: 500px;
+        padding: 12px;
         border: 1px solid #cbd8d2;
+        background: var(--white);
         box-shadow: 20px 22px 0 var(--soft-green);
       }
-      .hero-portrait {
-        position: absolute;
-        bottom: -12px;
-        left: 0;
-        z-index: 2;
-        width: 236px;
-        height: 316px;
-        border: 10px solid var(--white);
+
+      .hero-main-photo {
+        position: relative;
+        overflow: hidden;
+        min-height: 474px;
+        background: #dce8e4;
+      }
+
+      .hero-main-photo img {
+        display: block;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
         object-position: center top;
-        box-shadow: 0 20px 40px rgba(21, 34, 31, .18);
       }
-      .hero-note {
+
+      .hero-main-caption {
         position: absolute;
-        right: 0;
-        top: 20px;
-        width: 220px;
-        padding: 18px;
+        right: 14px;
+        bottom: 14px;
+        left: 14px;
+        padding: 13px 14px;
         border-left: 4px solid var(--brick);
-        background: var(--white);
-        box-shadow: 0 16px 32px rgba(21, 34, 31, .11);
+        background: rgba(255, 255, 255, .94);
+        backdrop-filter: blur(8px);
       }
-      .hero-note strong { display: block; margin-bottom: 6px; font-size: 15px; }
-      .hero-note span { color: var(--muted); font-size: 13px; }
+
+      .hero-main-caption strong {
+        display: block;
+        margin-bottom: 3px;
+        font-size: 14px;
+      }
+
+      .hero-main-caption span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .proof-strip {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .proof-card {
+        position: relative;
+        overflow: hidden;
+        min-height: 0;
+        border: 1px solid var(--line);
+        background: #10231f;
+      }
+
+      .proof-card img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 150px;
+        object-fit: cover;
+        transition: transform .35s ease;
+      }
+
+      .proof-card:nth-child(1) img { object-position: center 24%; }
+      .proof-card:nth-child(2) img { object-position: 34% center; }
+      .proof-card:nth-child(3) img { object-position: center 44%; }
+
+      .proof-card:hover img { transform: scale(1.025); }
+
+      .proof-card::after {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(12, 29, 25, .04) 28%, rgba(12, 29, 25, .9) 100%);
+        content: "";
+      }
+
+      .proof-copy {
+        position: absolute;
+        z-index: 2;
+        right: 11px;
+        bottom: 10px;
+        left: 11px;
+        color: var(--white);
+      }
+
+      .proof-copy strong {
+        display: block;
+        margin-bottom: 3px;
+        font-size: 12px;
+        line-height: 1.18;
+      }
+
+      .proof-copy span {
+        display: block;
+        color: #e3ece8;
+        font-size: 10px;
+        line-height: 1.28;
+      }
 
       .contact-strip {
         display: grid;
@@ -233,9 +306,11 @@
 
       @media (max-width: 980px) {
         .hero-grid, .experience-grid, .case-layout, .research-grid { grid-template-columns: 1fr; }
-        .hero-visual { min-height: 370px; }
-        .hero-dashboard { right: 0; width: 88%; }
-        .hero-portrait { width: 190px; height: 255px; }
+        .hero-visual {
+          grid-template-columns: minmax(0, 1.1fr) minmax(180px, .9fr);
+          min-height: 450px;
+        }
+        .hero-main-photo { min-height: 424px; }
         .experience-head { grid-template-columns: 1fr; }
         .scope-list { justify-content: flex-start; }
         .cases { grid-template-columns: 1fr; }
@@ -248,10 +323,20 @@
         .nav { display: none; }
         .section { padding: 68px 0; }
         .hero { padding-top: 54px; }
-        .hero-visual { min-height: 300px; }
-        .hero-dashboard { width: 92%; box-shadow: 10px 12px 0 var(--soft-green); }
-        .hero-portrait { bottom: -8px; width: 148px; height: 198px; border-width: 6px; }
-        .hero-note { top: 0; width: 174px; padding: 14px; }
+        .hero-visual {
+          grid-template-columns: 1fr;
+          min-height: auto;
+          padding: 8px;
+          box-shadow: 10px 12px 0 var(--soft-green);
+        }
+        .hero-main-photo { min-height: 480px; }
+        .proof-strip {
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: none;
+        }
+        .proof-card img { min-height: 150px; }
+        .proof-copy strong { font-size: 11px; }
+        .proof-copy span { display: none; }
         .contact-strip, .journey-summary, .timeline, .metric-grid, .channel-flow, .capability-grid, .details-grid { grid-template-columns: 1fr; }
         .timeline::before { top: 0; bottom: 0; left: 8px; right: auto; width: 1px; height: auto; }
         .timeline-item { padding: 5px 0 4px 30px; }
@@ -294,13 +379,40 @@
                 <a class="button" href="assets/long-nguyen-senior-digital-marketer.pdf" download>Tải CV</a>
               </div>
             </div>
-            <div class="hero-visual" aria-label="Portfolio dashboard preview">
-              <div class="hero-note">
-                <strong>Long Nguyen</strong>
-                <span>Digital Growth &amp; Performance Marketer<br>Hà Nội, Việt Nam</span>
+            <div class="hero-visual" aria-label="Long Nguyen career highlights">
+              <div class="hero-main-photo">
+                <img src="assets/long-nguyen-logitech-hero.png" alt="Long Nguyen tại sự kiện CMS x Logitech">
+                <div class="hero-main-caption">
+                  <strong>Long Nguyen</strong>
+                  <span>Digital Growth &amp; Performance Marketer · Hà Nội</span>
+                </div>
               </div>
-              <img class="hero-portrait" src="assets/long-nguyen-profile.jpg" alt="Chân dung Long Nguyen">
-              <img class="hero-dashboard" src="cms-logitech-dashboard.svg" alt="CMS x Logitech B2B campaign dashboard preview">
+
+              <div class="proof-strip" aria-label="Career proof points">
+                <article class="proof-card">
+                  <img src="assets/long-nguyen-growth-foundation.jpg" alt="Chân dung Long Nguyen trong giai đoạn xây nền tảng nghề nghiệp">
+                  <div class="proof-copy">
+                    <strong>Growth &amp; Community Foundation</strong>
+                    <span>Phát triển cộng đồng Blockchain/FinTech 10.000+ thành viên, phối hợp cùng 200+ influencer quốc tế.</span>
+                  </div>
+                </article>
+
+                <article class="proof-card">
+                  <img src="assets/long-nguyen-leadership-recognition.jpg" alt="Long Nguyen nhận ghi nhận tại NP Education">
+                  <div class="proof-copy">
+                    <strong>Leadership Recognition</strong>
+                    <span>Được ghi nhận vì năng lực dẫn dắt và những đóng góp nổi bật tại NP Education.</span>
+                  </div>
+                </article>
+
+                <article class="proof-card">
+                  <img src="assets/long-nguyen-field-execution.jpg" alt="Long Nguyen tham gia sự kiện công nghệ tại CMS">
+                  <div class="proof-copy">
+                    <strong>Field Execution</strong>
+                    <span>Trực tiếp tham gia sự kiện, hoạt động onsite và các điểm chạm B2B tại CMS.</span>
+                  </div>
+                </article>
+              </div>
             </div>
           </div>
           <div class="contact-strip" id="contact">
@@ -377,7 +489,7 @@
               <p>Organic social reach tăng 100% và brand awareness tăng 300%. Song song với việc tạo lead, website, landing page, sales kit, content và community được phát triển như những tài sản dài hạn, hỗ trợ toàn bộ hành trình từ nhận biết đến tư vấn và đăng ký.</p>
             </div>
             <figure class="dashboard-frame">
-              <img src="np-education-dashboard.svg" alt="NP Education B2C growth dashboard showing MQL, peak leads, budget, conversion, community and event metrics">
+              <img src="assets/np-education-dashboard.svg" alt="NP Education B2C growth dashboard showing MQL, peak leads, budget, conversion, community and event metrics">
               <figcaption class="caption">NP Education Digital Growth Dashboard - tổng hợp quy mô lead, ngân sách, community, event và conversion trong hệ thống tăng trưởng B2C đa trung tâm.</figcaption>
             </figure>
           </div>
@@ -417,7 +529,7 @@
               <p>Facebook là kênh tạo volume chính cho nhóm MD/SI, trong khi Google hỗ trợ bắt nhu cầu chủ động. Tuy nhiên, quyết định scale không chỉ dựa trên CPL. Chất lượng lead downstream và khả năng follow-up của Sales/BU mới là điều kiện quyết định ngân sách có nên tiếp tục được mở rộng hay không.</p>
             </div>
             <figure class="dashboard-frame">
-              <img src="cms-logitech-dashboard.svg" alt="CMS x Logitech B2B digital campaign dashboard showing partner leads, pipeline, order value and budget management">
+              <img src="assets/cms-logitech-dashboard.svg" alt="CMS x Logitech B2B digital campaign dashboard showing partner leads, pipeline, order value and budget management">
               <figcaption class="caption">CMS x Logitech Digital Campaign Dashboard - tổng hợp Partner acquisition, End-User demand, pipeline, order value và cách ngân sách được tối ưu theo chất lượng funnel.</figcaption>
             </figure>
           </div>
