@@ -1,690 +1,1042 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Portfolio Digital Growth & Performance Marketing của Long Nguyen.">
-    <title>Long Nguyen | Digital Marketing Portfolio</title>
-    <style>
-      :root {
-        --paper: #f6f5f1;
-        --ink: #15221f;
-        --muted: #5d6864;
-        --line: #d9dfda;
-        --green: #1f5d50;
-        --green-dark: #153f36;
-        --brick: #b6402c;
-        --brick-pale: #f5e2dd;
-        --gold: #c89a42;
-        --white: #ffffff;
-        --soft-green: #e3efeb;
-        --max: 1200px;
-      }
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio Digital Performance & Growth Marketing của Long Nguyen — B2C Growth, B2B Performance, Marketing Analytics và Sales Alignment.">
+  <meta name="theme-color" content="#080808">
+  <title>Long Nguyen | Digital Performance & Growth Marketing</title>
 
-      * { box-sizing: border-box; }
+  <style>
+    :root {
+      --black: #070707;
+      --black-2: #0d0d0f;
+      --black-3: #141416;
+      --white: #ffffff;
+      --paper: #f5f2eb;
+      --paper-2: #ece7dc;
+      --ink: #171717;
+      --muted: #77746e;
+      --muted-dark: #a8a39a;
+      --gold: #d4af58;
+      --gold-bright: #f0d58d;
+      --gold-deep: #9f792f;
+      --line-dark: rgba(255,255,255,.12);
+      --line-light: rgba(20,20,20,.13);
+      --max: 1240px;
+      --radius: 22px;
+      --ease: cubic-bezier(.2,.75,.25,1);
+    }
 
-      html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.68;
+      overflow-x: hidden;
+    }
 
-      body {
-        margin: 0;
-        color: var(--ink);
-        background: var(--paper);
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        line-height: 1.55;
-      }
+    ::selection { color: var(--black); background: var(--gold-bright); }
+    a { color: inherit; }
+    img { max-width: 100%; }
+    button, input, textarea { font: inherit; }
 
-      a { color: inherit; }
+    .shell { width: min(var(--max), calc(100% - 56px)); margin: 0 auto; }
+    .section { position: relative; padding: 112px 0; }
+    .section.dark { color: var(--white); background: var(--black); }
+    .section.paper { background: var(--paper); }
+    .section.white { background: var(--white); }
+    .section.gold-wash {
+      background:
+        radial-gradient(circle at 85% 10%, rgba(212,175,88,.18), transparent 30%),
+        linear-gradient(180deg, #f5f2eb 0%, #efeadf 100%);
+    }
 
-      .shell { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+    .scroll-progress {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright));
+      box-shadow: 0 0 16px rgba(240,213,141,.75);
+    }
 
-      .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        border-bottom: 1px solid rgba(217, 223, 218, .82);
-        background: rgba(246, 245, 241, .96);
-        backdrop-filter: blur(12px);
-      }
+    .topbar {
+      position: fixed;
+      z-index: 80;
+      top: 0;
+      right: 0;
+      left: 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(7,7,7,.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
 
-      .topbar-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 64px;
-        gap: 20px;
-      }
+    .topbar-inner {
+      display: flex;
+      min-height: 66px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-      .wordmark { font-weight: 800; letter-spacing: 0; text-decoration: none; }
-      .wordmark span { color: var(--brick); }
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
 
-      .nav { display: flex; align-items: center; gap: 20px; font-size: 14px; color: var(--muted); }
-      .nav a { text-decoration: none; }
-      .nav a:hover { color: var(--ink); }
+    .wordmark::before {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 18px rgba(212,175,88,.75);
+      content: "";
+    }
 
-      .section { padding: 96px 0; }
-      .section.white { background: var(--white); }
-      .section.dark { background: var(--green-dark); color: var(--white); }
-      .section.dark p, .section.dark .section-intro { color: #d6e2de; }
+    .nav { display: flex; align-items: center; gap: 22px; }
+    .nav a {
+      position: relative;
+      color: rgba(255,255,255,.68);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .nav a::after {
+      position: absolute;
+      right: 0;
+      bottom: -8px;
+      left: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform .25s ease;
+      content: "";
+    }
+    .nav a:hover { color: var(--white); }
+    .nav a:hover::after { transform: scaleX(1); transform-origin: left; }
 
-      .eyebrow {
-        margin: 0 0 14px;
-        color: var(--brick);
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: .09em;
-        text-transform: uppercase;
-      }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 18px;
+      color: var(--gold-deep);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { width: 24px; height: 1px; background: currentColor; content: ""; }
+    .dark .eyebrow { color: var(--gold-bright); }
 
-      .eyebrow.light { color: #e5b7ab; }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -.035em; }
+    h1 { margin-bottom: 26px; font-size: clamp(54px, 7.8vw, 112px); }
+    h2 { margin-bottom: 24px; font-size: clamp(38px, 5vw, 70px); }
+    h3 { margin-bottom: 14px; font-size: clamp(24px, 2.4vw, 34px); }
+    h4 { margin-bottom: 10px; font-size: 18px; }
+    p { color: #55514a; }
+    .dark p { color: #beb8ae; }
 
-      h1, h2, h3, p { margin-top: 0; }
-      h1, h2, h3 { letter-spacing: 0; line-height: 1.04; }
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: hidden;
+      padding: 124px 0 70px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 77% 28%, rgba(212,175,88,.16), transparent 25%),
+        radial-gradient(circle at 15% 70%, rgba(255,255,255,.04), transparent 23%),
+        var(--black);
+    }
 
-      h1 { max-width: 760px; margin-bottom: 20px; font-size: clamp(52px, 8vw, 96px); }
-      h2 { margin-bottom: 18px; font-size: clamp(34px, 4.2vw, 58px); }
-      h3 { margin-bottom: 12px; font-size: 22px; }
-      p { color: var(--muted); }
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      opacity: .18;
+      background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: linear-gradient(180deg, #000 10%, transparent 92%);
+      content: "";
+    }
 
-      .lead { max-width: 680px; margin-bottom: 0; color: #34423e; font-size: clamp(18px, 2.2vw, 24px); }
-      .section-intro { max-width: 700px; font-size: 18px; }
+    .hero::after {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      top: 15%;
+      right: -180px;
+      border: 1px solid rgba(212,175,88,.22);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 70px rgba(212,175,88,.025),
+        0 0 0 140px rgba(212,175,88,.018);
+      animation: orbitPulse 7s ease-in-out infinite;
+      content: "";
+    }
 
-      .hero { overflow: hidden; padding: 78px 0 72px; background: var(--paper); }
-      .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(350px, .95fr); gap: 58px; align-items: center; }
+    @keyframes orbitPulse {
+      0%,100% { transform: scale(.96); opacity: .65; }
+      50% { transform: scale(1.04); opacity: 1; }
+    }
 
-      .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0; }
-      .pill { border: 1px solid #cbd8d2; border-radius: 999px; padding: 7px 11px; color: var(--green-dark); font-size: 13px; font-weight: 700; }
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(410px, .92fr);
+      gap: 70px;
+      align-items: center;
+    }
 
-      .action-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-      .button {
-        display: inline-flex;
-        min-height: 44px;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid var(--ink);
-        padding: 10px 15px;
-        color: var(--ink);
-        background: transparent;
-        font-size: 14px;
-        font-weight: 800;
-        text-decoration: none;
-        transition: transform .18s ease, background .18s ease, color .18s ease;
-      }
-      .button:hover { transform: translateY(-2px); }
-      .button.primary { border-color: var(--green-dark); color: var(--white); background: var(--green-dark); }
-      .button.primary:hover { background: var(--green); }
-      .button.light { border-color: #b7ccc5; color: var(--white); }
+    .hero h1 { max-width: 850px; }
+    .hero h1 .gold { color: var(--gold-bright); }
+    .hero-kicker {
+      max-width: 750px;
+      margin-bottom: 0;
+      color: #d7d1c7;
+      font-size: clamp(18px, 1.8vw, 24px);
+    }
 
-      .hero-visual {
-        display: grid;
-        grid-template-columns: minmax(0, 1.15fr) minmax(190px, .85fr);
-        gap: 14px;
-        min-height: 500px;
-        padding: 12px;
-        border: 1px solid #cbd8d2;
-        background: var(--white);
-        box-shadow: 20px 22px 0 var(--soft-green);
-      }
+    .hero-kicker strong { color: var(--white); }
 
-      .hero-main-photo {
-        position: relative;
-        overflow: hidden;
-        min-height: 474px;
-        background: #dce8e4;
-      }
+    .action-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px;
+      padding: 11px 18px;
+      color: var(--white);
+      background: transparent;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .02em;
+      text-decoration: none;
+      transition: transform .22s var(--ease), border-color .22s ease, background .22s ease, color .22s ease;
+    }
+    .button:hover { transform: translateY(-3px); border-color: var(--gold); }
+    .button.gold { border-color: var(--gold); color: var(--black); background: var(--gold); }
+    .button.gold:hover { background: var(--gold-bright); }
+    .button.dark-btn { border-color: #2a2926; color: var(--white); background: var(--black); }
 
-      .hero-main-photo img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center top;
-      }
+    .hero-card {
+      position: relative;
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 28px;
+      background: rgba(255,255,255,.035);
+      box-shadow: 0 28px 90px rgba(0,0,0,.42);
+      backdrop-filter: blur(10px);
+    }
 
-      .hero-main-caption {
-        position: absolute;
-        right: 14px;
-        bottom: 14px;
-        left: 14px;
-        padding: 13px 14px;
-        border-left: 4px solid var(--brick);
-        background: rgba(255, 255, 255, .94);
-        backdrop-filter: blur(8px);
-      }
+    .hero-card::before {
+      position: absolute;
+      inset: -1px;
+      z-index: -1;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(240,213,141,.46), transparent 34%, transparent 68%, rgba(240,213,141,.14));
+      content: "";
+    }
 
-      .hero-main-caption strong {
-        display: block;
-        margin-bottom: 3px;
-        font-size: 14px;
-      }
+    .hero-photo {
+      position: relative;
+      overflow: hidden;
+      min-height: 610px;
+      border-radius: 20px;
+      background: #191919;
+    }
+    .hero-photo img { display: block; width: 100%; height: 610px; object-fit: cover; object-position: center top; filter: saturate(.86) contrast(1.05); }
+    .hero-photo::after {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 46%, rgba(5,5,5,.92) 100%);
+      content: "";
+    }
 
-      .hero-main-caption span {
-        color: var(--muted);
-        font-size: 12px;
-      }
+    .hero-photo-caption {
+      position: absolute;
+      z-index: 3;
+      right: 26px;
+      bottom: 24px;
+      left: 26px;
+    }
+    .hero-photo-caption strong { display: block; margin-bottom: 4px; font-size: 18px; }
+    .hero-photo-caption span { color: #c8c2b8; font-size: 12px; }
 
-      .proof-strip {
-        display: grid;
-        grid-template-rows: repeat(3, 1fr);
-        gap: 10px;
-      }
+    .hero-mini-stats {
+      position: absolute;
+      z-index: 4;
+      top: 32px;
+      left: -38px;
+      display: grid;
+      gap: 10px;
+    }
+    .mini-stat {
+      width: 176px;
+      padding: 15px 16px;
+      border: 1px solid rgba(240,213,141,.24);
+      border-radius: 15px;
+      color: var(--white);
+      background: rgba(7,7,7,.82);
+      box-shadow: 0 12px 40px rgba(0,0,0,.28);
+      backdrop-filter: blur(12px);
+    }
+    .mini-stat strong { display: block; color: var(--gold-bright); font-size: 20px; line-height: 1; }
+    .mini-stat span { display: block; margin-top: 5px; color: #aaa49b; font-size: 10px; line-height: 1.35; }
 
-      .proof-card {
-        position: relative;
-        overflow: hidden;
-        min-height: 0;
-        border: 1px solid var(--line);
-        background: #10231f;
-      }
+    .data-rail {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      margin-top: 72px;
+      border-top: 1px solid var(--line-dark);
+      border-bottom: 1px solid var(--line-dark);
+    }
+    .data-node { position: relative; padding: 18px 14px; text-align: center; }
+    .data-node:not(:last-child)::after { position: absolute; top: 50%; right: -4px; width: 8px; height: 8px; border: 1px solid var(--gold); border-radius: 50%; background: var(--black); transform: translateY(-50%); content: ""; }
+    .data-node strong { display: block; color: var(--gold-bright); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+    .data-node span { display: block; margin-top: 4px; color: #8d887f; font-size: 11px; }
 
-      .proof-card img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        min-height: 150px;
-        object-fit: cover;
-        transition: transform .35s ease;
-      }
+    .ticker {
+      overflow: hidden;
+      border-top: 1px solid rgba(212,175,88,.22);
+      border-bottom: 1px solid rgba(212,175,88,.22);
+      color: var(--white);
+      background: #0b0b0c;
+    }
+    .ticker-track { display: flex; width: max-content; animation: ticker 28s linear infinite; }
+    .ticker-item { display: flex; align-items: center; gap: 13px; padding: 17px 28px; white-space: nowrap; font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+    .ticker-item::before { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); content: ""; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-      .proof-card:nth-child(1) img { object-position: center 24%; }
-      .proof-card:nth-child(2) img { object-position: 34% center; }
-      .proof-card:nth-child(3) img { object-position: center 44%; }
+    .intro-layout { display: grid; grid-template-columns: .72fr 1.28fr; gap: 90px; align-items: start; }
+    .sticky-label { position: sticky; top: 112px; }
+    .section-number { display: block; margin-bottom: 14px; color: var(--gold-deep); font-size: 56px; font-weight: 900; letter-spacing: -.06em; }
+    .sticky-label p { max-width: 300px; color: #817b72; font-size: 14px; }
 
-      .proof-card:hover img { transform: scale(1.025); }
+    .story { max-width: 820px; }
+    .story p { margin-bottom: 22px; font-size: clamp(18px, 1.8vw, 22px); }
+    .story strong { color: var(--ink); }
+    .story .quote-line {
+      margin: 34px 0 0;
+      padding: 26px 0 0 28px;
+      border-top: 1px solid var(--line-light);
+      border-left: 2px solid var(--gold);
+      color: var(--ink);
+      font-size: clamp(22px, 2.6vw, 34px);
+      font-weight: 850;
+      line-height: 1.26;
+      letter-spacing: -.02em;
+    }
 
-      .proof-card::after {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(12, 29, 25, .04) 28%, rgba(12, 29, 25, .9) 100%);
-        content: "";
-      }
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 48px;
+      border: 1px solid var(--line-dark);
+      background: var(--line-dark);
+    }
+    .impact-card {
+      position: relative;
+      min-height: 230px;
+      overflow: hidden;
+      padding: 28px;
+      background: #0e0e10;
+    }
+    .impact-card::after {
+      position: absolute;
+      right: -42px;
+      bottom: -58px;
+      width: 150px;
+      height: 150px;
+      border: 1px solid rgba(212,175,88,.16);
+      border-radius: 50%;
+      content: "";
+    }
+    .impact-number { display: flex; align-items: baseline; gap: 7px; margin-bottom: 18px; }
+    .impact-number strong { color: var(--gold-bright); font-size: clamp(36px, 4vw, 62px); line-height: 1; letter-spacing: -.05em; }
+    .impact-number span { color: #857f75; font-size: 12px; font-weight: 800; }
+    .impact-card h4 { color: var(--white); }
+    .impact-card p { margin-bottom: 0; color: #969087; font-size: 13px; }
 
-      .proof-copy {
-        position: absolute;
-        z-index: 2;
-        right: 11px;
-        bottom: 10px;
-        left: 11px;
-        color: var(--white);
-      }
+    .company-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 36px;
+      align-items: end;
+      margin-bottom: 52px;
+    }
+    .company-meta { text-align: right; }
+    .company-meta strong { display: block; color: var(--gold-deep); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+    .company-meta span { color: #8a857d; font-size: 13px; }
 
-      .proof-copy strong {
-        display: block;
-        margin-bottom: 3px;
-        font-size: 12px;
-        line-height: 1.18;
-      }
+    .content-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(390px, .95fr); gap: 56px; align-items: start; }
+    .content-copy p { font-size: 18px; }
+    .content-copy b { color: var(--ink); }
 
-      .proof-copy span {
-        display: block;
-        color: #e3ece8;
-        font-size: 10px;
-        line-height: 1.28;
-      }
+    .metrics-four { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .metric-card {
+      min-height: 164px;
+      padding: 24px;
+      border: 1px solid var(--line-light);
+      border-radius: 18px;
+      background: rgba(255,255,255,.74);
+      box-shadow: 0 14px 40px rgba(30,25,15,.04);
+    }
+    .metric-card strong { display: block; color: var(--ink); font-size: clamp(30px, 3.2vw, 46px); line-height: 1; letter-spacing: -.05em; }
+    .metric-card .accent { color: var(--gold-deep); }
+    .metric-card span { display: block; margin-top: 12px; color: #777168; font-size: 13px; }
 
-      .contact-strip {
-        display: grid;
-        grid-template-columns: 1.1fr 1fr 1fr;
-        gap: 1px;
-        margin-top: 64px;
-        background: var(--line);
-        border: 1px solid var(--line);
-      }
-      .contact-item { min-height: 108px; padding: 21px; background: var(--white); }
-      .contact-item b { display: block; margin-bottom: 5px; font-size: 14px; }
-      .contact-item span { color: var(--muted); font-size: 14px; }
+    .funnel {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      margin-top: 54px;
+      border: 1px solid var(--line-light);
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--line-light);
+    }
+    .funnel-step { position: relative; min-height: 144px; padding: 22px; background: var(--white); }
+    .funnel-step strong { display: block; color: var(--gold-deep); font-size: 31px; line-height: 1; }
+    .funnel-step span { display: block; margin-top: 10px; color: #777168; font-size: 12px; }
+    .funnel-step:not(:last-child)::after { position: absolute; z-index: 3; top: 50%; right: -9px; width: 18px; height: 18px; border-top: 1px solid var(--line-light); border-right: 1px solid var(--line-light); background: var(--white); transform: translateY(-50%) rotate(45deg); content: ""; }
 
-      .journey-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0 52px; }
-      .summary-number { padding: 22px 0; border-top: 2px solid var(--ink); }
-      .summary-number strong { display: block; margin-bottom: 5px; font-size: 28px; }
-      .summary-number span { color: var(--muted); font-size: 14px; }
+    .ops-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 34px; }
+    .ops-card { padding: 24px; border-top: 2px solid var(--gold); background: #111113; }
+    .ops-card h4 { color: var(--white); }
+    .ops-card p { margin-bottom: 0; color: #aaa49a; font-size: 14px; }
 
-      .timeline { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-      .timeline::before { position: absolute; top: 8px; left: 0; right: 0; height: 1px; background: #b7c6bf; content: ""; }
-      .timeline-item { position: relative; padding-top: 34px; }
-      .timeline-dot { position: absolute; top: 0; left: 0; width: 17px; height: 17px; border: 4px solid var(--paper); border-radius: 50%; background: var(--brick); }
-      .timeline-year { margin-bottom: 7px; color: var(--brick); font-size: 14px; font-weight: 800; }
-      .timeline-item p { max-width: 320px; }
+    .performance-intro { max-width: 860px; margin-bottom: 50px; }
+    .performance-intro p { font-size: 19px; }
 
-      .experience-head { display: grid; grid-template-columns: 1fr minmax(230px, .45fr); gap: 36px; align-items: end; margin-bottom: 42px; }
-      .role-label { color: var(--green); font-size: 15px; font-weight: 800; }
-      .scope-list { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .performance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .performance-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 640px;
+      padding: 34px;
+      border: 1px solid var(--line-dark);
+      border-radius: 22px;
+      background: #0d0d0f;
+    }
+    .performance-card::before {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      top: -140px;
+      right: -90px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,175,88,.17), transparent 68%);
+      content: "";
+    }
+    .performance-card h3 { color: var(--white); }
+    .performance-card p { color: #aaa49b; }
 
-      .experience-grid { display: grid; grid-template-columns: minmax(0, .93fr) minmax(400px, 1.07fr); gap: 42px; align-items: start; }
-      .story-copy { font-size: 18px; }
-      .story-copy b { color: var(--ink); }
+    .process-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 28px; }
+    .process-chip { padding: 7px 10px; border: 1px solid rgba(212,175,88,.24); border-radius: 999px; color: #d7c28b; font-size: 11px; font-weight: 800; }
 
-      .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 28px 0; border: 1px solid var(--line); background: var(--line); }
-      .metric { min-height: 124px; padding: 18px; background: var(--white); }
-      .metric strong { display: block; margin-bottom: 7px; color: var(--green-dark); font-size: clamp(22px, 3.1vw, 37px); line-height: 1; }
-      .metric span { color: var(--muted); font-size: 13px; }
+    .diagnostic-list { margin: 0; padding: 0; list-style: none; }
+    .diagnostic-list li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding: 14px 0; border-top: 1px solid rgba(255,255,255,.08); }
+    .diagnostic-list b { color: var(--white); }
+    .diagnostic-list span:first-child { color: var(--gold-bright); font-size: 12px; font-weight: 900; }
+    .diagnostic-list span:last-child { color: #aaa49b; font-size: 13px; }
 
-      .dashboard-frame { overflow: hidden; border: 1px solid var(--line); background: var(--white); }
-      .dashboard-frame img { display: block; width: 100%; height: auto; }
-      .caption { padding: 12px 15px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    .perf-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 28px; border: 1px solid rgba(255,255,255,.09); background: rgba(255,255,255,.09); }
+    .perf-metric { padding: 17px; background: #111113; }
+    .perf-metric strong { display: block; color: var(--gold-bright); font-size: 23px; }
+    .perf-metric span { color: #8e897f; font-size: 10px; }
 
-      .case-section { border-top: 1px solid var(--line); }
-      .case-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 48px; }
-      .case-result { padding: 30px; border: 1px solid #bdd1ca; background: var(--soft-green); }
-      .case-result .big { display: block; margin-bottom: 4px; color: var(--green-dark); font-size: clamp(30px, 4vw, 54px); font-weight: 900; line-height: 1; }
+    .np-layout { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(390px, .92fr); gap: 60px; align-items: start; }
+    .np-quote {
+      margin: 30px 0;
+      padding: 24px 28px;
+      border-left: 3px solid var(--gold);
+      color: var(--ink);
+      background: rgba(255,255,255,.72);
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+    .np-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .np-stat { min-height: 138px; padding: 22px; border: 1px solid var(--line-light); border-radius: 16px; background: var(--white); }
+    .np-stat strong { display: block; color: var(--gold-deep); font-size: 34px; line-height: 1; }
+    .np-stat span { display: block; margin-top: 10px; color: #777168; font-size: 12px; }
 
-      .channel-flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; margin: 28px 0; border: 1px solid var(--line); background: var(--line); }
-      .flow-step { min-height: 122px; padding: 17px; background: var(--white); }
-      .flow-step strong { display: block; margin-bottom: 8px; color: var(--brick); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
-      .flow-step span { font-size: 14px; font-weight: 700; }
+    .selected-work { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+    .work-card {
+      display: flex;
+      min-height: 320px;
+      flex-direction: column;
+      padding: 28px;
+      border: 1px solid var(--line-light);
+      border-radius: 18px;
+      background: var(--white);
+      transition: transform .25s var(--ease), box-shadow .25s ease, border-color .25s ease;
+    }
+    .work-card:hover { transform: translateY(-6px); border-color: rgba(159,121,47,.55); box-shadow: 0 22px 60px rgba(52,41,15,.08); }
+    .work-card .tag { margin-bottom: 24px; color: var(--gold-deep); font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .work-card p { font-size: 14px; }
+    .work-card .result { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line-light); color: var(--ink); font-size: 13px; font-weight: 800; }
 
-      .mix { display: grid; grid-template-columns: 4fr 1fr; gap: 2px; margin-top: 20px; color: var(--white); font-size: 13px; font-weight: 800; }
-      .mix span { padding: 11px; background: var(--brick); }
-      .mix span:last-child { background: var(--gold); }
-      .mix-2026 { grid-template-columns: 9fr 1fr; }
+    .road-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 50px; }
+    .road-card { padding: 34px; border: 1px solid rgba(255,255,255,.1); border-radius: 20px; background: #0e0e10; }
+    .road-card h3 { color: var(--white); }
+    .road-card p { color: #aaa49a; }
+    .road-card .road-meta { margin-bottom: 18px; color: var(--gold-bright); font-size: 11px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .road-card .road-quote { margin-top: 26px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.09); color: #e8e1d7; font-size: 17px; font-weight: 750; }
 
-      .cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-      .case { display: flex; min-height: 360px; flex-direction: column; padding: 26px; border-top: 4px solid var(--brick); background: var(--white); }
-      .case p { font-size: 15px; }
-      .case .case-meta { margin-top: auto; padding-top: 20px; color: var(--green); font-size: 14px; font-weight: 800; }
+    .career-summary {
+      margin-top: 30px;
+      padding: 28px 32px;
+      border: 1px solid rgba(212,175,88,.25);
+      border-radius: 18px;
+      color: #dbd3c6;
+      background: linear-gradient(135deg, rgba(212,175,88,.08), rgba(255,255,255,.02));
+      font-size: 18px;
+    }
+    .career-summary strong { color: var(--white); }
 
-      .research-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: center; }
-      .research-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; border: 1px solid #3b6c60; background: #3b6c60; }
-      .research-steps div { min-height: 146px; padding: 22px; background: #1c5045; }
-      .research-steps strong { display: block; margin-bottom: 8px; color: #f2cb7c; font-size: 15px; }
-      .research-steps span { color: #d6e2de; font-size: 14px; }
+    .education-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: start; }
+    .degree-card { padding: 34px; border: 1px solid var(--line-light); border-radius: 20px; background: var(--white); }
+    .degree-card .school { margin-bottom: 10px; color: var(--gold-deep); font-size: 12px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .degree-card .degree-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 24px; }
+    .degree-chip { padding: 7px 10px; border: 1px solid var(--line-light); border-radius: 999px; color: #655f56; font-size: 11px; font-weight: 800; }
+    .learning-stack { display: grid; gap: 14px; }
+    .learning-card { padding: 24px; border-top: 2px solid var(--gold); background: #111113; }
+    .learning-card h4 { color: var(--white); }
+    .learning-card p { margin-bottom: 0; color: #aaa49a; font-size: 13px; }
+    .learning-card .school-small { color: var(--gold-bright); font-size: 10px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
 
-      .capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border: 1px solid var(--line); background: var(--line); }
-      .capability { min-height: 218px; padding: 26px; background: var(--white); }
-      .capability-index { display: block; margin-bottom: 28px; color: var(--brick); font-size: 12px; font-weight: 900; letter-spacing: .1em; }
+    .capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 44px; border: 1px solid var(--line-light); background: var(--line-light); }
+    .capability { min-height: 220px; padding: 28px; background: var(--white); }
+    .capability-index { display: block; margin-bottom: 28px; color: var(--gold-deep); font-size: 11px; font-weight: 900; letter-spacing: .14em; }
+    .capability p { margin-bottom: 0; font-size: 14px; }
 
-      .details-grid { display: grid; grid-template-columns: 1fr 1.15fr .85fr; gap: 24px; }
-      .detail-block { border-top: 2px solid var(--ink); padding-top: 18px; }
-      .tool-list { display: flex; flex-wrap: wrap; gap: 8px; }
-      .tool { padding: 7px 10px; border: 1px solid var(--line); color: var(--muted); background: var(--white); font-size: 13px; }
-      .interest-list { margin: 0; padding: 0; list-style: none; }
-      .interest-list li { padding: 7px 0; border-bottom: 1px solid var(--line); color: var(--muted); }
+    .tools-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .tool { padding: 8px 11px; border: 1px solid var(--line-light); border-radius: 999px; color: #676159; background: rgba(255,255,255,.66); font-size: 12px; }
 
-      .closing { padding: 112px 0; text-align: center; }
-      .closing h2 { max-width: 710px; margin-right: auto; margin-left: auto; }
-      .closing p { max-width: 620px; margin-right: auto; margin-left: auto; font-size: 19px; }
-      .closing .action-row { justify-content: center; }
+    .closing {
+      position: relative;
+      overflow: hidden;
+      padding: 130px 0 120px;
+      text-align: center;
+      color: var(--white);
+      background: var(--black);
+    }
+    .closing::before {
+      position: absolute;
+      width: 720px;
+      height: 720px;
+      top: -420px;
+      left: 50%;
+      border: 1px solid rgba(212,175,88,.18);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 0 100px rgba(212,175,88,.025), 0 0 0 200px rgba(212,175,88,.015);
+      content: "";
+    }
+    .closing .shell { position: relative; z-index: 2; }
+    .closing h2 { max-width: 850px; margin-right: auto; margin-left: auto; }
+    .closing p { max-width: 720px; margin-right: auto; margin-left: auto; color: #aaa49a; font-size: 18px; }
+    .closing .action-row { justify-content: center; }
+    .footer-note { margin-top: 46px; color: #6e6961; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
 
-      @media (max-width: 980px) {
-        .hero-grid, .experience-grid, .case-layout, .research-grid { grid-template-columns: 1fr; }
-        .hero-visual {
-          grid-template-columns: minmax(0, 1.1fr) minmax(180px, .9fr);
-          min-height: 450px;
-        }
-        .hero-main-photo { min-height: 424px; }
-        .experience-head { grid-template-columns: 1fr; }
-        .scope-list { justify-content: flex-start; }
-        .cases { grid-template-columns: 1fr; }
-        .case { min-height: auto; }
-      }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .08s; }
+    .reveal-delay-2 { transition-delay: .16s; }
+    .reveal-delay-3 { transition-delay: .24s; }
 
-      @media (max-width: 720px) {
-        .shell { width: min(100% - 34px, var(--max)); }
-        .topbar-inner { min-height: 56px; }
-        .nav { display: none; }
-        .section { padding: 68px 0; }
-        .hero { padding-top: 54px; }
-        .hero-visual {
-          grid-template-columns: 1fr;
-          min-height: auto;
-          padding: 8px;
-          box-shadow: 10px 12px 0 var(--soft-green);
-        }
-        .hero-main-photo { min-height: 480px; }
-        .proof-strip {
-          grid-template-columns: repeat(3, 1fr);
-          grid-template-rows: none;
-        }
-        .proof-card img { min-height: 150px; }
-        .proof-copy strong { font-size: 11px; }
-        .proof-copy span { display: none; }
-        .contact-strip, .journey-summary, .timeline, .metric-grid, .channel-flow, .capability-grid, .details-grid { grid-template-columns: 1fr; }
-        .timeline::before { top: 0; bottom: 0; left: 8px; right: auto; width: 1px; height: auto; }
-        .timeline-item { padding: 5px 0 4px 30px; }
-        .timeline-dot { top: 4px; }
-        .research-steps { grid-template-columns: 1fr; }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="shell topbar-inner">
-        <a class="wordmark" href="#top">Long <span>Nguyen</span></a>
-        <nav class="nav" aria-label="Primary navigation">
-          <a href="#journey">Hành trình</a>
-          <a href="#np-education">NP Education</a>
-          <a href="#cms">CMS</a>
-          <a href="#cases">Case study</a>
-          <a href="#contact">Liên hệ</a>
-        </nav>
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 1040px) {
+      .hero-grid, .content-grid, .np-layout, .education-grid { grid-template-columns: 1fr; }
+      .hero-card { max-width: 720px; }
+      .hero-mini-stats { left: 20px; }
+      .intro-layout { grid-template-columns: 1fr; gap: 36px; }
+      .sticky-label { position: static; }
+      .performance-grid, .road-grid { grid-template-columns: 1fr; }
+      .performance-card { min-height: auto; }
+      .selected-work { grid-template-columns: 1fr; }
+      .company-head { grid-template-columns: 1fr; }
+      .company-meta { text-align: left; }
+    }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 32px, var(--max)); }
+      .nav { display: none; }
+      .section { padding: 78px 0; }
+      .hero { min-height: auto; padding: 106px 0 56px; }
+      .hero-grid { gap: 44px; }
+      .hero-photo, .hero-photo img { min-height: 500px; height: 500px; }
+      .hero-mini-stats { position: static; grid-template-columns: 1fr 1fr; margin: 10px 0 0; }
+      .mini-stat { width: auto; }
+      .data-rail { grid-template-columns: 1fr; margin-top: 44px; }
+      .data-node { text-align: left; }
+      .data-node:not(:last-child)::after { display: none; }
+      .impact-grid, .funnel, .ops-grid, .capability-grid { grid-template-columns: 1fr; }
+      .funnel-step:not(:last-child)::after { display: none; }
+      .metrics-four, .np-stats { grid-template-columns: 1fr 1fr; }
+      .perf-metrics { grid-template-columns: 1fr; }
+      .ticker-item { padding-right: 18px; padding-left: 18px; }
+      .story p, .content-copy p { font-size: 17px; }
+    }
+
+    @media (max-width: 480px) {
+      .metrics-four, .np-stats, .hero-mini-stats { grid-template-columns: 1fr; }
+      .hero-photo, .hero-photo img { min-height: 430px; height: 430px; }
+      .impact-card { min-height: 190px; }
+      .performance-card { padding: 26px; }
+      .degree-card, .road-card { padding: 26px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="wordmark" href="#top">Long Nguyen</a>
+      <nav class="nav" aria-label="Điều hướng chính">
+        <a href="#about">Câu chuyện</a>
+        <a href="#cms">CMC M&amp;S</a>
+        <a href="#performance">Performance</a>
+        <a href="#np">NP Education</a>
+        <a href="#journey">Hành trình</a>
+        <a href="#education">Học vấn</a>
+        <a href="#contact">Liên hệ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell">
+        <div class="hero-grid">
+          <div class="reveal visible">
+            <p class="eyebrow">Digital Performance &amp; Growth Marketing</p>
+            <h1>Lead is a Milestone.<br><span class="gold">Growth is the Destination.</span></h1>
+            <p class="hero-kicker">Tôi làm Digital Marketing theo cách rất thực tế: <strong>đọc dữ liệu, hiểu khách hàng, tối ưu từng mắt xích và theo kết quả đến tận phần doanh nghiệp thực sự ghi nhận.</strong></p>
+            <div class="action-row">
+              <a class="button gold" href="#about">Đọc câu chuyện của tôi ↘</a>
+              <a class="button" href="#cms">Xem kết quả nổi bật</a>
+              <a class="button" href="long-nguyen-senior-digital-marketer-performance.pdf" download>Tải CV</a>
+            </div>
+          </div>
+
+          <div class="hero-card reveal reveal-delay-2">
+            <div class="hero-photo">
+              <img src="assets/long-nguyen-logitech-hero.png" alt="Long Nguyen tại sự kiện công nghệ CMS x Logitech">
+              <div class="hero-photo-caption">
+                <strong>Long Nguyen</strong>
+                <span>Digital Performance &amp; Growth Marketer · Hà Nội</span>
+              </div>
+            </div>
+            <div class="hero-mini-stats" aria-label="Một số dấu mốc nghề nghiệp">
+              <div class="mini-stat"><strong>2,99 tỷ</strong><span>Giá trị cơ hội kinh doanh từ Digital</span></div>
+              <div class="mini-stat"><strong>500+ MQL</strong><span>Sản lượng mỗi tháng ở B2C</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="data-rail reveal" aria-label="Digital growth flow">
+          <div class="data-node"><strong>Media</strong><span>Tạo nhu cầu</span></div>
+          <div class="data-node"><strong>Lead</strong><span>Xác nhận tín hiệu</span></div>
+          <div class="data-node"><strong>SQL</strong><span>Sales tiếp cận</span></div>
+          <div class="data-node"><strong>Opportunity</strong><span>Hình thành cơ hội</span></div>
+          <div class="data-node"><strong>Revenue</strong><span>Kết quả cuối cùng</span></div>
+        </div>
       </div>
-    </header>
+    </section>
 
-    <main id="top">
-      <section class="hero">
-        <div class="shell">
-          <div class="hero-grid">
-            <div>
-              <p class="eyebrow">Digital Growth &amp; Performance Marketing</p>
-              <h1>Lead is a Milestone. Growth is the Destination.</h1>
-              <p class="lead">Tôi kết nối Paid Media, SEO, Content, Website, CRM, Event và Sales follow-up để Marketing không chỉ tạo traffic hay lead, mà tiếp tục đưa nhu cầu đến conversion, demo, pipeline và tăng trưởng kinh doanh.</p>
-              <div class="pill-row" aria-label="Specializations">
-                <span class="pill">B2B Performance</span>
-                <span class="pill">B2C Growth Leadership</span>
-                <span class="pill">Funnel &amp; CRO</span>
-                <span class="pill">Research &amp; Strategy</span>
-              </div>
-              <div class="action-row">
-                <a class="button primary" href="#journey">Xem hành trình</a>
-                <a class="button" href="#cases">Khám phá case study</a>
-                <a class="button" href="assets/long-nguyen-senior-digital-marketer.pdf" download>Tải CV</a>
-              </div>
-            </div>
-            <div class="hero-visual" aria-label="Long Nguyen career highlights">
-              <div class="hero-main-photo">
-                <img src="assets/long-nguyen-logitech-hero.png" alt="Long Nguyen tại sự kiện CMS x Logitech">
-                <div class="hero-main-caption">
-                  <strong>Long Nguyen</strong>
-                  <span>Digital Growth &amp; Performance Marketer · Hà Nội</span>
-                </div>
-              </div>
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <div class="ticker-item">VND 252M Paid Media</div><div class="ticker-item">VND 543.73M Realized Revenue</div><div class="ticker-item">VND 2.99B Opportunity Portfolio</div><div class="ticker-item">500+ MQL / Month</div><div class="ticker-item">8-Person Marketing Team</div><div class="ticker-item">20,000+ Community</div>
+        <div class="ticker-item">VND 252M Paid Media</div><div class="ticker-item">VND 543.73M Realized Revenue</div><div class="ticker-item">VND 2.99B Opportunity Portfolio</div><div class="ticker-item">500+ MQL / Month</div><div class="ticker-item">8-Person Marketing Team</div><div class="ticker-item">20,000+ Community</div>
+      </div>
+    </div>
 
-              <div class="proof-strip" aria-label="Career proof points">
-                <article class="proof-card">
-                  <img src="assets/long-nguyen-growth-foundation.jpg" alt="Chân dung Long Nguyen trong giai đoạn xây nền tảng nghề nghiệp">
-                  <div class="proof-copy">
-                    <strong>Growth &amp; Community Foundation</strong>
-                    <span>Phát triển cộng đồng Blockchain/FinTech 10.000+ thành viên, phối hợp cùng 200+ influencer quốc tế.</span>
-                  </div>
-                </article>
+    <section class="section paper" id="about">
+      <div class="shell intro-layout">
+        <aside class="sticky-label reveal">
+          <span class="section-number">01</span>
+          <p class="eyebrow">My Story</p>
+          <h3>Không bắt đầu bằng một “career plan” hoàn hảo.</h3>
+          <p>Tôi bắt đầu bằng việc làm thật, va thật và dần hiểu mình muốn đi xa đến đâu với Digital Marketing.</p>
+        </aside>
 
-                <article class="proof-card">
-                  <img src="assets/long-nguyen-leadership-recognition.jpg.JPG" alt="Long Nguyen nhận ghi nhận tại NP Education">
-                  <div class="proof-copy">
-                    <strong>Leadership Recognition</strong>
-                    <span>Được ghi nhận vì năng lực dẫn dắt và những đóng góp nổi bật tại NP Education.</span>
-                  </div>
-                </article>
+        <div class="story reveal reveal-delay-1">
+          <p><strong>Digital Marketing đến với tôi có lẽ từ những “đêm khó ngủ”:</strong> bám từng chỉ số, chỉnh từng chiến dịch, có những hôm gần như thức trắng chỉ để kịp hoàn thành một mục tiêu nghe thì rất đơn giản — đáp ứng đủ số lead.</p>
 
-                <article class="proof-card">
-                  <img src="assets/long-nguyen-field-execution.jpg.jpg" alt="Long Nguyen tham gia sự kiện công nghệ tại CMS">
-                  <div class="proof-copy">
-                    <strong>Field Execution</strong>
-                    <span>Trực tiếp tham gia sự kiện, hoạt động onsite và các điểm chạm B2B tại CMS.</span>
-                  </div>
-                </article>
-              </div>
-            </div>
+          <p>Nhưng làm càng lâu, tôi càng nhận ra có lead mới chỉ là điểm bắt đầu. Để một người thực sự trở thành khách hàng còn phụ thuộc vào rất nhiều điểm chạm phía sau: nội dung họ nhìn thấy, trải nghiệm trên website, cách Sales tư vấn, tốc độ phản hồi và cả cách Marketing tiếp tục đồng hành sau khi lead được chuyển đi.</p>
+
+          <p>Hơn ba năm làm nghề Digital đã đưa tôi qua hai môi trường rất khác nhau: <strong>B2C, nơi bài toán là tăng trưởng theo từng giai đoạn, đẩy truyền thông đúng nhịp và tối ưu liên tục các chiến dịch xuyên suốt kỳ tuyển sinh; B2B, nơi lead có thể “đắt điên”, chu kỳ bán hàng dài hơn, chất lượng quan trọng hơn số lượng và Digital Marketing, muốn được ghi nhận, phải chứng minh được giá trị bằng việc lead được Sales đưa vào pipeline, phát triển thành cơ hội kinh doanh và cuối cùng là doanh thu.</strong></p>
+
+          <p>Từ một thời <strong>“một tay ôm cả bầu trời”</strong> — tự chạy quảng cáo, làm nội dung, xây cộng đồng, tối ưu landing page — tôi dần đảm nhận những bài toán lớn hơn: dẫn dắt đội ngũ, phối hợp với Sales ở từng đơn vị kinh doanh và xây hệ thống theo dõi khách hàng tiềm năng xuyên suốt phễu, từ lúc để lại thông tin cho đến khi hình thành cơ hội kinh doanh và doanh thu trong pipeline của Sales.</p>
+
+          <p class="quote-line">Điều tôi theo đuổi không phải là một chiến dịch có những chỉ số đẹp trong ngắn hạn. Tôi muốn Digital Marketing tạo ra những kết quả mà doanh nghiệp thực sự ghi nhận — và hiểu vì sao những kết quả đó xuất hiện để lần sau có thể làm tốt hơn, rồi tiếp tục scale lên.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="impact">
+      <div class="shell">
+        <p class="eyebrow reveal">The Numbers Behind The Work</p>
+        <h2 class="reveal">Tôi thích kể chuyện bằng kết quả.</h2>
+        <p class="performance-intro reveal">Không phải mọi thứ trong Marketing đều có thể gói gọn trong một con số. Nhưng nếu đã nói về Performance, cuối cùng vẫn cần thứ để đo, để đối chiếu và để biết mình đã thực sự tạo ra điều gì.</p>
+
+        <div class="impact-grid">
+          <article class="impact-card reveal"><div class="impact-number"><strong>2,99</strong><span>TỶ VND</span></div><h4>Cơ hội kinh doanh từ Digital</h4><p>Tổng giá trị các cơ hội được ghi nhận trong giai đoạn phụ trách Digital tại CMC Manufacturing and Services.</p></article>
+          <article class="impact-card reveal reveal-delay-1"><div class="impact-number"><strong>543,73</strong><span>TRIỆU VND</span></div><h4>Doanh thu thực thu</h4><p>Phần doanh thu đã được ghi nhận thực tế từ các khách hàng có nguồn từ Digital.</p></article>
+          <article class="impact-card reveal reveal-delay-2"><div class="impact-number"><strong>500+</strong><span>MQL / THÁNG</span></div><h4>Khả năng vận hành B2C ở volume lớn</h4><p>Sản lượng duy trì trong các giai đoạn cao điểm, với mức cao nhất khoảng 1.500 lead trong một kỳ tuyển sinh.</p></article>
+          <article class="impact-card reveal reveal-delay-3"><div class="impact-number"><strong>8</strong><span>NGƯỜI · 3 CƠ SỞ</span></div><h4>Từ tự làm đến dẫn dắt đội ngũ</h4><p>Phụ trách một team đa chức năng gồm Paid Media, Content, Website, Community và Event.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gold-wash" id="cms">
+      <div class="shell">
+        <div class="company-head">
+          <div class="reveal">
+            <p class="eyebrow">02 / B2B Technology · 2025 — Present</p>
+            <h2>CMC Manufacturing and Services Co., Ltd.</h2>
+            <p class="section-intro">A member of CMC Corporation</p>
           </div>
-          <div class="contact-strip" id="contact">
-            <div class="contact-item"><b>Liên hệ trực tiếp</b><span><a href="mailto:longhenry96.biz@gmail.com">longhenry96.biz@gmail.com</a><br><a href="tel:+84968331496">096 833 1496</a></span></div>
-            <div class="contact-item"><b>Cơ hội phù hợp</b><span>Performance Marketing, Digital Growth, Demand Generation và Marketing Leadership.</span></div>
-            <div class="contact-item"><b>LinkedIn</b><span><a href="https://www.linkedin.com/in/longbruce96" target="_blank" rel="noreferrer">linkedin.com/in/longbruce96</a><br>Hà Nội, Việt Nam</span></div>
+          <div class="company-meta reveal reveal-delay-1">
+            <strong>Digital Marketing Executive</strong>
+            <span>Enterprise IT · DaaS · Collaboration Solutions</span>
           </div>
         </div>
-      </section>
 
-      <section class="section white" id="journey">
-        <div class="shell">
-          <p class="eyebrow">Hành trình nghề nghiệp</p>
-          <h2>Từ scale B2C đến xây funnel B2B và phân tích cơ hội kinh doanh.</h2>
-          <p class="section-intro">Mỗi giai đoạn mở rộng thêm một lớp năng lực: bắt đầu từ vận hành, dữ liệu và community; tiến đến tăng trưởng B2C ở quy mô lớn; sau đó là Performance B2B, Sales alignment và Business Analysis.</p>
-          <div class="journey-summary">
-            <div class="summary-number"><strong>3+ năm</strong><span>trực tiếp vận hành Digital Marketing trong hai bối cảnh: B2C giáo dục và B2B công nghệ</span></div>
-            <div class="summary-number"><strong>B2C -&gt; B2B</strong><span>từ scale lead tuyển sinh K12 đến phát triển hệ thống Đại lý, khách hàng doanh nghiệp, demo, đơn hàng và pipeline</span></div>
-            <div class="summary-number"><strong>Execution -&gt; Strategy</strong><span>từ vận hành từng kênh đến tư duy ngân sách, chất lượng funnel và đánh giá cơ hội kinh doanh</span></div>
+        <div class="content-grid">
+          <div class="content-copy reveal">
+            <h3>B2B khiến tôi nhìn Digital Marketing xa hơn những chỉ số trên Ads Manager.</h3>
+            <p>Khi chuyển sang môi trường B2B Technology, tôi bắt đầu làm việc với những chu kỳ bán hàng dài hơn, nhiều bên tham gia hơn và khoảng cách từ một chiến dịch quảng cáo đến doanh thu cũng lớn hơn rất nhiều.</p>
+            <p>Ở đó, một chiến dịch không thể chỉ được đánh giá bằng CTR, CPC hay CPL. Tôi cần biết khách hàng nào thực sự phù hợp, Sales đang theo đuổi cơ hội nào, giá trị kinh doanh được hình thành ra sao và cuối cùng Marketing đã đóng góp được gì cho doanh nghiệp.</p>
+            <p>Trong giai đoạn phụ trách Digital, tôi quản lý khoảng <b>252 triệu đồng ngân sách Paid Media</b>, tạo ra <b>543,73 triệu đồng doanh thu thực thu từ Digital</b> và gần <b>2,99 tỷ đồng giá trị cơ hội kinh doanh</b>, trong đó khoảng <b>2,45 tỷ đồng</b> vẫn đang được Sales tiếp tục theo đuổi.</p>
           </div>
-          <div class="timeline">
-            <article class="timeline-item">
-              <span class="timeline-dot" aria-hidden="true"></span>
-              <div class="timeline-year">2018-2023 | Nền tảng về dữ liệu và community</div>
-              <h3>Foxconn &amp; UniRealChain</h3>
-              <p>Xây nền tảng qua các công việc liên quan đến e-learning, Power BI dashboard, đào tạo nội bộ và community marketing. Trong lĩnh vực Blockchain/FinTech, từng phát triển cộng đồng 10.000+ thành viên và phối hợp với mạng lưới hơn 200 influencer quốc tế.</p>
-            </article>
-            <article class="timeline-item">
-              <span class="timeline-dot" aria-hidden="true"></span>
-              <div class="timeline-year">2023-2024 | Scale B2C</div>
-              <h3>Marketing Leader - NP Education</h3>
-              <p>Dẫn dắt tăng trưởng tại 3 trung tâm thông qua Paid Media, Website, Content, Community, Event và tối ưu conversion trong hành trình tuyển sinh.</p>
-            </article>
-            <article class="timeline-item">
-              <span class="timeline-dot" aria-hidden="true"></span>
-              <div class="timeline-year">2025-nay | Scale B2B</div>
-              <h3>Digital Marketing Executive - CMC</h3>
-              <p>Xây funnel B2B từ acquisition, qualification và nurturing đến Sales follow-up; đồng thời mở rộng sang nghiên cứu thị trường và đánh giá các cơ hội kinh doanh mới.</p>
-            </article>
+
+          <div class="metrics-four reveal reveal-delay-1">
+            <div class="metric-card"><strong>252M</strong><span>Ngân sách Paid Media đã quản lý</span></div>
+            <div class="metric-card"><strong class="accent">2.16x</strong><span>Blended ROAS trên doanh thu thực thu</span></div>
+            <div class="metric-card"><strong>543,73M</strong><span>Doanh thu thực thu từ Digital</span></div>
+            <div class="metric-card"><strong class="accent">2,99B</strong><span>Tổng giá trị cơ hội kinh doanh</span></div>
           </div>
         </div>
-      </section>
 
-      <section class="section" id="np-education">
-        <div class="shell">
-          <div class="experience-head">
-            <div>
-              <p class="eyebrow">Kinh nghiệm nổi bật 01 | 2023-2024</p>
-              <h2>NP Education: Dẫn dắt tăng trưởng B2C tại 3 trung tâm</h2>
-            </div>
-            <div class="scope-list" aria-label="NP Education scope">
-              <span class="pill">Dẫn dắt team</span>
-              <span class="pill">Paid acquisition</span>
-              <span class="pill">Website &amp; CRO</span>
-              <span class="pill">Community &amp; Event</span>
-            </div>
-          </div>
-          <div class="experience-grid">
-            <div>
-              <p class="story-copy"><b>Vai trò:</b> Marketing Leader phụ trách hoạt động tăng trưởng tại 3 trung tâm. Tôi xây một hệ thống B2C đa kênh, kết nối quảng cáo với website, landing page, content, community, event và đội ngũ tư vấn tuyển sinh.</p>
-              <p>Giá trị không nằm ở việc xuất hiện trên thật nhiều kênh, mà ở cách các kênh phối hợp để tạo lead ổn định, nuôi dưỡng phụ huynh và giúp đội ngũ tuyển sinh cải thiện conversion.</p>
-              <p>Paid Media tạo nhu cầu ban đầu. Website và landing page giúp người dùng tìm hiểu sâu hơn. Content, community và event tiếp tục xây niềm tin trước khi lead được chuyển sang tư vấn và follow-up.</p>
-              <div class="metric-grid" aria-label="NP Education key metrics">
-                <div class="metric"><strong>500+</strong><span>MQL mỗi tháng</span></div>
-                <div class="metric"><strong>1.500</strong><span>lead mùa cao điểm</span></div>
-                <div class="metric"><strong>80M</strong><span>ngân sách mỗi tháng</span></div>
-                <div class="metric"><strong>20% -&gt; 50%</strong><span>cải thiện conversion</span></div>
-                <div class="metric"><strong>8</strong><span>nhân sự trong team</span></div>
-                <div class="metric"><strong>3</strong><span>trung tâm phụ trách</span></div>
-                <div class="metric"><strong>20.000+</strong><span>thành viên cộng đồng</span></div>
-                <div class="metric"><strong>200-300+</strong><span>người mỗi sự kiện</span></div>
-              </div>
-              <h3>Tăng trưởng không chỉ đến từ Paid Media</h3>
-              <p>Organic social reach tăng 100% và brand awareness tăng 300%. Song song với việc tạo lead, website, landing page, sales kit, content và community được phát triển như những tài sản dài hạn, hỗ trợ toàn bộ hành trình từ nhận biết đến tư vấn và đăng ký.</p>
-            </div>
-            <figure class="dashboard-frame">
-              <img src="assets/np-education-dashboard.svg" alt="NP Education B2C growth dashboard showing MQL, peak leads, budget, conversion, community and event metrics">
-              <figcaption class="caption">NP Education Digital Growth Dashboard - tổng hợp quy mô lead, ngân sách, community, event và conversion trong hệ thống tăng trưởng B2C đa trung tâm.</figcaption>
-            </figure>
-          </div>
+        <div class="funnel reveal" aria-label="B2B acquisition funnel">
+          <div class="funnel-step"><strong>282</strong><span>Leads</span></div>
+          <div class="funnel-step"><strong>210</strong><span>Qualified Leads · 74,5%</span></div>
+          <div class="funnel-step"><strong>122</strong><span>SQLs</span></div>
+          <div class="funnel-step"><strong>38</strong><span>Opportunities · 31,1% từ SQL</span></div>
+          <div class="funnel-step"><strong>15</strong><span>Orders · 39,5% từ Opportunity</span></div>
         </div>
-      </section>
 
-      <section class="section white" id="cms">
-        <div class="shell">
-          <div class="experience-head">
-            <div>
-              <p class="eyebrow">Kinh nghiệm nổi bật 02 | 2025-nay</p>
-              <h2>CMC: Xây Performance B2B từ acquisition đến pipeline</h2>
-            </div>
-            <div class="scope-list" aria-label="CMS scope">
-              <span class="pill">Meta &amp; Google Ads</span>
-              <span class="pill">SEO &amp; AI Search</span>
-              <span class="pill">CRM &amp; Demand Gen</span>
-              <span class="pill">Sales Enablement</span>
-            </div>
-          </div>
-          <div class="experience-grid">
-            <div>
-              <p class="story-copy">Tại Công ty TNHH Sản xuất và Dịch vụ CMC (CMS), tôi phụ trách Digital Marketing cho các giải pháp công nghệ B2B, với mục tiêu không chỉ tạo lead mà còn hỗ trợ quá trình qualification, nurturing và Sales follow-up.</p>
-              <p>Hệ thống bao gồm Paid Media, SEO, AI Search, Website, Landing Page, Email, Community, Webinar, Event, Ecommerce và các tài sản hỗ trợ bán hàng dành cho Partner lẫn End-User.</p>
-              <p><b>Nguyên tắc vận hành rất rõ:</b> Digital không kết thúc ở form đăng ký. Mỗi lead cần được phân loại đúng, bàn giao đủ thông tin và có bước follow-up phù hợp để tiến thành SQL, demo, đơn hàng hoặc pipeline.</p>
-              <div class="metric-grid" aria-label="CMS key metrics">
-                <div class="metric"><strong>282</strong><span>B2B Partner leads</span></div>
-                <div class="metric"><strong>210</strong><span>qualified B2B leads</span></div>
-                <div class="metric"><strong>2,71 tỷ</strong><span>VND recorded pipeline</span></div>
-                <div class="metric"><strong>263,73M</strong><span>VND recorded Logitech orders</span></div>
-                <div class="metric"><strong>6.744</strong><span>USD vendor fund claimed</span></div>
-                <div class="metric"><strong>252M</strong><span>VND annual budget plan</span></div>
-                <div class="metric"><strong>75-80%</strong><span>estimated budget utilization</span></div>
-                <div class="metric"><strong>10</strong><span>potential industries researched</span></div>
-              </div>
-              <p><b>Logic phân bổ Paid Media:</b> FY2025 sử dụng khoảng 80% ngân sách cho Facebook Ads và 20% cho Google Ads; chiến dịch Logitech 2026 chuyển sang tỷ lệ 90% Facebook và 10% Google.</p>
-              <p>Facebook là kênh tạo volume chính cho nhóm MD/SI, trong khi Google hỗ trợ bắt nhu cầu chủ động. Tuy nhiên, quyết định scale không chỉ dựa trên CPL. Chất lượng lead downstream và khả năng follow-up của Sales/BU mới là điều kiện quyết định ngân sách có nên tiếp tục được mở rộng hay không.</p>
-            </div>
-            <figure class="dashboard-frame">
-              <img src="assets/cms-logitech-dashboard.svg" alt="CMS x Logitech B2B digital campaign dashboard showing partner leads, pipeline, order value and budget management">
-              <figcaption class="caption">CMS x Logitech Digital Campaign Dashboard - tổng hợp Partner acquisition, End-User demand, pipeline, order value và cách ngân sách được tối ưu theo chất lượng funnel.</figcaption>
-            </figure>
-          </div>
+        <div class="ops-grid">
+          <article class="ops-card reveal"><h4>Tracking từ Marketing đến Revenue</h4><p>Tự xây và chuẩn hóa cách theo dõi Source → Campaign → Lead → Qualified → SQL → Opportunity → Won/Revenue. Phần Opportunity và Revenue được đối soát với Sales/BU do hai bên vận hành hệ thống riêng.</p></article>
+          <article class="ops-card reveal reveal-delay-1"><h4>Từ báo cáo trễ một tuần đến visibility hàng ngày</h4><p>Gom dữ liệu Ads, Lead, Content, SEO, Social và AI Search về một cấu trúc thống nhất hơn; duy trì báo cáo hàng tuần cho Marketing, Sales và Ban lãnh đạo.</p></article>
+          <article class="ops-card reveal reveal-delay-2"><h4>Sales feedback trở thành dữ liệu tối ưu</h4><p>Nhận phản hồi chất lượng khách hàng hàng tuần, đối soát Opportunity/Revenue hàng tháng và dùng kết quả downstream để điều chỉnh targeting, thông điệp, ngân sách — kể cả mở thêm LinkedIn Ads cho nhóm FDI.</p></article>
         </div>
-      </section>
 
-      <section class="section case-section" id="logitech">
-        <div class="shell">
-          <p class="eyebrow">Flagship case</p>
-          <div class="case-layout">
-            <div>
-              <h2>Logitech B2B Growth System</h2>
-              <p class="section-intro">Case tập trung đồng thời vào hai mục tiêu: phát triển mạng lưới Đại lý/MD-SI và tạo nhu cầu từ End-User doanh nghiệp cho ngành hàng Logitech.</p>
-              <p>Thay vì chạy từng chiến dịch rời rạc, Digital được thiết kế như một hệ thống nhiều điểm chạm, nơi acquisition, qualification, nurturing, demo và Sales follow-up cùng hỗ trợ một hành trình mua B2B dài hơn.</p>
-              <div class="case-result">
-                <span class="big">2,71 tỷ VND</span>
-                <p>Recorded pipeline từ hệ thống B2B kết nối acquisition, qualification, Sales handoff và nurturing dài hạn.</p>
-              </div>
-            </div>
-            <div>
-              <h3>Digital đã được vận hành như thế nào?</h3>
-              <div class="channel-flow" aria-label="Logitech partner funnel">
-                <div class="flow-step"><strong>01 Thu hút</strong><span>Facebook Ads, Google Ads và Content đưa MD/SI prospect và End-User doanh nghiệp vào funnel.</span></div>
-                <div class="flow-step"><strong>02 Phân loại</strong><span>Lead được kiểm tra theo nhu cầu, vai trò, độ phù hợp và khả năng phát triển trước khi bàn giao cho Sales/BU.</span></div>
-                <div class="flow-step"><strong>03 Nuôi dưỡng</strong><span>Email, Zalo Community, Webinar và Event duy trì các điểm chạm trong chu kỳ mua dài.</span></div>
-                <div class="flow-step"><strong>04 Tăng độ tin cậy</strong><span>Demo, hình ảnh triển khai và tư liệu thực tế giúp giảm rào cản trong quá trình bán hàng B2B.</span></div>
-                <div class="flow-step"><strong>05 Sales follow-up</strong><span>Sales và BU đưa nhu cầu đến khảo sát, demo, dự án, đơn hàng hoặc pipeline.</span></div>
-              </div>
-              <div class="metric-grid" aria-label="Logitech FY2025 results">
-                <div class="metric"><strong>282</strong><span>B2B lead Partner</span></div>
-                <div class="metric"><strong>210</strong><span>lead chất lượng</span></div>
-                <div class="metric"><strong>92</strong><span>account đang hợp tác/chăm sóc</span></div>
-                <div class="metric"><strong>108</strong><span>thành viên community</span></div>
-                <div class="metric"><strong>185M</strong><span>đơn MD/SI</span></div>
-                <div class="metric"><strong>78,73M</strong><span>đơn End-User</span></div>
-                <div class="metric"><strong>125</strong><span>liên hệ End-User B2B</span></div>
-                <div class="metric"><strong>44</strong><span>tín hiệu need/demo/survey</span></div>
-              </div>
-              <h3>Scale có kiểm soát, không chạy để tiêu hết ngân sách</h3>
-              <p>Ngân sách được vận hành theo chu trình test - tối ưu - scale. Mục tiêu không phải giải ngân 100% một cách cơ học, mà chỉ tiếp tục tăng đầu tư khi lead vẫn đủ chất lượng và Sales/BU còn khả năng follow-up hiệu quả.</p>
-              <p>Khi năng lực chăm sóc downstream chưa theo kịp tốc độ tạo lead, phần ngân sách còn lại được giữ lại cho các giai đoạn phù hợp hơn thay vì tiếp tục scale chỉ để làm đẹp chỉ số đầu phễu.</p>
-              <div class="mix" aria-label="FY2025 paid media allocation"><span>FY2025: Facebook Ads 80%</span><span>Google Ads 20%</span></div>
-              <div class="mix mix-2026" aria-label="2026 paid media allocation"><span>2026: Facebook Ads 90%</span><span>Google Ads 10%</span></div>
-              <br><p>Khoản <b>6.744 USD vendor fund</b> được Logitech chấp thuận claim sau khi campaign đáp ứng các yêu cầu về hạng mục triển khai, nội dung, chứng từ, thời hạn và tiêu chuẩn nghiệm thu của hãng.</p>
-              <p>Đây không chỉ là một khoản ngân sách được hoàn lại, mà còn phản ánh khả năng triển khai campaign theo đúng tiêu chuẩn của vendor quốc tế.</p>
-            </div>
-          </div>
+        <div class="story reveal" style="margin-top:52px; max-width:920px;">
+          <p class="quote-line">Từ đây, Performance với tôi không còn chỉ là tối ưu chi phí quảng cáo. Nó là việc hiểu đồng tiền Marketing đang đi đâu, tạo ra điều gì và nên được đầu tư tiếp như thế nào.</p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="section white" id="cases">
-        <div class="shell">
-          <p class="eyebrow">Selected performance cases</p>
-          <h2>Không phải chỉ số đẹp nào cũng tạo ra business value.</h2>
-          <p class="section-intro">Mỗi campaign cần được đánh giá trong bối cảnh ngân sách, chất lượng funnel, năng lực Sales và điều kiện thị trường thực tế. Vì vậy, kết quả không chỉ được đọc từ reach, click hay lead, mà còn từ những gì xảy ra sau đó.</p>
-          <div class="cases">
-            <article class="case">
-              <p class="eyebrow">Promethean x CMS</p>
-              <h3>Demand Generation cho thị trường EdTech</h3>
-              <p>Campaign kết hợp Facebook Ads, Google Ads, Content và SEO với ngân sách kế hoạch 40 triệu đồng và thực chi khoảng 36 triệu đồng.</p>
-              <p><b>Kết quả:</b> 158.045 reach trên Facebook, 6.556 engagements/clicks, 283 leads, 90 hot leads và 8 nhu cầu demo. Song song với Paid Media, nhóm từ khóa trọng điểm duy trì Top 1-Top 3 trên Search.</p>
-              <p><b>Opportunity nổi bật:</b> Marie Curie là account có giá trị cao nhất - đã vượt SQL, hoàn thành demo và tiếp tục được nurturing.</p>
-              <span class="case-meta">Ưu tiên account quality, không chỉ lead volume</span>
-            </article>
-            <article class="case">
-              <p class="eyebrow">CMS X-Pro</p>
-              <h3>Demand B2B trong bối cảnh giá đầu vào biến động</h3>
-              <p>Campaign tạo nhu cầu cho máy tính CMS X-Pro thông qua Paid Media, Content, SEO và AI Search visibility.</p>
-              <p><b>Kết quả:</b> ngân sách 15 triệu đồng, 25 nội dung, 46 B2B leads, 13 nhu cầu và nhiều từ khóa đạt Top 1-Top 4 trên Google/AI Search.</p>
-              <p>Conversion chưa đi đến đơn hàng do giá RAM tăng mạnh đúng thời điểm khách hàng cân nhắc mua. Thay vì đánh giá campaign là thất bại, toàn bộ lead được chuyển cho Sales tiếp tục nurturing khi điều kiện thị trường thuận lợi hơn.</p>
-              <span class="case-meta">Bối cảnh thị trường quyết định cách đọc conversion</span>
-            </article>
-            <article class="case">
-              <p class="eyebrow">Logitech x CMS</p>
-              <h3>Ecommerce như một điểm chuyển đổi trong B2B funnel</h3>
-              <p>Website <b>logitech.cms.com.vn</b> được xây dựng như một điểm đến hỗ trợ người dùng tìm hiểu sản phẩm, kiểm tra thông tin và thực hiện hành động mua hàng.</p>
-              <p><b>Kết quả:</b> 4 đơn chuyển khoản thành công và 10 lượt thêm sản phẩm vào giỏ hàng.</p>
-              <p>Đây không phải một business TMĐT tách biệt, mà là một phần trong hệ sinh thái Digital của CMS - hỗ trợ tăng độ tin cậy, kéo dài hành trình tìm hiểu và bổ sung thêm điểm chuyển đổi cho khách hàng.</p>
-              <span class="case-meta">Website tốt không chỉ mang traffic; nó giúp funnel có nơi để tiếp tục</span>
-            </article>
-          </div>
+    <section class="section dark" id="performance">
+      <div class="shell">
+        <p class="eyebrow reveal">03 / How I Run Performance</p>
+        <h2 class="reveal">Sửa đúng bệnh quan trọng hơn sửa thật nhiều.</h2>
+        <div class="performance-intro reveal">
+          <p>Một chỉ số xấu có thể đến từ nhiều nguyên nhân khác nhau. Vì vậy, phản xạ của tôi không phải “Ads tụt thì đổi target”, mà là đọc tín hiệu theo thứ tự, xác định vấn đề nằm ở creative, audience, offer, landing page, Sales hay chính mức ngân sách trước khi quyết định hành động.</p>
         </div>
-      </section>
 
-      <section class="section dark" id="research">
-        <div class="shell research-grid">
-          <div>
-            <p class="eyebrow light">Research &amp; Business Analysis</p>
-            <h2>Từ một đầu bài rộng của TGĐ đến một khung ra quyết định.</h2>
-            <p>Theo yêu cầu của Tổng Giám đốc, tôi nghiên cứu 10 ngành hàng tiềm năng nhằm hỗ trợ CMS đánh giá các hướng phát triển kinh doanh mới.</p>
-            <p>Giá trị của công việc không nằm ở việc tổng hợp thật nhiều thông tin, mà ở khả năng biến các cơ hội rất khác nhau thành những phương án có thể đặt cạnh nhau, so sánh và ưu tiên.</p>
-            <p>Mỗi ngành được xem xét từ quy mô và xu hướng thị trường, cấu trúc cạnh tranh, business model, rủi ro pháp lý - vận hành, năng lực triển khai và mức độ phù hợp với CMS. Do nội dung phục vụ quá trình ra quyết định nội bộ, portfolio chỉ trình bày phương pháp và khung phân tích.</p>
-          </div>
-          <div class="research-steps" aria-label="Business research framework">
-            <div><strong>Độ hấp dẫn thị trường</strong><span>Nhu cầu, xu hướng tăng trưởng, cấu trúc thị trường và khoảng trống có thể khai thác.</span></div>
-            <div><strong>Strategic fit</strong><span>Mức độ phù hợp giữa cơ hội mới với năng lực, hệ sinh thái và route-to-market hiện có của CMS.</span></div>
-            <div><strong>Business model</strong><span>Logic doanh thu, yêu cầu đầu tư, vận hành và các giả định tài chính ban đầu.</span></div>
-            <div><strong>Risk &amp; Decision Gaps</strong><span>Rủi ro cạnh tranh, pháp lý, vận hành; các giả định còn yếu và dữ liệu cần tiếp tục xác minh.</span></div>
-          </div>
-        </div>
-      </section>
+        <div class="performance-grid">
+          <article class="performance-card reveal">
+            <p class="eyebrow">Meta Ads · Champion → Challenger</p>
+            <h3>Một campaign đang thắng, trước hết là một mốc để giữ.</h3>
+            <p>Tôi thường giữ nguyên camp win làm control thay vì sửa trực tiếp. Từ winner đó, tôi tạo challenger riêng để test scale theo từng biến chính — ngân sách, audience hoặc creative — rồi so lại với benchmark cũ.</p>
+            <div class="process-row"><span class="process-chip">Protect Winner</span><span class="process-chip">Duplicate Challenger</span><span class="process-chip">Set Guardrails</span><span class="process-chip">Diagnose</span><span class="process-chip">Scale / Kill</span><span class="process-chip">Promote New Champion</span></div>
 
-      <section class="section" id="capabilities">
-        <div class="shell">
-          <p class="eyebrow">Năng lực cốt lõi</p>
-          <h2>Một hệ thống tăng trưởng, không phải những kênh chạy rời rạc.</h2>
-          <div class="capability-grid">
-            <article class="capability"><span class="capability-index">01</span><h3>Performance Marketing</h3><p>Meta Ads, Google Ads, LinkedIn Ads; audience, creative và message testing; phân bổ ngân sách, tối ưu và scale theo chất lượng funnel.</p></article>
-            <article class="capability"><span class="capability-index">02</span><h3>SEO &amp; AI Search</h3><p>Keyword research, search intent, Content SEO, Search Console, topic authority và tối ưu khả năng xuất hiện trên Google lẫn AI Search.</p></article>
-            <article class="capability"><span class="capability-index">03</span><h3>Funnel, Data &amp; CRO</h3><p>Theo dõi MQL, SQL, demo, order và pipeline; xây dashboard, phân tích conversion và chuyển dữ liệu thành quyết định tối ưu cụ thể.</p></article>
-            <article class="capability"><span class="capability-index">04</span><h3>CRM &amp; Demand Generation</h3><p>Email, Lead Nurturing, Community, Webinar, Event và Sales follow-up cho các hành trình mua B2B có chu kỳ dài.</p></article>
-            <article class="capability"><span class="capability-index">05</span><h3>Website &amp; Digital Assets</h3><p>WordPress, Landing Page, Ecommerce, Content System, Trust Signal và UX - xây các điểm đến giúp người dùng tiếp tục hành trình thay vì rời đi sau quảng cáo.</p></article>
-            <article class="capability"><span class="capability-index">06</span><h3>Research &amp; Strategy</h3><p>Market Research, Competitor Mapping, Opportunity Assessment, Business Model và Decision Support cho các bài toán tăng trưởng rộng hơn Marketing execution.</p></article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section white" id="details">
-        <div class="shell details-grid">
-          <article class="detail-block">
-            <p class="eyebrow">Học vấn</p>
-            <h3>Cử nhân Quản trị Kinh doanh</h3>
-            <p>2014-2018 | GPA 3,45/4 | Tốt nghiệp loại Giỏi.</p>
-            <p>Nền tảng Quản trị Kinh doanh giúp tôi nhìn Marketing không chỉ qua campaign hay channel, mà trong mối liên hệ với khách hàng, vận hành, tài chính và tăng trưởng dài hạn.</p>
-          </article>
-          <article class="detail-block">
-            <p class="eyebrow">Công cụ</p>
-            <div class="tool-list" aria-label="Tools used">
-              <span class="tool">Meta Ads Manager</span><span class="tool">Google Ads</span><span class="tool">Google Analytics</span><span class="tool">Google Search Console</span><span class="tool">Google Sheets</span><span class="tool">Power BI</span><span class="tool">WordPress</span><span class="tool">Email Marketing</span><span class="tool">Canva</span><span class="tool">CapCut</span><span class="tool">AI Research Tools</span>
-            </div>
-          </article>
-          <article class="detail-block">
-            <p class="eyebrow">Ngoài công việc</p>
-            <ul class="interest-list">
-              <li>Công nghệ và AI</li>
-              <li>Chạy bộ và fitness</li>
-              <li>Âm nhạc và creative content</li>
-              <li>Xu hướng xã hội và hành vi người dùng</li>
+            <ul class="diagnostic-list">
+              <li><span>01</span><span><b>CTR tụt mạnh</b> → ưu tiên xem lại content, hook và creative trước.</span></li>
+              <li><span>02</span><span><b>CTR ổn nhưng Lead giảm</b> → check offer, CTA và trải nghiệm sau click.</span></li>
+              <li><span>03</span><span><b>Lead nhiều nhưng sai tệp</b> → xem lại thông điệp đang thu hút nhóm người nào và cách target.</span></li>
+              <li><span>04</span><span><b>Lead đúng nhưng tỷ lệ chốt giảm</b> → chưa vội đụng Ads; kiểm tra Sales, giá và offer.</span></li>
+              <li><span>05</span><span><b>CPA tăng sau khi scale</b> → xem lại mức ngân sách, frequency và khả năng hấp thụ của campaign.</span></li>
             </ul>
+
+            <p style="margin-top:22px;"><b style="color:#fff;">Control vẫn khỏe nhưng scale cell fail?</b> Tôi chẩn đoán trước khi kết luận winning logic đã sai. Nếu cần, challenger bị kill; winner gốc vẫn được giữ đến khi chính các chỉ số của nó thực sự xuống đủ sâu.</p>
+          </article>
+
+          <article class="performance-card reveal reveal-delay-1">
+            <p class="eyebrow">Google Search · Discovery → Refinement</p>
+            <h3>Đối sánh rộng là để lấy dữ liệu, không phải để “thả rồi cầu may”.</h3>
+            <p>Ở phase đầu, tôi có thể mở rộng hơn để quan sát search terms thực tế. Sau khi có đủ dữ liệu, quá trình tối ưu bắt đầu: thêm từ khóa phủ định, tách keyword có chuyển đổi, siết loại đối sánh phù hợp hơn và rà traffic bất thường để loại trừ IP khi có đủ dấu hiệu.</p>
+            <div class="process-row"><span class="process-chip">Broad Match</span><span class="process-chip">Search-Term Mining</span><span class="process-chip">Negative Keywords</span><span class="process-chip">Conversion Keywords</span><span class="process-chip">Siết đối sánh</span><span class="process-chip">IP Exclusion</span></div>
+
+            <p>Mục tiêu cuối cùng không phải chỉ là CPC thấp hơn. Tôi muốn traffic sạch hơn, đúng nhu cầu hơn để chi phí cho mỗi hành động chuyển đổi giảm xuống và tỷ lệ chuyển đổi cải thiện theo thời gian.</p>
+
+            <div class="perf-metrics">
+              <div class="perf-metric"><strong>6,66%</strong><span>Google Search CTR</span></div>
+              <div class="perf-metric"><strong>735đ</strong><span>Average CPC</span></div>
+              <div class="perf-metric"><strong>~218K</strong><span>Cost / Call-Click Action</span></div>
+            </div>
+
+            <p style="margin-top:24px;">Sau lớp media, tôi vẫn kiểm chứng bằng business result: khoảng <b style="color:#fff;">12 confirmed leads</b> và hơn <b style="color:#fff;">30 triệu đồng giá trị cơ hội kinh doanh</b> được ghi nhận từ Google.</p>
+            <p class="road-quote" style="margin-top:28px;">Test → đọc tín hiệu → tìm nguyên nhân → điều chỉnh → đo lại → scale thứ đang đúng.</p>
           </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="section dark closing">
-        <div class="shell">
-          <p class="eyebrow light">Kết nối</p>
-          <h2>Sẵn sàng cho những bài toán Growth cần đi xa hơn traffic và lead.</h2>
-          <p>Tôi đang tìm kiếm cơ hội ở các vị trí Performance Marketing, Digital Growth, Demand Generation và Marketing Leadership - nơi Marketing được kỳ vọng tạo ra không chỉ lượt tiếp cận, mà cả chuyển đổi và business impact có thể đo lường.</p>
-          <div class="action-row">
-            <a class="button light" href="assets/long-nguyen-senior-digital-marketer.pdf" download>Tải CV</a>
-            <a class="button light" href="mailto:longhenry96.biz@gmail.com">Gửi email</a>
-            <a class="button light" href="https://www.linkedin.com/in/longbruce96" target="_blank" rel="noreferrer">LinkedIn</a>
+    <section class="section paper" id="np">
+      <div class="shell">
+        <div class="company-head">
+          <div class="reveal">
+            <p class="eyebrow">04 / B2C Growth &amp; Leadership · 2023 — 2024</p>
+            <h2>NP Education</h2>
+          </div>
+          <div class="company-meta reveal reveal-delay-1">
+            <strong>Marketing Leader</strong>
+            <span>Education · Multi-center Enrollment Growth</span>
           </div>
         </div>
-      </section>
-    </main>
-  </body>
+
+        <div class="np-layout">
+          <div class="content-copy reveal">
+            <h3>Có một giai đoạn, bài toán của tôi không còn là làm nhiều hơn — mà là làm sao để 8 người cùng chạy đúng hướng.</h3>
+            <p>Marketing giáo dục có một nhịp rất riêng. Mỗi kỳ tuyển sinh đều có thời điểm phải tăng tốc, những mốc không thể lùi và rất nhiều đầu việc phải chạy song song: quảng cáo, nội dung, website, cộng đồng, sự kiện và hoạt động tại từng cơ sở.</p>
+            <p>Tại NP Education, tôi phụ trách đội Marketing <b>8 người tại 3 cơ sở</b>. Ngân sách quảng cáo có thời điểm lên tới khoảng <b>80 triệu đồng mỗi tháng</b>, sản lượng thường xuyên trên <b>500 MQL/tháng</b> và cao điểm khoảng <b>1.500 lead</b> trong một kỳ tuyển sinh.</p>
+
+            <div class="np-quote">Giao tiếp của một người lead không nằm ở việc nói nhiều hơn. Nó nằm ở việc khiến mọi người hiểu đúng điều cần làm, hiểu vì sao mình làm và biết khi nào phải chủ động báo lại nếu có thứ đang không ổn.</div>
+
+            <p>Điều khó nhất không phải là nghĩ thêm một ý tưởng quảng cáo. Đó là làm sao để một kế hoạch khi đi qua 8 con người và 3 cơ sở vẫn giữ được cùng một mục tiêu, cùng một nhịp triển khai và không bị sai lệch khi đến người thực hiện cuối cùng.</p>
+            <p>Khi lượng khách hàng quan tâm về lớn, Marketing cũng không thể chạy nhanh hơn khả năng xử lý của đội tư vấn. Vì vậy tôi bám sát quá trình tiếp nhận, đưa những điểm khách hàng thường dừng lại quay ngược về Marketing để điều chỉnh nội dung, quảng cáo và cách phối hợp giữa hai bên. Trong giai đoạn đó, tỷ lệ chuyển đổi từ lead sang đăng ký tăng từ khoảng <b>20% lên 50%</b>.</p>
+            <p><b>B2C cũng dạy tôi rằng Ads không thể gánh tăng trưởng một mình.</b> Song song với Paid Media, team phát triển content, website, community và event để mỗi kênh làm một việc khác nhau nhưng cùng phục vụ một kỳ tuyển sinh.</p>
+          </div>
+
+          <div class="np-stats reveal reveal-delay-1">
+            <div class="np-stat"><strong>8</strong><span>Nhân sự Marketing trực tiếp dẫn dắt</span></div>
+            <div class="np-stat"><strong>3</strong><span>Cơ sở cùng vận hành</span></div>
+            <div class="np-stat"><strong>500+</strong><span>MQL mỗi tháng</span></div>
+            <div class="np-stat"><strong>~1.500</strong><span>Lead ở thời điểm cao nhất</span></div>
+            <div class="np-stat"><strong>80M</strong><span>Ngân sách quảng cáo / tháng</span></div>
+            <div class="np-stat"><strong>20% → 50%</strong><span>Lead-to-enrollment conversion</span></div>
+            <div class="np-stat"><strong>20.000+</strong><span>Thành viên cộng đồng</span></div>
+            <div class="np-stat"><strong>+300%</strong><span>Brand awareness được ghi nhận</span></div>
+            <div class="np-stat"><strong>+100%</strong><span>Organic reach</span></div>
+            <div class="np-stat"><strong>200–300+</strong><span>Người tham gia mỗi chương trình lớn</span></div>
+          </div>
+        </div>
+
+        <div class="story reveal" style="margin-top:50px; max-width:940px;">
+          <p class="quote-line">NP là nơi tôi học cách chuyển từ “mình làm được” sang “cả đội làm được” — truyền đạt rõ hơn, giao quyền nhiều hơn, giữ thông tin không bị đứt đoạn và tạo cho từng người đủ không gian để chịu trách nhiệm với phần việc của mình.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="selected-work">
+      <div class="shell">
+        <p class="eyebrow reveal">Selected Work</p>
+        <h2 class="reveal">Một vài bài toán tôi từng trực tiếp chạm vào.</h2>
+        <p class="performance-intro reveal">Không phải case nào cũng cần một “ending đẹp”. Có campaign tạo ra pipeline, có campaign dừng ở nhu cầu, có lúc thị trường khiến conversion thay đổi. Điều quan trọng là đọc đúng bối cảnh và biết phải làm gì tiếp theo.</p>
+
+        <div class="selected-work">
+          <article class="work-card reveal">
+            <span class="tag">Promethean × CMS</span>
+            <h3>Demand Generation cho EdTech</h3>
+            <p>Kết hợp Paid Media, Content và SEO để tạo nhu cầu trong nhóm trường học/tổ chức giáo dục. Campaign thực chi khoảng 36 triệu đồng, đồng thời duy trì nhóm từ khóa trọng điểm ở Top 1–3.</p>
+            <p><b>Kết quả:</b> 283 leads · 90 hot leads · 8 nhu cầu demo.</p>
+            <div class="result">Bài học: account quality quan trọng hơn việc chỉ nhìn lead volume.</div>
+          </article>
+          <article class="work-card reveal reveal-delay-1">
+            <span class="tag">CMS X-Pro</span>
+            <h3>Demand B2B trong bối cảnh giá đầu vào biến động</h3>
+            <p>Campaign tạo nhu cầu qua Paid Media, Content và SEO. Conversion chưa đi đến đơn hàng khi giá RAM tăng mạnh đúng lúc khách hàng cân nhắc mua, nên lead được chuyển sang nurturing thay vì kết luận campaign “thất bại”.</p>
+            <p><b>Kết quả:</b> 46 B2B leads · 13 nhu cầu · nhiều từ khóa Top 1–4.</p>
+            <div class="result">Bài học: bối cảnh thị trường quyết định cách đọc conversion.</div>
+          </article>
+          <article class="work-card reveal reveal-delay-2">
+            <span class="tag">Logitech × CMS</span>
+            <h3>Website như một điểm chuyển đổi trong B2B funnel</h3>
+            <p>Website sản phẩm được dùng như một điểm đến để khách hàng kiểm tra thông tin, tăng độ tin cậy và tiếp tục hành trình sau quảng cáo — không phải một business Ecommerce tách biệt.</p>
+            <p><b>Kết quả:</b> 4 đơn chuyển khoản thành công · 10 lượt add-to-cart.</p>
+            <div class="result">Bài học: website tốt không chỉ mang traffic; nó cho funnel một nơi để tiếp tục.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="journey">
+      <div class="shell">
+        <p class="eyebrow reveal">05 / The Road Before</p>
+        <h2 class="reveal">Trước khi Digital Marketing trở thành con đường chính.</h2>
+        <p class="performance-intro reveal">Tôi đã đi qua hai môi trường gần như đối lập. Một bên là doanh nghiệp sản xuất quy mô lớn với quy trình và báo cáo. Một bên là Blockchain, nơi Marketing trước hết phải giải quyết một bài toán khó hơn rất nhiều: niềm tin.</p>
+
+        <div class="road-grid">
+          <article class="road-card reveal">
+            <div class="road-meta">2018 — 2021 · Foxconn / Fushan Technology Vietnam</div>
+            <h3>Nơi tôi học cách làm việc trong một tổ chức lớn.</h3>
+            <p>Tôi bắt đầu sự nghiệp với vai trò Learning &amp; Development Specialist: xây dựng nội dung e-learning, theo dõi hoạt động đào tạo và sử dụng Power BI để đưa dữ liệu rời rạc thành báo cáo dễ theo dõi hơn.</p>
+            <p>Công việc chưa phải Marketing, nhưng đây là nơi tôi sớm quen với một thực tế: một đầu việc không bao giờ đứng một mình. Nó đi qua quy trình, nhiều bộ phận, deadline, người chịu trách nhiệm và cuối cùng phải có thứ đủ rõ để báo cáo lại cho người ra quyết định.</p>
+            <div class="road-quote">Foxconn không dạy tôi chạy quảng cáo. Nhưng nó dạy tôi cách làm việc trong một hệ thống lớn.</div>
+          </article>
+
+          <article class="road-card reveal reveal-delay-1">
+            <div class="road-meta">2022 — 2023 · UniRealChain</div>
+            <h3>Trong Blockchain, Marketing trước hết là bài toán về niềm tin.</h3>
+            <p>Khách hàng không chỉ mua một sản phẩm. Họ đang cân nhắc đặt tiền và niềm tin vào một dự án còn phải tiếp tục chứng minh chính mình. Vì vậy Marketing phải giúp họ hiểu dự án là gì, đội ngũ phía sau có đáng tin không và vì sao họ nên tiếp tục ở lại cùng cộng đồng.</p>
+            <p>Tôi tham gia xây dựng cộng đồng hơn <b style="color:#fff;">10.000 nhà đầu tư</b> và phối hợp với hơn <b style="color:#fff;">200 KOL/Influencer quốc tế</b>. Nhưng số lượng chỉ là phần dễ nhìn thấy nhất.</p>
+            <div class="road-quote">Phần khó hơn là hiểu một người đang nghi ngờ điều gì, họ cần thêm thông tin gì để bớt nghi ngờ, điều gì khiến họ bắt đầu tin tưởng và điều gì đủ sức giữ họ ở lại lâu hơn với dự án.</div>
+          </article>
+        </div>
+
+        <div class="career-summary reveal">
+          <strong>Từ 2018 đến 2026, hơn 7 năm thực chiến đã đưa tôi qua nhiều điểm chạm rất khác nhau:</strong> sản xuất, Blockchain, giáo dục B2C và B2B Technology. Không phải chặng nào cũng liên quan trực tiếp đến nhau, nhưng mỗi chặng đều cho tôi thêm kinh nghiệm về con người, dữ liệu, cách vận hành và cách một doanh nghiệp tạo ra kết quả.<br><br>
+          Còn một điều gần như không thay đổi: <strong>với tôi, trách nhiệm luôn được đặt lên hàng đầu.</strong> Đã nhận một công việc thì không chỉ cần hoàn thành phần của mình, mà phải quan tâm xem kết quả cuối cùng có thực sự đi đến nơi hay chưa.
+        </div>
+      </div>
+    </section>
+
+    <section class="section gold-wash" id="education">
+      <div class="shell">
+        <p class="eyebrow reveal">06 / Education &amp; Continuous Learning</p>
+        <h2 class="reveal">Business trước. Marketing sau. Rồi tôi tự học thêm Design và Code.</h2>
+
+        <div class="education-grid">
+          <article class="degree-card reveal">
+            <div class="school">Foreign Trade University · Advanced Program</div>
+            <h3>Bachelor of Business Administration</h3>
+            <div class="degree-meta"><span class="degree-chip">2014 — 2018</span><span class="degree-chip">GPA 3.45 / 4.00</span><span class="degree-chip">Very Good</span></div>
+            <p>Trong những năm đại học, tôi thực hiện <b>6 nghiên cứu và báo cáo</b> xoay quanh Sales &amp; Marketing, Human Resources, Business Strategy, Project Management và Entrepreneurship.</p>
+            <p>Khi đó tôi chưa biết mình sẽ đi sâu vào Digital Marketing, nhưng việc phải nhìn một doanh nghiệp từ nhiều góc độ đã cho tôi nền tảng để sau này không nhìn Marketing như một bộ phận đứng riêng khỏi vận hành và tăng trưởng.</p>
+          </article>
+
+          <div class="learning-stack">
+            <article class="learning-card reveal reveal-delay-1">
+              <div class="school-small">MindX Technology Vietnam · Q4 2019</div>
+              <h4>Apprenticed Front-end Coder</h4>
+              <p>Basic Python · Front-end fundamentals · <b style="color:#fff;">1st Place, Hackathon Project</b></p>
+            </article>
+            <article class="learning-card reveal reveal-delay-2">
+              <div class="school-small">Rio Class Agency · Q4 2018</div>
+              <h4>Apprenticed Designer</h4>
+              <p>Branding toolkit development · Creative ideation · Idea pitching</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="capabilities">
+      <div class="shell">
+        <p class="eyebrow reveal">Capabilities &amp; MarTech</p>
+        <h2 class="reveal">Một hệ thống tăng trưởng, không phải những kênh chạy rời rạc.</h2>
+
+        <div class="capability-grid">
+          <article class="capability reveal"><span class="capability-index">01</span><h3>Performance Marketing</h3><p>Meta Ads · Google Ads · LinkedIn Ads · Budget Allocation · Experimentation · Scaling</p></article>
+          <article class="capability reveal reveal-delay-1"><span class="capability-index">02</span><h3>Funnel &amp; Conversion</h3><p>Lead Generation · CRO · Landing Page · Qualification · SQL · Opportunity · Revenue Tracking</p></article>
+          <article class="capability reveal reveal-delay-2"><span class="capability-index">03</span><h3>SEO &amp; Organic Growth</h3><p>Keyword Research · Search Intent · Content SEO · Search Console · AI Search Visibility</p></article>
+          <article class="capability reveal"><span class="capability-index">04</span><h3>CRM &amp; Demand Generation</h3><p>Lead Management · Nurturing · Email · Webinar · Event · Community · Sales Handoff</p></article>
+          <article class="capability reveal reveal-delay-1"><span class="capability-index">05</span><h3>Data, Research &amp; Reporting</h3><p>Marketing Analytics · Attribution · Funnel Analysis · Market Research · Competitor Research · Business Reporting</p></article>
+          <article class="capability reveal reveal-delay-2"><span class="capability-index">06</span><h3>Leadership &amp; Collaboration</h3><p>Team Leadership · Sales Alignment · BU Collaboration · Agency/Partner Coordination · Stakeholder Communication</p></article>
+        </div>
+
+        <div class="tools-row reveal" aria-label="Tools & MarTech">
+          <span class="tool">Meta Ads Manager</span><span class="tool">Google Ads</span><span class="tool">LinkedIn Ads</span><span class="tool">Google Analytics</span><span class="tool">Search Console</span><span class="tool">Google Sheets</span><span class="tool">Power BI</span><span class="tool">WordPress</span><span class="tool">MISA AMIS CRM</span><span class="tool">Email Marketing</span><span class="tool">Canva</span><span class="tool">Adobe Photoshop</span><span class="tool">Illustrator</span><span class="tool">CapCut</span><span class="tool">Premiere</span><span class="tool">ChatGPT &amp; AI Research</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" id="contact">
+      <div class="shell">
+        <p class="eyebrow reveal">Let’s Build What Grows</p>
+        <h2 class="reveal">Lead is a Milestone.<br>Growth is the Destination.</h2>
+        <p class="reveal">Tôi đang tìm kiếm những bài toán Digital Performance &amp; Growth nơi Marketing được kỳ vọng tạo ra không chỉ traffic hay lead, mà cả kết quả kinh doanh có thể theo dõi, kiểm chứng và tiếp tục scale.</p>
+        <div class="action-row reveal">
+          <a class="button gold" href="mailto:longhenry96.biz@gmail.com">longhenry96.biz@gmail.com</a>
+          <a class="button" href="tel:+84968331496">096 833 1496</a>
+          <a class="button" href="https://www.linkedin.com/in/longbruce96" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a class="button" href="long-nguyen-senior-digital-marketer-performance.pdf" download>Tải CV</a>
+        </div>
+        <div class="footer-note">Long Nguyen · Hanoi, Vietnam · Digital Performance & Growth Marketing</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const progress = document.querySelector('.scroll-progress');
+      const updateProgress = () => {
+        const h = document.documentElement;
+        const max = h.scrollHeight - h.clientHeight;
+        const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+        progress.style.width = pct + '%';
+      };
+      updateProgress();
+      window.addEventListener('scroll', updateProgress, { passive: true });
+
+      const revealEls = document.querySelectorAll('.reveal:not(.visible)');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(el => observer.observe(el));
+      } else {
+        revealEls.forEach(el => el.classList.add('visible'));
+      }
+
+      const hero = document.querySelector('.hero');
+      const card = document.querySelector('.hero-card');
+      if (hero && card && window.matchMedia('(pointer:fine)').matches) {
+        hero.addEventListener('pointermove', (e) => {
+          const rect = hero.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - .5;
+          const y = (e.clientY - rect.top) / rect.height - .5;
+          card.style.transform = `perspective(1000px) rotateY(${x * 2.5}deg) rotateX(${-y * 2.5}deg) translate3d(0,0,0)`;
+        });
+        hero.addEventListener('pointerleave', () => {
+          card.style.transform = 'perspective(1000px) rotateY(0) rotateX(0)';
+        });
+      }
+    })();
+  </script>
+</body>
 </html>
