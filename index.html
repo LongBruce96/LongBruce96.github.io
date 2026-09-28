@@ -35,7 +35,8 @@
       color: var(--ink);
       background: var(--paper);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.68;
+      font-size: 15px;
+      line-height: 1.64;
       overflow-x: hidden;
     }
 
@@ -176,10 +177,10 @@
 
     h1, h2, h3, h4, p { margin-top: 0; }
     h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -.035em; }
-    h1 { margin-bottom: 26px; font-size: clamp(54px, 7.8vw, 112px); }
-    h2 { margin-bottom: 24px; font-size: clamp(38px, 5vw, 70px); }
-    h3 { margin-bottom: 14px; font-size: clamp(24px, 2.4vw, 34px); }
-    h4 { margin-bottom: 10px; font-size: 18px; }
+    h1 { margin-bottom: 24px; font-size: clamp(50px, 7.2vw, 102px); }
+    h2 { margin-bottom: 22px; font-size: clamp(35px, 4.5vw, 62px); }
+    h3 { margin-bottom: 13px; font-size: clamp(22px, 2.15vw, 31px); }
+    h4 { margin-bottom: 10px; font-size: 17px; }
     p { color: #55514a; }
     .dark p { color: #beb8ae; }
 
@@ -242,7 +243,7 @@
       max-width: 750px;
       margin-bottom: 0;
       color: #d7d1c7;
-      font-size: clamp(18px, 1.8vw, 24px);
+      font-size: clamp(17px, 1.65vw, 22px);
     }
 
     .hero-kicker strong { color: var(--white); }
@@ -371,7 +372,7 @@
     .sticky-label p { max-width: 300px; color: #817b72; font-size: 14px; }
 
     .story { max-width: 820px; }
-    .story p { margin-bottom: 22px; font-size: clamp(18px, 1.8vw, 22px); }
+    .story p { margin-bottom: 21px; font-size: clamp(17px, 1.6vw, 20.5px); }
     .story strong { color: var(--ink); }
     .story .quote-line {
       margin: 34px 0 0;
@@ -428,7 +429,7 @@
     .company-meta span { color: #8a857d; font-size: 13px; }
 
     .content-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(390px, .95fr); gap: 56px; align-items: start; }
-    .content-copy p { font-size: 18px; }
+    .content-copy p { font-size: 16.5px; }
     .content-copy b { color: var(--ink); }
 
     .metrics-four { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -469,7 +470,7 @@
     .section.gold-wash .ops-card b { color: #ffffff; }
 
     .performance-intro { max-width: 860px; margin-bottom: 50px; }
-    .performance-intro p { font-size: 19px; }
+    .performance-intro p { font-size: 17.5px; }
 
     .performance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     .performance-card {
@@ -515,7 +516,7 @@
       border-left: 3px solid var(--gold);
       color: var(--ink);
       background: rgba(255,255,255,.72);
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 800;
       line-height: 1.35;
     }
@@ -532,8 +533,34 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
     }
     .np-award .award-kicker { display: block; margin-bottom: 8px; color: var(--gold-bright); font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
-    .np-award strong { display: block; color: #f7f3ea; font-size: 21px; line-height: 1.2; }
+    .np-award strong { display: block; color: #f7f3ea; font-size: 19px; line-height: 1.2; }
     .np-award span { display: block; margin-top: 7px; color: #bdb6aa; font-size: 12px; }
+
+    .cms-award {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 18px;
+      align-items: center;
+      margin-top: 30px;
+      padding: 20px 22px;
+      border: 1px solid rgba(159,121,47,.30);
+      border-radius: 16px;
+      background: linear-gradient(135deg, #111113 0%, #18150f 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    .cms-award .award-icon {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border: 1px solid rgba(240,213,141,.34);
+      border-radius: 50%;
+      color: var(--gold-bright);
+      font-size: 18px;
+    }
+    .cms-award .award-kicker { display:block; margin-bottom:5px; color:var(--gold-bright); font-size:10px; font-weight:900; letter-spacing:.11em; text-transform:uppercase; }
+    .cms-award strong { display:block; color:#f7f3ea; font-size:18px; line-height:1.25; }
+    .cms-award span:last-child { display:block; margin-top:5px; color:#bdb6aa; font-size:12px; }
 
     .selected-work { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
     .work-card {
@@ -617,7 +644,7 @@
     }
     .closing .shell { position: relative; z-index: 2; }
     .closing h2 { max-width: 850px; margin-right: auto; margin-left: auto; }
-    .closing p { max-width: 720px; margin-right: auto; margin-left: auto; color: #aaa49a; font-size: 18px; }
+    .closing p { max-width: 760px; margin-right: auto; margin-left: auto; color: #aaa49a; font-size: 16.5px; }
     .closing .action-row { justify-content: center; }
     .footer-note { margin-top: 46px; color: #6e6961; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
 
@@ -662,7 +689,7 @@
       .metrics-four, .np-stats { grid-template-columns: 1fr 1fr; }
       .perf-metrics { grid-template-columns: 1fr; }
       .ticker-item { padding-right: 18px; padding-left: 18px; }
-      .story p, .content-copy p { font-size: 17px; }
+      .story p, .content-copy p { font-size: 16px; }
     }
 
     @media (max-width: 480px) {
@@ -749,6 +776,46 @@
     }
     .leadership-node span { color: #3f3b35; font-size: 15px; font-weight: 720; }
 
+    .np-plan-map {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin: 30px 0 28px;
+      border: 1px solid var(--line-light);
+      background: var(--line-light);
+    }
+    .np-plan-step {
+      min-height: 190px;
+      padding: 24px;
+      background: rgba(255,255,255,.78);
+    }
+    .np-plan-step .step-kicker {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--gold-deep);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .np-plan-step h4 { margin-bottom: 10px; color: #1d1a16; font-size: 18.5px; }
+    .np-plan-step p { margin-bottom: 0; color: #565047; font-size: 14px; }
+
+    .conversion-levers {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 28px 0;
+    }
+    .conversion-lever {
+      padding: 20px;
+      border: 1px solid var(--line-light);
+      border-radius: 14px;
+      background: rgba(255,255,255,.62);
+    }
+    .conversion-lever strong { display:block; margin-bottom:8px; color:#211d18; font-size:15px; }
+    .conversion-lever span { color:#625c53; font-size:13px; line-height:1.55; }
+
     .micro-note {
       margin: 22px 0 0;
       padding-left: 16px;
@@ -764,7 +831,7 @@
     .skills-lead {
       max-width: 720px;
       margin-bottom: 34px;
-      font-size: 18px;
+      font-size: 16.5px;
     }
     #capabilities h2 { color: #171717; }
     #capabilities .skills-lead { color: #5e564c; }
@@ -772,7 +839,8 @@
 
     @media (max-width: 760px) {
       .menu-toggle { display: inline-flex; flex-direction: column; }
-      .leadership-map { grid-template-columns: 1fr; }
+      .leadership-map, .np-plan-map, .conversion-levers { grid-template-columns: 1fr; }
+      .cms-award { grid-template-columns: 1fr; gap: 12px; }
     }
 
   </style>
@@ -932,7 +1000,16 @@
           <article class="ops-card reveal reveal-delay-2"><h4>Feedback của Sales quay ngược lại Marketing</h4><p>Lead quality được phản hồi hàng tuần; Opportunity và Revenue được đối soát hàng tháng. Từ đó tôi điều chỉnh targeting, thông điệp, ngân sách và cả channel mix — trong đó có việc mở LinkedIn Ads cho nhóm FDI.</p></article>
         </div>
 
-        <div class="story reveal" style="margin-top:52px; max-width:920px;">
+        <div class="cms-award reveal" aria-label="Recognition tại CMC Manufacturing and Service">
+          <div class="award-icon" aria-hidden="true">✦</div>
+          <div>
+            <span class="award-kicker">Recognition · CMC Manufacturing and Service · 10/2025</span>
+            <strong>Giải Ba – Thành tích phát triển khách hàng</strong>
+            <span>Khen thưởng cá nhân vì hoàn thành tốt nhiệm vụ phát triển khách hàng trong tháng 10/2025.</span>
+          </div>
+        </div>
+
+        <div class="story reveal" style="margin-top:40px; max-width:920px;">
           <p class="quote-line">Đó cũng là lý do tôi không nhìn một campaign chỉ qua CPL. Chi phí cho một lead rất dễ nhìn; giá trị của lead đó vài tuần sau mới là phần khó hơn.</p>
         </div>
       </div>
@@ -947,36 +1024,58 @@
           </div>
           <div class="company-meta reveal reveal-delay-1">
             <strong>Marketing Leader</strong>
-            <span>Education · Multi-center Enrollment Growth</span>
+            <span>Education · Brand &amp; Enrollment Growth</span>
           </div>
         </div>
 
         <div class="np-layout">
           <div class="content-copy reveal">
-            <h3>Có một giai đoạn, bài toán của tôi không còn là làm nhiều hơn — mà là làm sao để 8 người cùng chạy đúng hướng.</h3>
-            <p>Tại NP Education, tôi chịu trách nhiệm cho hoạt động Marketing của <b>3 cơ sở</b> và trực tiếp dẫn dắt team <b>8 người</b>. Paid Media, Content, Social, Website, Community và Event không chạy thành những đầu việc riêng lẻ; tất cả phải bám cùng tiến độ tuyển sinh.</p>
-            <p>Mỗi giai đoạn, tôi phải chuyển mục tiêu tuyển sinh thành kế hoạch đủ rõ để team biết việc nào cần chạy trước, việc nào phụ thuộc vào nhau và lúc nào phải tăng tốc. Một campaign có thể lên đúng lịch, nhưng nếu content chưa theo kịp, landing page chưa sẵn sàng hoặc đội tư vấn đang quá tải thì kết quả chung vẫn bị ảnh hưởng.</p>
+            <h3>Ở NP, lần đầu tiên tôi phải nhìn Marketing theo cả một năm chứ không chỉ theo từng campaign.</h3>
+            <p>Tôi phụ trách hai mục tiêu song song: <b>phát triển thương hiệu và thúc đẩy tuyển sinh</b>, đồng thời trực tiếp dẫn dắt team Marketing <b>8 người tại 3 cơ sở</b>.</p>
+            <p>Trước mỗi năm, tôi bắt đầu từ mục tiêu kinh doanh và lịch tuyển sinh để lên Marketing Plan tổng: giai đoạn nào cần xây Brand, thời điểm nào phải tăng tốc tuyển sinh, ngân sách nên chia ra sao và team cần ưu tiên nguồn lực vào đâu. Sau đó, plan được breakdown xuống từng tháng và từng campaign để triển khai.</p>
 
-            <div class="leadership-map" aria-label="Cách tôi vận hành workload của team">
-              <div class="leadership-node"><strong>01 · Direction</strong><span>Chuyển mục tiêu tuyển sinh thành ưu tiên, timeline và đầu việc đủ rõ cho từng mảng.</span></div>
-              <div class="leadership-node"><strong>02 · Coordination</strong><span>Giữ Paid, Content, Web, Community, Event và Admissions chạy cùng nhịp thay vì tối ưu riêng lẻ.</span></div>
-              <div class="leadership-node"><strong>03 · Feedback</strong><span>Theo dõi performance, workload và phản hồi từ tư vấn để điều chỉnh trước khi vấn đề lan sang cả kỳ tuyển sinh.</span></div>
+            <div class="np-plan-map" aria-label="Cách tôi vận hành Marketing Plan tại NP Education">
+              <article class="np-plan-step">
+                <span class="step-kicker">01 · Annual Plan</span>
+                <h4>Từ mục tiêu kinh doanh đến kế hoạch năm</h4>
+                <p>Xác định các mùa tuyển sinh, thời điểm cần xây Brand, giai đoạn cần tăng tốc và cách phân bổ ngân sách, nguồn lực cho từng mảng.</p>
+              </article>
+              <article class="np-plan-step">
+                <span class="step-kicker">02 · Brand</span>
+                <h4>Xây niềm tin trước khi cần bán</h4>
+                <p>Chiến lược nội dung, Social, Community và truyền thông cho các hoạt động offline như tri ân, vinh danh học sinh, cuộc thi học tập hay ký kết hợp tác.</p>
+              </article>
+              <article class="np-plan-step">
+                <span class="step-kicker">03 · Enrollment</span>
+                <h4>Đến mùa tuyển sinh, nhịp vận hành đổi hẳn</h4>
+                <p>Facebook Ads, Google Ads và remarketing qua Zalo OA, Email Marketing, Marketing Message được phối hợp để kéo nhu cầu và hỗ trợ đội tư vấn chuyển đổi.</p>
+              </article>
             </div>
 
-            <p class="micro-note">Phần khó nhất của Team Lead với tôi không phải giao việc. Nó là giữ thông tin không bị lệch khi đi qua 8 người, 3 cơ sở và nhiều đầu việc đang chạy cùng lúc.</p>
+            <h3>Chiến dịch tuyển sinh năm học mới là một trong những campaign tôi nhớ nhất.</h3>
+            <p>Campaign kéo dài khoảng <b>2 tháng</b>. Tôi trực tiếp lên plan, xây dựng thông điệp và quản lý khoảng <b>80 triệu đồng ngân sách quảng cáo</b>. Trong suốt quá trình chạy, team liên tục test content, hình ảnh, thông điệp, chương trình khuyến học và quà tặng để tìm ra hướng khách hàng phản hồi tốt nhất.</p>
 
-            <p>Tôi phải vừa nhìn performance, vừa nhìn workload của team, vừa giữ trao đổi với Admissions/Sales để biết lead đang về có đúng không, được xử lý đến đâu và điểm nào đang làm khách hàng rơi khỏi quá trình đăng ký. Trong giai đoạn đó, tỷ lệ chuyển đổi từ lead sang đăng ký tăng từ khoảng <b>20% lên 50%</b>.</p>
+            <div class="conversion-levers" aria-label="Những điểm tôi cùng team tối ưu để cải thiện chuyển đổi">
+              <div class="conversion-lever"><strong>Target &amp; Message</strong><span>Điều chỉnh tệp, nội dung và thông điệp theo từng nhóm khách hàng, từng giai đoạn tuyển sinh thay vì chỉ chạy để lấy volume.</span></div>
+              <div class="conversion-lever"><strong>Offer &amp; Creative</strong><span>Test chương trình khuyến học, quà tặng, hình ảnh và cách diễn đạt để tìm ra hướng có phản hồi tốt hơn.</span></div>
+              <div class="conversion-lever"><strong>Re-marketing</strong><span>Kết hợp Zalo OA, Email Marketing và Marketing Message để tiếp tục bám những khách hàng chưa ra quyết định ngay.</span></div>
+              <div class="conversion-lever"><strong>Admissions Feedback</strong><span>Qua các buổi giao ban, Marketing nhìn lại nhóm lead nào đang tốt, nhóm nào đang vướng và điều gì cần điều chỉnh ở vòng tiếp theo.</span></div>
+            </div>
 
-            <div class="np-quote">Tôi dần hiểu rằng giao tiếp của một người lead không nằm ở việc nói nhiều hơn. Quan trọng là mọi người hiểu đúng việc mình đang làm, vì sao nó quan trọng và khi nào cần chủ động báo lại để cả team còn kịp điều chỉnh.</div>
+            <p>Marketing không dừng ở lúc bàn giao lead. Tôi tiếp tục theo dõi phản hồi từ Admissions/Sales để biết khách hàng đang vướng ở đâu, nhóm nào chuyển đổi tốt và chương trình nào đang thực sự tạo động lực đăng ký. Nhờ việc tối ưu cả đầu vào từ quảng cáo lẫn quá trình phối hợp sau khi khách hàng để lại thông tin, tỷ lệ chuyển đổi từ lead thành học viên trong giai đoạn đó tăng từ khoảng <b>20% lên gần 50%</b>.</p>
+
+            <h3>Còn Team Lead là bài toán khiến tôi phải thay đổi cách làm việc.</h3>
+            <p>Khi có <b>8 người, 3 cơ sở</b> và nhiều campaign chạy song song, tôi không thể giải quyết mọi thứ bằng cách tự nhảy vào làm. Việc quan trọng hơn là chuyển mục tiêu thành kế hoạch đủ rõ, giữ nhịp giữa Paid, Content, Social, Website, Community, Event và Admissions, đồng thời nhìn cả workload của team để biết khi nào một mắt xích đang bắt đầu quá tải.</p>
+            <div class="np-quote">Tôi dần hiểu rằng giao tiếp của một người lead không nằm ở việc nói nhiều hơn. Quan trọng là cả team hiểu cùng một mục tiêu, biết mình chịu trách nhiệm phần nào và phản hồi đủ sớm để còn kịp điều chỉnh.</div>
           </div>
 
           <div class="np-stats reveal reveal-delay-1">
             <div class="np-stat"><strong>8</strong><span>Nhân sự Marketing trực tiếp dẫn dắt</span></div>
             <div class="np-stat"><strong>3</strong><span>Cơ sở cùng vận hành</span></div>
             <div class="np-stat"><strong>500+ leads / tháng</strong><span>Trung bình kết quả chiến dịch quảng cáo trong mùa cao điểm của sản phẩm</span></div>
-            <div class="np-stat"><strong>~1.500</strong><span>Lead ở thời điểm cao nhất</span></div>
-            <div class="np-stat"><strong>80M</strong><span>Ngân sách quảng cáo / tháng</span></div>
-            <div class="np-stat"><strong>20% → 50%</strong><span>Lead-to-enrollment conversion</span></div>
+            <div class="np-stat"><strong>~1.500</strong><span>Lead ở thời điểm cao nhất của chiến dịch tuyển sinh</span></div>
+            <div class="np-stat"><strong>80M</strong><span>Ngân sách quảng cáo trong campaign cao điểm</span></div>
+            <div class="np-stat"><strong>20% → ~50%</strong><span>Lead-to-enrollment conversion</span></div>
             <div class="np-stat"><strong>20.000+</strong><span>Thành viên cộng đồng</span></div>
             <div class="np-stat"><strong>+300%</strong><span>Brand awareness được ghi nhận</span></div>
             <div class="np-stat"><strong>+100%</strong><span>Organic reach</span></div>
@@ -984,7 +1083,7 @@
             <div class="np-award">
               <span class="award-kicker">Recognition · NP Education</span>
               <strong>✦ Trưởng phòng Triển vọng</strong>
-              <span>Ghi nhận nội bộ trong giai đoạn tôi phụ trách Marketing tại NP Education.</span>
+              <span>Ghi nhận nội bộ trong giai đoạn tôi dẫn dắt hoạt động Marketing tại NP Education.</span>
             </div>
           </div>
         </div>
@@ -1123,7 +1222,7 @@
 
     <section class="section gold-wash" id="education">
       <div class="shell">
-        <p class="eyebrow reveal">07 / Education &amp; Continuous Learning</p>
+        <p class="eyebrow reveal">07 / Education, Learning &amp; Recognition</p>
         <h2 class="reveal">Tôi học Quản trị Kinh doanh trước khi biết mình sẽ làm Marketing.</h2>
 
         <div class="education-grid">
@@ -1151,6 +1250,11 @@
               <h4>✦ Trưởng phòng Triển vọng</h4>
               <p>Ghi nhận nội bộ trong giai đoạn tôi dẫn dắt hoạt động Marketing tại NP Education.</p>
             </article>
+            <article class="learning-card reveal reveal-delay-1">
+              <div class="school-small">Recognition · CMC Manufacturing and Service · 10/2025</div>
+              <h4>✦ Giải Ba – Thành tích phát triển khách hàng</h4>
+              <p>Khen thưởng cá nhân vì hoàn thành tốt nhiệm vụ phát triển khách hàng trong tháng 10/2025.</p>
+            </article>
           </div>
         </div>
       </div>
@@ -1159,8 +1263,8 @@
     <section class="closing" id="contact">
       <div class="shell">
         <p class="eyebrow reveal">Contact</p>
-        <h2 class="reveal">Tôi vẫn muốn đi tiếp với những bài toán khó hơn.</h2>
-        <p class="reveal">Tôi đang tìm một môi trường nơi Digital Marketing không chỉ được giao mục tiêu traffic hay lead, mà được tham gia sâu hơn vào tăng trưởng, dữ liệu và kết quả kinh doanh. Nếu đó cũng là bài toán bạn đang cần giải, chúng ta có thể bắt đầu bằng một cuộc trò chuyện.</p>
+        <h2 class="reveal">Tôi đang tìm một bước đi tiếp theo phù hợp hơn với định hướng phát triển lâu dài.</h2>
+        <p class="reveal">Những năm vừa qua cho tôi cơ hội đi từ trực tiếp vận hành campaign, dẫn dắt team, làm B2C rồi chuyển sang B2B và ngày càng làm việc gần hơn với Sales, dữ liệu và kết quả kinh doanh. Ở bước tiếp theo, tôi muốn tìm một môi trường phù hợp hơn với hướng phát triển đó — nơi tôi có thể làm sâu hơn về Digital Performance &amp; Growth, đồng thời tiếp tục học ở những phần mình còn chưa đủ sâu. Nếu kinh nghiệm và cách tôi làm việc phù hợp với điều đội ngũ đang cần, tôi rất sẵn sàng trao đổi thêm.</p>
         <div class="action-row reveal">
           <a class="button gold" href="mailto:longhenry96.biz@gmail.com">longhenry96.biz@gmail.com</a>
           <a class="button" href="tel:+84968331496">096 833 1496</a>
