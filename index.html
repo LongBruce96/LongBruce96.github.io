@@ -55,6 +55,35 @@
         linear-gradient(180deg, #f5f2eb 0%, #efeadf 100%);
     }
 
+    /* Explicit light-section contrast guardrails.
+       These prevent display headings from inheriting white text from nearby dark sections. */
+    .section.white,
+    .section.paper,
+    .section.gold-wash {
+      color: var(--ink);
+    }
+
+    .section.white h1, .section.white h2, .section.white h3, .section.white h4,
+    .section.paper h1, .section.paper h2, .section.paper h3, .section.paper h4 {
+      color: #171717;
+    }
+
+    .section.gold-wash h1,
+    .section.gold-wash h2,
+    .section.gold-wash h3,
+    .section.gold-wash h4 {
+      color: #342b22;
+    }
+
+    .section.white p,
+    .section.paper p {
+      color: #55514a;
+    }
+
+    .section.gold-wash p {
+      color: #5e554b;
+    }
+
     .scroll-progress {
       position: fixed;
       z-index: 100;
@@ -306,6 +335,9 @@
     .mini-stat strong { display: block; color: var(--gold-bright); font-size: 20px; line-height: 1; }
     .mini-stat span { display: block; margin-top: 5px; color: #aaa49b; font-size: 10px; line-height: 1.35; }
 
+    .hero-mini-stats .mini-stat strong { line-height: 1.12; }
+    .hero-mini-stats .mini-stat span { line-height: 1.35; }
+
     .data-rail {
       position: relative;
       z-index: 2;
@@ -351,10 +383,6 @@
       font-weight: 850;
       line-height: 1.26;
       letter-spacing: -.02em;
-    }
-
-    .dark .story .quote-line {
-      color: #e8e1d7;
     }
 
     .impact-grid {
@@ -433,8 +461,12 @@
 
     .ops-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 34px; }
     .ops-card { padding: 24px; border-top: 2px solid var(--gold); background: #111113; }
-    .ops-card h4 { color: var(--white); }
-    .ops-card p { margin-bottom: 0; color: #aaa49a; font-size: 14px; }
+    .ops-card h4 { color: #f7f3ea; }
+    .ops-card p { margin-bottom: 0; color: #c7c1b6; font-size: 14px; }
+    /* Dark cards inside gold-wash sections need stronger specificity than the parent light-theme rules. */
+    .section.gold-wash .ops-card h4 { color: #f7f3ea; }
+    .section.gold-wash .ops-card p { color: #c7c1b6; }
+    .section.gold-wash .ops-card b { color: #ffffff; }
 
     .performance-intro { max-width: 860px; margin-bottom: 50px; }
     .performance-intro p { font-size: 19px; }
@@ -491,6 +523,17 @@
     .np-stat { min-height: 138px; padding: 22px; border: 1px solid var(--line-light); border-radius: 16px; background: var(--white); }
     .np-stat strong { display: block; color: var(--gold-deep); font-size: 34px; line-height: 1; }
     .np-stat span { display: block; margin-top: 10px; color: #777168; font-size: 12px; }
+    .np-award {
+      grid-column: 1 / -1;
+      padding: 22px 24px;
+      border: 1px solid rgba(159,121,47,.28);
+      border-radius: 16px;
+      background: linear-gradient(135deg, #111113 0%, #18150f 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    .np-award .award-kicker { display: block; margin-bottom: 8px; color: var(--gold-bright); font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .np-award strong { display: block; color: #f7f3ea; font-size: 21px; line-height: 1.2; }
+    .np-award span { display: block; margin-top: 7px; color: #bdb6aa; font-size: 12px; }
 
     .selected-work { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
     .work-card {
@@ -526,6 +569,10 @@
     }
     .career-summary strong { color: var(--white); }
 
+    #education > .shell > h2 { color: #342b22; }
+    #education .degree-card h3 { color: #211c17; }
+    #education .degree-card p { color: #5e554b; }
+
     .education-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: start; }
     .degree-card { padding: 34px; border: 1px solid var(--line-light); border-radius: 20px; background: var(--white); }
     .degree-card .school { margin-bottom: 10px; color: var(--gold-deep); font-size: 12px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
@@ -533,14 +580,17 @@
     .degree-chip { padding: 7px 10px; border: 1px solid var(--line-light); border-radius: 999px; color: #655f56; font-size: 11px; font-weight: 800; }
     .learning-stack { display: grid; gap: 14px; }
     .learning-card { padding: 24px; border-top: 2px solid var(--gold); background: #111113; }
-    .learning-card h4 { color: var(--white); }
-    .learning-card p { margin-bottom: 0; color: #aaa49a; font-size: 13px; }
-    .learning-card .school-small { color: var(--gold-bright); font-size: 10px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    /* Education dark cards need explicit contrast because the parent section is light. */
+    #education .learning-card h4 { color: #f7f3ea; }
+    #education .learning-card p { margin-bottom: 0; color: #c7c1b6; font-size: 13px; }
+    #education .learning-card p b { color: #ffffff; }
+    #education .learning-card .school-small { color: var(--gold-bright); font-size: 10px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
 
     .capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 44px; border: 1px solid var(--line-light); background: var(--line-light); }
-    .capability { min-height: 220px; padding: 28px; background: var(--white); }
+    .capability { min-height: 220px; padding: 28px; color: #171717; background: var(--white); }
     .capability-index { display: block; margin-bottom: 28px; color: var(--gold-deep); font-size: 11px; font-weight: 900; letter-spacing: .14em; }
-    .capability p { margin-bottom: 0; font-size: 14px; }
+    .capability h3 { color: #171717; }
+    .capability p { margin-bottom: 0; color: #5e564c; font-size: 14px; }
 
     .tools-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
     .tool { padding: 8px 11px; border: 1px solid var(--line-light); border-radius: 999px; color: #676159; background: rgba(255,255,255,.66); font-size: 12px; }
@@ -622,6 +672,109 @@
       .performance-card { padding: 26px; }
       .degree-card, .road-card { padding: 26px; }
     }
+
+
+    /* Editorial audit pass: mobile nav + human-first information design */
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 999px;
+      color: var(--white);
+      background: rgba(255,255,255,.04);
+      cursor: pointer;
+    }
+    .menu-toggle span,
+    .menu-toggle::before,
+    .menu-toggle::after {
+      display: block;
+      width: 17px;
+      height: 1px;
+      background: currentColor;
+      transition: transform .25s ease, opacity .25s ease;
+      content: "";
+    }
+    .menu-toggle span { margin: 4px 0; }
+    .menu-toggle[aria-expanded="true"] span { opacity: 0; }
+    .menu-toggle[aria-expanded="true"]::before { transform: translateY(5px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"]::after { transform: translateY(-5px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      z-index: 75;
+      top: 66px;
+      right: 0;
+      left: 0;
+      padding: 18px 16px 24px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      background: rgba(7,7,7,.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .mobile-nav.open { display: grid; }
+    .mobile-nav a {
+      padding: 14px 10px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.82);
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .mobile-nav a:last-child { border-bottom: 0; }
+
+    .leadership-map {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 28px;
+      border: 1px solid var(--line-light);
+      background: var(--line-light);
+    }
+    .leadership-node {
+      min-height: 150px;
+      padding: 22px;
+      background: rgba(255,255,255,.72);
+    }
+    .leadership-node strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--gold-deep);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .leadership-node span { color: #3f3b35; font-size: 15px; font-weight: 720; }
+
+    .micro-note {
+      margin: 22px 0 0;
+      padding-left: 16px;
+      border-left: 2px solid var(--gold);
+      color: #5a554d;
+      font-size: 15px;
+    }
+    .dark .micro-note { color: #c6c0b6; }
+
+    .work-card p { margin-bottom: 12px; }
+    .work-card .result { margin-top: auto; }
+
+    .skills-lead {
+      max-width: 720px;
+      margin-bottom: 34px;
+      font-size: 18px;
+    }
+    #capabilities h2 { color: #171717; }
+    #capabilities .skills-lead { color: #5e564c; }
+
+
+    @media (max-width: 760px) {
+      .menu-toggle { display: inline-flex; flex-direction: column; }
+      .leadership-map { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 
@@ -632,15 +785,23 @@
     <div class="shell topbar-inner">
       <a class="wordmark" href="#top">Long Nguyen</a>
       <nav class="nav" aria-label="Điều hướng chính">
-        <a href="#about">Câu chuyện</a>
-        <a href="#cms">CMC M&amp;S</a>
+        <a href="#about">About</a>
+        <a href="#cms">Work</a>
         <a href="#performance">Performance</a>
-        <a href="#np">NP Education</a>
-        <a href="#journey">Hành trình</a>
-        <a href="#education">Học vấn</a>
-        <a href="#contact">Liên hệ</a>
+        <a href="#capabilities">Skills</a>
+        <a href="#journey">Journey</a>
+        <a href="#contact">Contact</a>
       </nav>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Mở menu"><span></span></button>
     </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Điều hướng trên di động">
+      <a href="#about">About</a>
+      <a href="#cms">Work</a>
+      <a href="#performance">Performance</a>
+      <a href="#capabilities">Skills</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
   <main id="top">
@@ -650,11 +811,11 @@
           <div class="reveal visible">
             <p class="eyebrow">Digital Performance &amp; Growth Marketing</p>
             <h1>Lead is a Milestone.<br><span class="gold">Growth is the Destination.</span></h1>
-            <p class="hero-kicker">Tôi làm Digital Marketing theo cách rất thực tế: <strong>đọc dữ liệu, hiểu khách hàng, tối ưu từng mắt xích và theo kết quả đến tận phần doanh nghiệp thực sự ghi nhận.</strong></p>
+            <p class="hero-kicker">Tôi làm Digital Performance &amp; Growth, từ quảng cáo và nội dung đến dữ liệu, Sales và <strong>kết quả kinh doanh phía sau mỗi chiến dịch.</strong></p>
             <div class="action-row">
               <a class="button gold" href="#about">Đọc câu chuyện của tôi ↘</a>
-              <a class="button" href="#cms">Xem kết quả nổi bật</a>
-              <a class="button" href="assets/long-nguyen-senior-digital-marketer-performance.pdf" download>Tải CV</a>
+              <a class="button" href="#impact">Xem kết quả nổi bật</a>
+              <a class="button" href="long-nguyen-senior-digital-marketer-performance.pdf" download>Tải CV</a>
             </div>
           </div>
 
@@ -668,7 +829,7 @@
             </div>
             <div class="hero-mini-stats" aria-label="Một số dấu mốc nghề nghiệp">
               <div class="mini-stat"><strong>2,99 tỷ</strong><span>Giá trị cơ hội kinh doanh từ Digital</span></div>
-              <div class="mini-stat"><strong>500+ MQL</strong><span>Sản lượng mỗi tháng ở B2C</span></div>
+              <div class="mini-stat"><strong>500+ leads / tháng</strong><span>Trung bình kết quả chiến dịch quảng cáo trong mùa cao điểm của sản phẩm</span></div>
             </div>
           </div>
         </div>
@@ -678,17 +839,16 @@
           <div class="data-node"><strong>Lead</strong><span>Xác nhận tín hiệu</span></div>
           <div class="data-node"><strong>SQL</strong><span>Sales tiếp cận</span></div>
           <div class="data-node"><strong>Opportunity</strong><span>Hình thành cơ hội</span></div>
-          <div class="data-node"><strong>Revenue</strong><span>Kết quả cuối cùng</span></div>
+          <div class="data-node"><strong>Revenue</strong><span>Kết quả kinh doanh</span></div>
         </div>
       </div>
     </section>
 
     <div class="ticker" aria-hidden="true">
       <div class="ticker-track">
-        <div class="ticker-item">VND 252M Paid Media</div><div class="ticker-item">VND 543.73M Realized Revenue</div><div class="ticker-item">VND 2.99B Opportunity Portfolio</div><div class="ticker-item">~VND 9B Full-Funnel B2C Revenue</div><div class="ticker-item">500+ MQL / Month</div><div class="ticker-item">8-Person Marketing Team</div><div class="ticker-item">20,000+ Community</div>
-        <div class="ticker-item">VND 252M Paid Media</div><div class="ticker-item">VND 543.73M Realized Revenue</div><div class="ticker-item">VND 2.99B Opportunity Portfolio</div><div class="ticker-item">~VND 9B Full-Funnel B2C Revenue</div><div class="ticker-item">500+ MQL / Month</div><div class="ticker-item">8-Person Marketing Team</div><div class="ticker-item">20,000+ Community</div>
+        <div class="ticker-item">PAID MEDIA</div><div class="ticker-item">SEO &amp; SEARCH</div><div class="ticker-item">CRM &amp; LEAD MANAGEMENT</div><div class="ticker-item">CONTENT &amp; COMMUNITY</div><div class="ticker-item">ANALYTICS &amp; REPORTING</div><div class="ticker-item">SALES ALIGNMENT</div><div class="ticker-item">MARKET RESEARCH</div>
+        <div class="ticker-item">PAID MEDIA</div><div class="ticker-item">SEO &amp; SEARCH</div><div class="ticker-item">CRM &amp; LEAD MANAGEMENT</div><div class="ticker-item">CONTENT &amp; COMMUNITY</div><div class="ticker-item">ANALYTICS &amp; REPORTING</div><div class="ticker-item">SALES ALIGNMENT</div><div class="ticker-item">MARKET RESEARCH</div>
       </div>
-    </div>
 
     <section class="section paper" id="about">
       <div class="shell intro-layout">
@@ -704,11 +864,11 @@
 
           <p>Nhưng làm càng lâu, tôi càng nhận ra có lead mới chỉ là điểm bắt đầu. Để một người thực sự trở thành khách hàng còn phụ thuộc vào rất nhiều điểm chạm phía sau: nội dung họ nhìn thấy, trải nghiệm trên website, cách Sales tư vấn, tốc độ phản hồi và cả cách Marketing tiếp tục đồng hành sau khi lead được chuyển đi.</p>
 
-          <p>Hơn ba năm làm nghề Digital đã đưa tôi qua hai môi trường rất khác nhau: <strong>B2C, nơi bài toán là tăng trưởng theo từng giai đoạn, đẩy truyền thông đúng nhịp và tối ưu liên tục các chiến dịch xuyên suốt kỳ tuyển sinh; B2B, nơi lead có thể “đắt điên”, chu kỳ bán hàng dài hơn, chất lượng quan trọng hơn số lượng và Digital Marketing, muốn được ghi nhận, phải chứng minh được giá trị bằng việc lead được Sales đưa vào pipeline, phát triển thành cơ hội kinh doanh và cuối cùng là doanh thu.</strong></p>
+          <p>Làm càng lâu, tôi càng thấy <strong>B2C và B2B là hai bài toán rất khác nhau.</strong> B2C buộc mình phải chạy đúng nhịp, xử lý số lượng lớn và tối ưu liên tục xuyên suốt kỳ tuyển sinh. Sang B2B, lead có thể “đắt điên”, chu kỳ bán hàng dài hơn và Digital Marketing muốn được ghi nhận thì cuối cùng vẫn phải chỉ ra được cơ hội kinh doanh và doanh thu.</p>
 
-          <p>Từ một thời <strong>“một tay ôm cả bầu trời”</strong> — tự chạy quảng cáo, làm nội dung, xây cộng đồng, tối ưu trang đích — tôi dần đảm nhận những bài toán lớn hơn: dẫn dắt đội ngũ, phối hợp với Sales ở từng đơn vị kinh doanh và xây hệ thống theo dõi khách hàng tiềm năng xuyên suốt phễu, từ lúc để lại thông tin cho đến khi hình thành cơ hội kinh doanh và doanh thu trong pipeline Sales.</p>
+          <p>Từ một thời <strong>“một tay ôm cả bầu trời”</strong> — tự chạy quảng cáo, làm nội dung, xây cộng đồng, tối ưu landing page — tôi dần đảm nhận những bài toán lớn hơn: dẫn dắt đội ngũ, phối hợp với Sales ở từng đơn vị kinh doanh và xây hệ thống theo dõi khách hàng tiềm năng xuyên suốt phễu, từ lúc để lại thông tin cho đến khi hình thành cơ hội kinh doanh và doanh thu trong pipeline của Sales.</p>
 
-          <p class="quote-line">Điều tôi theo đuổi không phải là một chiến dịch có những chỉ số đẹp trong ngắn hạn. Tôi muốn Digital Marketing tạo ra những kết quả mà doanh nghiệp thực sự ghi nhận — và hiểu vì sao những kết quả đó xuất hiện để lần sau có thể làm tốt hơn, rồi tiếp tục mở rộng những gì đang hiệu quả.</p>
+          <p class="quote-line">Đến giờ tôi vẫn thích những con số đẹp. Nhưng tôi quan tâm hơn đến chuyện đằng sau chúng: vì sao kết quả đó xuất hiện, Sales có làm gì được với nó không, doanh nghiệp thực sự nhận lại điều gì — và lần sau mình có thể làm tốt hơn đến đâu.</p>
         </div>
       </div>
     </section>
@@ -716,14 +876,14 @@
     <section class="section dark" id="impact">
       <div class="shell">
         <p class="eyebrow reveal">The Numbers Behind The Work</p>
-        <h2 class="reveal">Tôi thích kể chuyện bằng kết quả.</h2>
-        <p class="performance-intro reveal">Không phải mọi thứ trong Marketing đều có thể gói gọn trong một con số. Nhưng nếu đã nói về Performance, cuối cùng vẫn cần thứ để đo, để đối chiếu và để biết mình đã thực sự tạo ra điều gì.</p>
+        <h2 class="reveal">Một vài con số đáng để giữ lại.</h2>
+        <p class="performance-intro reveal">Không phải mọi thứ trong Marketing đều nằm trong dashboard. Nhưng với những gì có thể đo, tôi muốn biết tiền đã đi đâu và cuối cùng tạo ra điều gì.</p>
 
         <div class="impact-grid">
-          <article class="impact-card reveal"><div class="impact-number"><strong>2,99</strong><span>TỶ VND</span></div><h4>Cơ hội kinh doanh từ Digital</h4><p>Tổng giá trị các cơ hội được ghi nhận trong giai đoạn phụ trách Digital tại CMC Manufacturing and Services.</p></article>
-          <article class="impact-card reveal reveal-delay-1"><div class="impact-number"><strong>543,73</strong><span>TRIỆU VND</span></div><h4>Doanh thu thực thu</h4><p>Phần doanh thu đã được ghi nhận thực tế từ các khách hàng có nguồn từ Digital.</p></article>
-          <article class="impact-card reveal reveal-delay-2"><div class="impact-number"><strong>500+</strong><span>MQL / THÁNG</span></div><h4>Khả năng vận hành B2C ở volume lớn</h4><p>Sản lượng duy trì trong các giai đoạn cao điểm, với mức cao nhất khoảng 1.500 lead trong một kỳ tuyển sinh.</p></article>
-          <article class="impact-card reveal reveal-delay-3"><div class="impact-number"><strong>8</strong><span>NGƯỜI · 3 CƠ SỞ</span></div><h4>Từ tự làm đến dẫn dắt đội ngũ</h4><p>Phụ trách một đội ngũ đa chức năng gồm Paid Media, Content, Website, Community và Event.</p></article>
+          <article class="impact-card reveal"><div class="impact-number"><strong>2,99</strong><span>TỶ VND</span></div><h4>Cơ hội kinh doanh từ Digital</h4><p>Tổng giá trị cơ hội được ghi nhận trong giai đoạn phụ trách Digital tại CMC Manufacturing and Service.</p></article>
+          <article class="impact-card reveal reveal-delay-1"><div class="impact-number"><strong>543,73</strong><span>TRIỆU VND</span></div><h4>Doanh thu thực thu</h4><p>Doanh thu đã được ghi nhận thực tế từ khách hàng có nguồn từ Digital.</p></article>
+          <article class="impact-card reveal reveal-delay-2"><div class="impact-number"><strong>500+</strong><span>LEADS / THÁNG</span></div><h4>Hiệu suất quảng cáo trong mùa cao điểm</h4><p>Trung bình kết quả chiến dịch quảng cáo trong mùa cao điểm của sản phẩm; mức cao nhất khoảng 1.500 lead trong một kỳ tuyển sinh.</p></article>
+          <article class="impact-card reveal reveal-delay-3"><div class="impact-number"><strong>8</strong><span>NGƯỜI · 3 CƠ SỞ</span></div><h4>Leadership trong môi trường đa đầu việc</h4><p>Trực tiếp dẫn dắt team Marketing phụ trách Paid Media, Content, Social, Website, Community và Event.</p></article>
         </div>
       </div>
     </section>
@@ -732,9 +892,9 @@
       <div class="shell">
         <div class="company-head">
           <div class="reveal">
-            <p class="eyebrow">02 / B2B Technology · 2025 — Present</p>
-            <h2>CMC Manufacturing and Services Co., Ltd.</h2>
-            <p class="section-intro">A member of CMC Corporation</p>
+            <p class="eyebrow">02 / Work · B2B Technology · 2025 — Present</p>
+            <h2>CMC Manufacturing and Service Company Limited (CMS)</h2>
+            <p class="section-intro">A member of CMC Technology Group</p>
           </div>
           <div class="company-meta reveal reveal-delay-1">
             <strong>Digital Marketing Executive</strong>
@@ -745,14 +905,14 @@
         <div class="content-grid">
           <div class="content-copy reveal">
             <h3>B2B khiến tôi nhìn Digital Marketing xa hơn những chỉ số trên Ads Manager.</h3>
-            <p>Khi chuyển sang môi trường B2B Technology, tôi bắt đầu làm việc với những chu kỳ bán hàng dài hơn, nhiều bên tham gia hơn và khoảng cách từ một chiến dịch quảng cáo đến doanh thu cũng lớn hơn rất nhiều.</p>
-            <p>Ở đó, một chiến dịch không thể chỉ được đánh giá bằng CTR, CPC hay CPL. Tôi cần biết khách hàng nào thực sự phù hợp, Sales đang theo đuổi cơ hội nào, giá trị kinh doanh được hình thành ra sao và cuối cùng Marketing đã đóng góp được gì cho doanh nghiệp.</p>
-            <p>Trong giai đoạn phụ trách Digital, tôi quản lý khoảng <b>252 triệu đồng ngân sách Paid Media</b>, tạo ra <b>543,73 triệu đồng doanh thu thực thu từ Digital</b> và gần <b>2,99 tỷ đồng giá trị cơ hội kinh doanh</b>, trong đó khoảng <b>2,45 tỷ đồng</b> vẫn đang được Sales tiếp tục theo đuổi.</p>
+            <p>Khi chuyển sang B2B Technology, khoảng cách từ một quảng cáo đến doanh thu dài hơn rất nhiều. Có khách hàng mất vài tuần, vài tháng mới biết lead đó thực sự đáng giá đến đâu.</p>
+            <p>Vì vậy, ngoài CTR, CPC hay CPL, tôi bắt đầu theo dõi tiếp những gì xảy ra sau khi Marketing bàn giao khách hàng: Sales có tiếp cận được không, nhu cầu có thật không, cơ hội kinh doanh hình thành thế nào và cuối cùng có tạo ra doanh thu hay không.</p>
+            <p>Trong giai đoạn phụ trách Digital, tôi quản lý khoảng <b>252 triệu đồng Paid Media</b>, tạo ra <b>543,73 triệu đồng doanh thu thực thu từ Digital</b> và gần <b>2,99 tỷ đồng giá trị cơ hội kinh doanh</b>; khoảng <b>2,45 tỷ đồng</b> trong số đó vẫn đang được Sales tiếp tục theo đuổi.</p>
           </div>
 
           <div class="metrics-four reveal reveal-delay-1">
             <div class="metric-card"><strong>252M</strong><span>Ngân sách Paid Media đã quản lý</span></div>
-            <div class="metric-card"><strong class="accent">2.16x</strong><span>Blended ROAS trên doanh thu thực thu</span></div>
+            <div class="metric-card"><strong class="accent">2.16x</strong><span>Revenue / Paid Media Spend</span></div>
             <div class="metric-card"><strong>543,73M</strong><span>Doanh thu thực thu từ Digital</span></div>
             <div class="metric-card"><strong class="accent">2,99B</strong><span>Tổng giá trị cơ hội kinh doanh</span></div>
           </div>
@@ -767,60 +927,13 @@
         </div>
 
         <div class="ops-grid">
-          <article class="ops-card reveal"><h4>Theo dõi từ Marketing đến doanh thu</h4><p>Tự xây và chuẩn hóa cách theo dõi Source → Campaign → Lead → Qualified → SQL → Opportunity → Won/Revenue. Phần Opportunity và Revenue được đối soát với Sales/BU do hai bên vận hành hệ thống riêng.</p></article>
-          <article class="ops-card reveal reveal-delay-1"><h4>Từ báo cáo trễ một tuần đến khả năng theo dõi hàng ngày</h4><p>Gom dữ liệu Ads, Lead, Content, SEO, Social và AI Search về một cấu trúc thống nhất hơn; duy trì báo cáo hàng tuần cho Marketing, Sales và Ban lãnh đạo.</p></article>
-          <article class="ops-card reveal reveal-delay-2"><h4>Sales feedback trở thành dữ liệu tối ưu</h4><p>Nhận phản hồi chất lượng khách hàng hàng tuần, đối soát Opportunity/Revenue hàng tháng và dùng kết quả ở các bước sau của funnel để điều chỉnh nhắm mục tiêu, thông điệp và ngân sách — kể cả mở thêm LinkedIn Ads cho nhóm FDI.</p></article>
+          <article class="ops-card reveal"><h4>Theo dõi từ nguồn đến kết quả</h4><p>Tôi tự xây và chuẩn hóa cách theo dõi Source → Campaign → Lead → Qualified → SQL → Opportunity → Won/Revenue. Opportunity và Revenue được đối soát với Sales/BU do hai bên dùng hệ thống tracking riêng.</p></article>
+          <article class="ops-card reveal reveal-delay-1"><h4>Từ dữ liệu rời rạc đến visibility hàng ngày</h4><p>Ads, Lead, Content, SEO, Social và AI Search được gom về một cấu trúc thống nhất hơn. Tình hình có thể theo dõi hàng ngày, còn nhịp báo cáo chính vẫn là hàng tuần cho Marketing, Sales và Ban lãnh đạo.</p></article>
+          <article class="ops-card reveal reveal-delay-2"><h4>Feedback của Sales quay ngược lại Marketing</h4><p>Lead quality được phản hồi hàng tuần; Opportunity và Revenue được đối soát hàng tháng. Từ đó tôi điều chỉnh targeting, thông điệp, ngân sách và cả channel mix — trong đó có việc mở LinkedIn Ads cho nhóm FDI.</p></article>
         </div>
 
         <div class="story reveal" style="margin-top:52px; max-width:920px;">
-          <p class="quote-line">Từ đây, Performance với tôi không còn chỉ là tối ưu chi phí quảng cáo. Nó là việc hiểu đồng tiền Marketing đang đi đâu, tạo ra điều gì và nên được đầu tư tiếp như thế nào.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section dark" id="performance">
-      <div class="shell">
-        <p class="eyebrow reveal">03 / How I Run Performance</p>
-        <h2 class="reveal">Sửa đúng bệnh quan trọng hơn sửa thật nhiều.</h2>
-        <div class="performance-intro reveal">
-          <p>Một chỉ số xấu có thể đến từ nhiều nguyên nhân khác nhau. Vì vậy, phản xạ của tôi không phải “Ads tụt thì đổi tệp”, mà là đọc tín hiệu theo thứ tự, xác định vấn đề nằm ở nội dung, tệp khách hàng, ưu đãi, trang đích, Sales hay chính mức ngân sách trước khi quyết định hành động.</p>
-        </div>
-
-        <div class="performance-grid">
-          <article class="performance-card reveal">
-            <p class="eyebrow">Meta Ads · Champion → Challenger</p>
-            <h3>Một campaign đang thắng, trước hết là một mốc để giữ.</h3>
-            <p>Tôi thường giữ nguyên campaign đang thắng làm mẫu đối chứng thay vì sửa trực tiếp. Từ đó, tôi tạo một biến thể challenger riêng để thử nghiệm từng yếu tố chính — ngân sách, tệp khách hàng hoặc nội dung — rồi so lại với mốc chuẩn ban đầu.</p>
-            <div class="process-row"><span class="process-chip">Giữ Camp Thắng</span><span class="process-chip">Tạo Biến Thể</span><span class="process-chip">Đặt Ngưỡng Kiểm Soát</span><span class="process-chip">Chẩn Đoán</span><span class="process-chip">Mở Rộng / Dừng</span><span class="process-chip">Chọn Champion Mới</span></div>
-
-            <ul class="diagnostic-list">
-              <li><span>01</span><span><b>CTR tụt mạnh</b> → ưu tiên xem lại nội dung, hook và creative trước.</span></li>
-              <li><span>02</span><span><b>CTR ổn nhưng Lead giảm</b> → kiểm tra ưu đãi, CTA và trải nghiệm sau click.</span></li>
-              <li><span>03</span><span><b>Lead nhiều nhưng sai tệp</b> → xem lại thông điệp đang thu hút nhóm người nào và cách target.</span></li>
-              <li><span>04</span><span><b>Lead đúng nhưng tỷ lệ chốt giảm</b> → chưa vội đụng Ads; kiểm tra Sales, giá và ưu đãi.</span></li>
-              <li><span>05</span><span><b>CPA tăng sau khi mở rộng ngân sách</b> → xem lại mức ngân sách, frequency và khả năng hấp thụ của campaign.</span></li>
-            </ul>
-
-            <p style="margin-top:22px;"><b style="color:#fff;">Camp đối chứng vẫn khỏe nhưng nhánh scale thất bại?</b> Tôi chẩn đoán trước khi kết luận logic đang thắng đã sai. Nếu cần, biến thể thử nghiệm sẽ được dừng; campaign gốc vẫn được giữ cho đến khi chính các chỉ số của nó thực sự suy giảm đủ rõ.</p>
-          </article>
-
-          <article class="performance-card reveal reveal-delay-1">
-            <p class="eyebrow">Google Search · Discovery → Refinement</p>
-            <h3>Đối sánh rộng là để lấy dữ liệu, không phải để “thả rồi cầu may”.</h3>
-            <p>Ở phase đầu, tôi có thể mở rộng hơn để quan sát search terms thực tế. Sau khi có đủ dữ liệu, quá trình tối ưu bắt đầu: thêm từ khóa phủ định, tách keyword có chuyển đổi, siết loại đối sánh phù hợp hơn và rà traffic bất thường để loại trừ IP khi có đủ dấu hiệu.</p>
-            <div class="process-row"><span class="process-chip">Broad Match</span><span class="process-chip">Search-Term Mining</span><span class="process-chip">Negative Keywords</span><span class="process-chip">Conversion Keywords</span><span class="process-chip">Siết đối sánh</span><span class="process-chip">IP Exclusion</span></div>
-
-            <p>Mục tiêu cuối cùng không phải chỉ là CPC thấp hơn. Tôi muốn traffic sạch hơn, đúng nhu cầu hơn để chi phí cho mỗi hành động chuyển đổi giảm xuống và tỷ lệ chuyển đổi cải thiện theo thời gian.</p>
-
-            <div class="perf-metrics">
-              <div class="perf-metric"><strong>6,66%</strong><span>Google Search CTR</span></div>
-              <div class="perf-metric"><strong>735đ</strong><span>Average CPC</span></div>
-              <div class="perf-metric"><strong>~218K</strong><span>Cost / Call-Click Action</span></div>
-            </div>
-
-            <p style="margin-top:24px;">Sau lớp dữ liệu quảng cáo, tôi vẫn kiểm chứng bằng kết quả kinh doanh: khoảng <b style="color:#fff;">12 confirmed leads</b> và hơn <b style="color:#fff;">30 triệu đồng giá trị cơ hội kinh doanh</b> được ghi nhận từ Google.</p>
-            <p class="road-quote" style="margin-top:28px;">Thử nghiệm → đọc tín hiệu → tìm nguyên nhân → điều chỉnh → đo lại → mở rộng phần đang hiệu quả.</p>
-          </article>
+          <p class="quote-line">Đó cũng là lý do tôi không nhìn một campaign chỉ qua CPL. Chi phí cho một lead rất dễ nhìn; giá trị của lead đó vài tuần sau mới là phần khó hơn.</p>
         </div>
       </div>
     </section>
@@ -829,143 +942,51 @@
       <div class="shell">
         <div class="company-head">
           <div class="reveal">
-            <p class="eyebrow">04 / B2C Growth &amp; Leadership · 2023 — 2024</p>
+            <p class="eyebrow">03 / Work · B2C Growth &amp; Leadership · 2023 — 2024</p>
             <h2>NP Education</h2>
           </div>
           <div class="company-meta reveal reveal-delay-1">
             <strong>Marketing Leader</strong>
-            <span>Giáo dục · Tăng trưởng tuyển sinh đa cơ sở</span>
+            <span>Education · Multi-center Enrollment Growth</span>
           </div>
         </div>
 
         <div class="np-layout">
           <div class="content-copy reveal">
-            <h3>Có một giai đoạn, bài toán của tôi không còn là làm nhiều hơn — mà là làm sao để cả hệ thống B2C cùng chạy đúng hướng.</h3>
-            <p>Marketing giáo dục có một nhịp rất riêng. Mỗi kỳ tuyển sinh đều có thời điểm phải tăng tốc, những mốc không thể lùi và rất nhiều đầu việc phải chạy song song: quảng cáo, nội dung, website, cộng đồng, sự kiện và hoạt động tại từng cơ sở.</p>
-            <p>Tại NP Education, tôi phụ trách đội Marketing <b>8 người tại 3 cơ sở</b>. Ngân sách quảng cáo có thời điểm lên tới khoảng <b>80 triệu đồng mỗi tháng</b>, sản lượng thường xuyên trên <b>500 MQL/tháng</b> và cao điểm khoảng <b>1.500 lead</b> trong một kỳ tuyển sinh.</p>
-            <p>Phạm vi công việc của tôi không dừng ở thu hút khách hàng. Tôi bắt đầu từ <b>nghiên cứu thị trường, đối thủ, chân dung khách hàng và hành trình khách hàng</b>, sau đó chuyển mục tiêu kinh doanh thành kế hoạch theo sản phẩm, quý, kênh và KPI của từng giai đoạn. Kế hoạch năm được xây quanh mục tiêu khoảng <b>12 tỷ đồng doanh thu tuyển sinh mới</b>; kết quả thực tế ghi nhận khoảng <b>9 tỷ đồng doanh thu bán mới</b>.</p>
+            <h3>Có một giai đoạn, bài toán của tôi không còn là làm nhiều hơn — mà là làm sao để 8 người cùng chạy đúng hướng.</h3>
+            <p>Tại NP Education, tôi chịu trách nhiệm cho hoạt động Marketing của <b>3 cơ sở</b> và trực tiếp dẫn dắt team <b>8 người</b>. Paid Media, Content, Social, Website, Community và Event không chạy thành những đầu việc riêng lẻ; tất cả phải bám cùng tiến độ tuyển sinh.</p>
+            <p>Mỗi giai đoạn, tôi phải chuyển mục tiêu tuyển sinh thành kế hoạch đủ rõ để team biết việc nào cần chạy trước, việc nào phụ thuộc vào nhau và lúc nào phải tăng tốc. Một campaign có thể lên đúng lịch, nhưng nếu content chưa theo kịp, landing page chưa sẵn sàng hoặc đội tư vấn đang quá tải thì kết quả chung vẫn bị ảnh hưởng.</p>
 
-            <div class="np-quote">Giao tiếp của một người lead không nằm ở việc nói nhiều hơn. Nó nằm ở việc khiến mọi người hiểu đúng điều cần làm, hiểu vì sao mình làm và biết khi nào phải chủ động báo lại nếu có thứ đang không ổn.</div>
+            <div class="leadership-map" aria-label="Cách tôi vận hành workload của team">
+              <div class="leadership-node"><strong>01 · Direction</strong><span>Chuyển mục tiêu tuyển sinh thành ưu tiên, timeline và đầu việc đủ rõ cho từng mảng.</span></div>
+              <div class="leadership-node"><strong>02 · Coordination</strong><span>Giữ Paid, Content, Web, Community, Event và Admissions chạy cùng nhịp thay vì tối ưu riêng lẻ.</span></div>
+              <div class="leadership-node"><strong>03 · Feedback</strong><span>Theo dõi performance, workload và phản hồi từ tư vấn để điều chỉnh trước khi vấn đề lan sang cả kỳ tuyển sinh.</span></div>
+            </div>
 
-            <p>Tôi tổ chức công việc theo các stream rõ ràng — <b>Content/Social, Quảng cáo, Media, Sự kiện và Growth</b> — rồi nối chúng bằng một execution plan chung để từng PIC hiểu mục tiêu, deadline, đầu ra và phần việc liên quan tới các team khác.</p>
-            <p>Phần quan trọng nhất là nối Marketing với vận hành tuyển sinh. Lead được theo dõi từ <b>Source/Campaign → Call Center → Tư vấn tuyển sinh tại cơ sở → Kiểm tra đầu vào/Tư vấn → Chăm sóc tiếp → Đóng học phí</b>, kèm chất lượng lead, mức độ tiềm năng, thời gian bàn giao, trạng thái chăm sóc và lý do dừng. Những điểm khách hàng thường rơi khỏi funnel được đưa ngược về Marketing để điều chỉnh nhắm mục tiêu, nội dung, ưu đãi và cách phối hợp.</p>
-            <p>Trong giai đoạn đó, tỷ lệ chuyển đổi từ lead sang đăng ký tăng từ khoảng <b>20% lên 50%</b>. Với tôi, đây là lúc Performance bắt đầu vượt ra ngoài Ads Manager: <b>lead chỉ có giá trị khi Marketing và đội Tư vấn tuyển sinh cùng tối ưu một hành trình khách hàng.</b></p>
-            <p><b>B2C cũng dạy tôi rằng Ads không thể gánh tăng trưởng một mình.</b> Paid Media được kết nối với Content, Website/Trang đích, Community, Sự kiện, CRM và các chương trình tại cơ sở để mỗi điểm chạm làm một việc khác nhau nhưng cùng phục vụ mục tiêu tuyển sinh và tăng trưởng.</p>
+            <p class="micro-note">Phần khó nhất của Team Lead với tôi không phải giao việc. Nó là giữ thông tin không bị lệch khi đi qua 8 người, 3 cơ sở và nhiều đầu việc đang chạy cùng lúc.</p>
+
+            <p>Tôi phải vừa nhìn performance, vừa nhìn workload của team, vừa giữ trao đổi với Admissions/Sales để biết lead đang về có đúng không, được xử lý đến đâu và điểm nào đang làm khách hàng rơi khỏi quá trình đăng ký. Trong giai đoạn đó, tỷ lệ chuyển đổi từ lead sang đăng ký tăng từ khoảng <b>20% lên 50%</b>.</p>
+
+            <div class="np-quote">Tôi dần hiểu rằng giao tiếp của một người lead không nằm ở việc nói nhiều hơn. Quan trọng là mọi người hiểu đúng việc mình đang làm, vì sao nó quan trọng và khi nào cần chủ động báo lại để cả team còn kịp điều chỉnh.</div>
           </div>
 
           <div class="np-stats reveal reveal-delay-1">
             <div class="np-stat"><strong>8</strong><span>Nhân sự Marketing trực tiếp dẫn dắt</span></div>
             <div class="np-stat"><strong>3</strong><span>Cơ sở cùng vận hành</span></div>
-            <div class="np-stat"><strong>500+</strong><span>MQL mỗi tháng</span></div>
+            <div class="np-stat"><strong>500+ leads / tháng</strong><span>Trung bình kết quả chiến dịch quảng cáo trong mùa cao điểm của sản phẩm</span></div>
             <div class="np-stat"><strong>~1.500</strong><span>Lead ở thời điểm cao nhất</span></div>
             <div class="np-stat"><strong>80M</strong><span>Ngân sách quảng cáo / tháng</span></div>
-            <div class="np-stat"><strong>12B</strong><span>Mục tiêu doanh thu tuyển sinh mới trong kế hoạch năm</span></div>
-            <div class="np-stat"><strong>~9B</strong><span>Doanh thu tuyển sinh mới thực tế ghi nhận</span></div>
-            <div class="np-stat"><strong>20% → 50%</strong><span>Tỷ lệ Lead → Đăng ký học</span></div>
+            <div class="np-stat"><strong>20% → 50%</strong><span>Lead-to-enrollment conversion</span></div>
             <div class="np-stat"><strong>20.000+</strong><span>Thành viên cộng đồng</span></div>
             <div class="np-stat"><strong>+300%</strong><span>Brand awareness được ghi nhận</span></div>
             <div class="np-stat"><strong>+100%</strong><span>Organic reach</span></div>
             <div class="np-stat"><strong>200–300+</strong><span>Người tham gia mỗi chương trình lớn</span></div>
+            <div class="np-award">
+              <span class="award-kicker">Recognition · NP Education</span>
+              <strong>✦ Trưởng phòng Triển vọng</strong>
+              <span>Ghi nhận nội bộ trong giai đoạn tôi phụ trách Marketing tại NP Education.</span>
+            </div>
           </div>
-        </div>
-
-        <div class="story reveal" style="margin-top:50px; max-width:940px;">
-          <p class="quote-line">NP là nơi tôi học cách chuyển từ “mình làm được” sang “cả hệ thống cùng chạy được” — vừa dẫn dắt đội ngũ, vừa nối Paid, Content, Website, Community, Sự kiện, CRM và Tư vấn tuyển sinh vào cùng một hành trình khách hàng có thể đo lường.</p>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="section dark" id="b2c-growth">
-      <div class="shell">
-        <p class="eyebrow reveal">05 / How I Build B2C Growth</p>
-        <h2 class="reveal">Không phải một phễu bán hàng.<br>Là cả vòng đời khách hàng.</h2>
-        <div class="performance-intro reveal">
-          <p>Ở B2C, tôi không nhìn Paid Media, Content, Website, Community hay Sự kiện như những kênh chạy độc lập. Tôi lập bản đồ hành vi khách hàng theo từng giai đoạn, xác định điểm chạm phù hợp, chiến lược cần làm và chỉ số cần theo dõi — từ lúc khách hàng chưa biết đến thương hiệu cho đến khi đăng ký, tái tục và chủ động giới thiệu cho người khác.</p>
-        </div>
-
-        <div class="performance-grid">
-          <article class="performance-card reveal">
-            <p class="eyebrow">Full-Funnel Customer Lifecycle</p>
-            <h3>Mỗi giai đoạn khách hàng cần một nhiệm vụ Marketing khác nhau.</h3>
-            <p>Framework tôi xây cho NP Education đi xuyên suốt <b style="color:#fff;">Nhận biết → Cân nhắc → Đánh giá → Đăng ký → Tái tục → Giới thiệu</b>, thay vì dừng ở Lead hoặc Purchase.</p>
-
-            <div class="process-row">
-              <span class="process-chip">Nhận biết</span>
-              <span class="process-chip">Cân nhắc</span>
-              <span class="process-chip">Đánh giá</span>
-              <span class="process-chip">Đăng ký</span>
-              <span class="process-chip">Tái tục</span>
-              <span class="process-chip">Giới thiệu</span>
-            </div>
-
-            <ul class="diagnostic-list">
-              <li>
-                <span>01</span>
-                <span><b>Nhận biết · Tạo nhu cầu</b> → Paid Ads, SEO/SEM, Social, Seeding, KOC/Partner, Event/PR và tài trợ để mở rộng nhận biết, tạo nhu cầu và xây niềm tin ban đầu. Các chỉ số chính gồm reach, branded search, engagement và tín hiệu lead.</span>
-              </li>
-              <li>
-                <span>02</span>
-                <span><b>Cân nhắc · Cung cấp thông tin & Xây niềm tin</b> → Website/Trang đích, Email, Social, Hotline/Zalo, Workshop và kiểm tra đầu vào giúp khách hàng hiểu chương trình, so sánh lựa chọn và thu hẹp rủi ro. Theo dõi MQL, CTR, mức độ tham gia và tín hiệu tương tác/mở nội dung.</span>
-              </li>
-              <li>
-                <span>03</span>
-                <span><b>Đánh giá · Giảm rủi ro cảm nhận</b> → Lớp học thử, Workshop/Webinar, hoạt động trải nghiệm và testimonial và tư vấn chuyên sâu để biến sự quan tâm thành trải nghiệm thực tế. Theo dõi SQL, tỷ lệ tham gia học thử và các tín hiệu chuyển đổi.</span>
-              </li>
-              <li>
-                <span>04</span>
-                <span><b>Đăng ký · Chuyển nhu cầu thành doanh thu</b> → Tư vấn tuyển sinh, Hotline/Zalo, ưu đãi và hỗ trợ đăng ký để rút ngắn đường từ nhu cầu đến đóng học phí. Chỉ số chuyển sang số đăng ký mới, doanh thu và tỷ lệ chuyển đổi.</span>
-              </li>
-              <li>
-                <span>05</span>
-                <span><b>Tái tục · Tăng giá trị vòng đời khách hàng</b> → Email, LMS/App, Sự kiện, Camp, bán hàng trực tiếp, upsell/cross-sell và chăm sóc liên tục để tăng tái đăng ký và giảm tỷ lệ rời bỏ. Theo dõi tỷ lệ tái tục, tái đăng ký và mức độ hài lòng của khách hàng.</span>
-              </li>
-              <li>
-                <span>06</span>
-                <span><b>Giới thiệu · Biến khách hàng thành nguồn tăng trưởng</b> → Community, referral, UGC, review và chương trình đại sứ biến khách hàng hài lòng thành một phần của hệ thống thu hút khách hàng mới. Theo dõi NPS, tỷ lệ giới thiệu, WOM và mức độ gắn kết cộng đồng.</span>
-              </li>
-            </ul>
-
-            <p style="margin-top:24px;"><b style="color:#fff;">Điểm tôi luôn giữ:</b> chỉ số phải thay đổi theo mục tiêu kinh doanh của từng giai đoạn. Không thể dùng CPL để đánh giá cả hành trình khách hàng.</p>
-          </article>
-
-          <article class="performance-card reveal reveal-delay-1">
-            <p class="eyebrow">B2C Growth Operating System</p>
-            <h3>Funnel chỉ chạy tốt khi đội ngũ, dữ liệu và Tư vấn tuyển sinh cùng chạy.</h3>
-            <p>Full-funnel không chỉ là một sơ đồ đẹp. Tôi chuyển nó thành cách vận hành thực tế: từ nghiên cứu và lập kế hoạch đến triển khai, CRM, Tư vấn tuyển sinh và vòng phản hồi.</p>
-
-            <div class="process-row">
-              <span class="process-chip">Nghiên cứu</span>
-              <span class="process-chip">Kế hoạch Kinh doanh</span>
-              <span class="process-chip">Content & Media</span>
-              <span class="process-chip">Paid Acquisition</span>
-              <span class="process-chip">Sự kiện & Community</span>
-              <span class="process-chip">CRM</span>
-              <span class="process-chip">Tư vấn tuyển sinh</span>
-              <span class="process-chip">Vòng phản hồi</span>
-            </div>
-
-            <ul class="diagnostic-list">
-              <li><span>01</span><span><b>Nghiên cứu trước khi triển khai</b> → phân tích thị trường, đối thủ, chân dung khách hàng, cơ cấu sản phẩm và hành trình khách hàng trước khi quyết định thông điệp, ưu đãi và kênh.</span></li>
-              <li><span>02</span><span><b>Chuyển mục tiêu kinh doanh thành bài toán Marketing</b> → kế hoạch năm được xây quanh mục tiêu khoảng <b>12 tỷ đồng doanh thu tuyển sinh mới</b>, sau đó tách theo sản phẩm, quý, mục tiêu lead, đóng góp theo kênh, CPL và KPI chuyển đổi.</span></li>
-              <li><span>03</span><span><b>Điều phối nhiều chức năng Marketing</b> → Content/Social, Quảng cáo, Media, Sự kiện và Growth có PIC riêng nhưng cùng chạy trên một kế hoạch triển khai, một mục tiêu tuyển sinh và một timeline chung.</span></li>
-              <li><span>04</span><span><b>Nối hoạt động thu hút khách hàng với Tư vấn tuyển sinh</b> → theo dõi Source/Campaign → Call Center → Tư vấn tuyển sinh → Kiểm tra đầu vào/Tư vấn → Chăm sóc tiếp → Đóng học phí, thay vì dừng báo cáo ở số Lead.</span></li>
-              <li><span>05</span><span><b>Biến điểm rơi khỏi funnel thành dữ liệu tối ưu</b> → chất lượng lead, thời gian phản hồi, điểm rơi theo giai đoạn và lý do dừng được đưa ngược về Marketing để chỉnh nhắm mục tiêu, creative, nội dung, ưu đãi và nhịp mở rộng.</span></li>
-              <li><span>06</span><span><b>Tăng trưởng sau lần mua đầu tiên</b> → Community, Sự kiện, Email, tái tục và giới thiệu tiếp tục kéo dài giá trị vòng đời khách hàng sau khi đăng ký.</span></li>
-            </ul>
-
-            <div class="perf-metrics">
-              <div class="perf-metric"><strong>~9B</strong><span>Doanh thu tuyển sinh mới thực tế</span></div>
-              <div class="perf-metric"><strong>20% → 50%</strong><span>Tỷ lệ Lead → Đăng ký học</span></div>
-              <div class="perf-metric"><strong>500+</strong><span>MQL / Month</span></div>
-            </div>
-
-            <p class="road-quote" style="margin-top:28px;">Nghiên cứu → Chiến lược → Thu hút → Trải nghiệm → Đăng ký → Tái tục → Giới thiệu.</p>
-          </article>
-        </div>
-
-        <div class="story reveal" style="margin-top:52px; max-width:980px;">
-          <p class="quote-line">Full funnel với tôi không kết thúc ở “chuyển đổi”. Nó là việc thiết kế toàn bộ vòng đời khách hàng — từ lần đầu nhìn thấy thương hiệu đến lúc đăng ký, tái tục và trở thành người chủ động giới thiệu thương hiệu cho người khác.</p>
         </div>
       </div>
     </section>
@@ -974,75 +995,128 @@
       <div class="shell">
         <p class="eyebrow reveal">Selected Work</p>
         <h2 class="reveal">Một vài bài toán tôi từng trực tiếp chạm vào.</h2>
-        <p class="performance-intro reveal">Không phải case nào cũng cần một “ending đẹp”. Có campaign tạo ra pipeline, có campaign dừng ở nhu cầu, có lúc thị trường khiến conversion thay đổi. Từ B2C tuyển sinh volume lớn đến B2B sales cycle dài, điều quan trọng là đọc đúng bối cảnh và biết phải làm gì tiếp theo.</p>
+        <p class="performance-intro reveal">Không phải case nào cũng cần một “ending đẹp”. Có lúc campaign tạo pipeline, có lúc dừng ở nhu cầu, có lúc thị trường làm conversion đổi hướng. Tôi quan tâm hơn đến việc đọc đúng tình huống và biết phải làm gì tiếp theo.</p>
 
         <div class="selected-work">
           <article class="work-card reveal">
             <span class="tag">Promethean × CMS</span>
             <h3>Demand Generation cho EdTech</h3>
-            <p>Kết hợp Paid Media, Content và SEO để tạo nhu cầu trong nhóm trường học/tổ chức giáo dục. Chiến dịch thực chi khoảng 36 triệu đồng, đồng thời duy trì nhóm từ khóa trọng điểm ở Top 1–3.</p>
-            <p><b>Kết quả:</b> 283 leads · 90 hot leads · 8 nhu cầu demo.</p>
-            <div class="result">Bài học: account quality quan trọng hơn việc chỉ nhìn lead volume.</div>
+            <p><b>Bài toán:</b> tạo nhu cầu trong nhóm trường học/tổ chức giáo dục bằng Paid Media, Content và SEO.</p>
+            <p><b>Kết quả:</b> ~36M spend · 283 leads · 90 hot leads · 8 nhu cầu demo · nhóm từ khóa trọng điểm Top 1–3.</p>
+            <div class="result">Account quality quan trọng hơn việc chỉ nhìn lead volume.</div>
           </article>
           <article class="work-card reveal reveal-delay-1">
             <span class="tag">CMS X-Pro</span>
-            <h3>Demand B2B trong bối cảnh giá đầu vào biến động</h3>
-            <p>Chiến dịch tạo nhu cầu qua Paid Media, Content và SEO. Chuyển đổi chưa đi đến đơn hàng khi giá RAM tăng mạnh đúng lúc khách hàng cân nhắc mua, nên lead được chuyển sang nuôi dưỡng thay vì kết luận chiến dịch “thất bại”.</p>
-            <p><b>Kết quả:</b> 46 B2B leads · 13 nhu cầu · nhiều từ khóa Top 1–4.</p>
-            <div class="result">Bài học: bối cảnh thị trường quyết định cách đọc conversion.</div>
+            <h3>Khi thị trường làm conversion đổi hướng</h3>
+            <p><b>Bài toán:</b> tạo demand B2B trong lúc giá RAM tăng mạnh đúng thời điểm khách hàng cân nhắc mua.</p>
+            <p><b>Kết quả:</b> 15M spend · 46 B2B leads · 13 nhu cầu · nhiều từ khóa Top 1–4. Lead được chuyển sang nurturing thay vì kết luận campaign “thất bại”.</p>
+            <div class="result">Bối cảnh thị trường quyết định cách đọc conversion.</div>
           </article>
           <article class="work-card reveal reveal-delay-2">
             <span class="tag">Logitech × CMS</span>
             <h3>Website như một điểm chuyển đổi trong B2B funnel</h3>
-            <p>Website sản phẩm được dùng như một điểm đến để khách hàng kiểm tra thông tin, tăng độ tin cậy và tiếp tục hành trình sau quảng cáo — không phải một mô hình Ecommerce tách biệt.</p>
+            <p><b>Bài toán:</b> tạo một điểm đến để khách hàng kiểm tra thông tin, tăng độ tin cậy và tiếp tục hành trình sau quảng cáo.</p>
             <p><b>Kết quả:</b> 4 đơn chuyển khoản thành công · 10 lượt add-to-cart.</p>
-            <div class="result">Bài học: website tốt không chỉ mang traffic; nó cho hành trình chuyển đổi một nơi để tiếp tục.</div>
+            <div class="result">Website tốt không chỉ mang traffic; nó cho funnel một nơi để tiếp tục.</div>
           </article>
-          <article class="work-card reveal">
-            <span class="tag">NP Education · Full-Funnel B2C Growth</span>
-            <h3>Thiết kế vòng đời khách hàng từ nhận biết đến giới thiệu</h3>
-            <p>Xây framework theo 6 giai đoạn — Nhận biết, Cân nhắc, Đánh giá, Đăng ký, Tái tục và Giới thiệu — rồi lập bản đồ hành vi khách hàng, điểm chạm, chiến thuật và KPI tương ứng trên Paid, Social, Website, Sự kiện, Community, CRM và Tư vấn tuyển sinh.</p>
-            <p><b>Kết quả:</b> ~9 tỷ đồng doanh thu tuyển sinh mới · 500+ MQL/tháng · cao điểm ~1.500 lead · Lead → Đăng ký học 20% → 50%.</p>
-            <div class="result">Bài học: một kênh không phải là cả funnel; mỗi kênh chỉ có giá trị khi nó hoàn thành đúng nhiệm vụ trong vòng đời khách hàng.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="performance">
+      <div class="shell">
+        <p class="eyebrow reveal">04 / How I Run Performance</p>
+        <h2 class="reveal">Sửa đúng bệnh quan trọng hơn sửa thật nhiều.</h2>
+        <div class="performance-intro reveal">
+          <p>Camp bắt đầu tụt, phản xạ rất dễ là “đổi target thôi”. Nhưng cùng một CPL tăng có thể đến từ creative, audience, offer, landing page, Sales hoặc đơn giản là mức ngân sách đã vượt khả năng hấp thụ của campaign. Tôi thường chẩn đoán trước rồi mới sửa.</p>
+        </div>
+
+        <div class="performance-grid">
+          <article class="performance-card reveal">
+            <p class="eyebrow">Meta Ads · Champion → Challenger</p>
+            <h3>Camp đang thắng, tôi thường không động vào nó.</h3>
+            <p>Camp win được giữ làm control. Từ đó tôi tạo challenger riêng để test một biến đủ rõ — ngân sách, audience hoặc creative — rồi so lại với benchmark cũ. Nếu test fail, tôi tìm nguyên nhân trước khi kết luận winning logic đã hỏng.</p>
+            <div class="process-row"><span class="process-chip">Protect Winner</span><span class="process-chip">Duplicate Challenger</span><span class="process-chip">Set Guardrails</span><span class="process-chip">Diagnose</span><span class="process-chip">Scale / Kill</span><span class="process-chip">Promote New Champion</span></div>
+
+            <ul class="diagnostic-list">
+              <li><span>01</span><span><b>CTR tụt mạnh</b> → ưu tiên xem lại content, hook và creative.</span></li>
+              <li><span>02</span><span><b>CTR vẫn ổn nhưng Lead giảm</b> → check offer, CTA và trải nghiệm sau click.</span></li>
+              <li><span>03</span><span><b>Lead vẫn nhiều nhưng sai tệp</b> → xem lại thông điệp đang thu hút nhóm người nào và cách target.</span></li>
+              <li><span>04</span><span><b>Lead đúng nhưng tỷ lệ chốt giảm</b> → chưa vội đụng Ads; kiểm tra Sales, giá và offer.</span></li>
+              <li><span>05</span><span><b>CPA tăng sau khi scale</b> → xem lại mức ngân sách, frequency và khả năng hấp thụ của campaign.</span></li>
+            </ul>
+
+            <p class="micro-note"><b style="color:#fff;">Control vẫn khỏe nhưng scale cell fail?</b> Challenger có thể bị kill; winner gốc vẫn được giữ đến khi chính các chỉ số của nó thực sự xuống đủ sâu.</p>
           </article>
-          <article class="work-card reveal reveal-delay-1">
-            <span class="tag">The Hunger Game × NP Education</span>
-            <h3>Biến tài trợ thành một kênh tạo nhu cầu có thể đo lường</h3>
-            <p>Thiết kế quyền lợi tài trợ xoay quanh điểm chạm thương hiệu, tư vấn, thu data, kết nối cộng đồng/trường học và chăm sóc tiếp thay vì chỉ dừng ở việc xuất hiện logo.</p>
-            <p><b>Kết quả:</b> 371 participants · 110 data · 92 consultations · 20 deep consultations.</p>
-            <div class="result">Bài học: Sự kiện chỉ đáng đầu tư khi đúng tệp khách hàng, cơ chế thu thông tin và quy trình chăm sóc tiếp được thiết kế ngay từ đầu.</div>
+
+          <article class="performance-card reveal reveal-delay-1">
+            <p class="eyebrow">Google Search</p>
+            <h3>Chạy rộng để học, siết dần để tối ưu.</h3>
+            <p>Ở phase đầu, tôi có thể dùng đối sánh rộng để quan sát cụm từ tìm kiếm thực tế. Sau khi có đủ data, tôi bắt đầu lọc: query không liên quan đi vào từ khóa phủ định; keyword có chuyển đổi được tách ra theo dõi riêng; loại đối sánh được siết dần theo intent và volume.</p>
+            <div class="process-row"><span class="process-chip">Broad Match</span><span class="process-chip">Search-Term Mining</span><span class="process-chip">Negative Keywords</span><span class="process-chip">Conversion Keywords</span><span class="process-chip">Siết đối sánh</span><span class="process-chip">IP Exclusion</span></div>
+
+            <p>Song song với đó, tôi rà traffic bất thường và loại trừ IP khi có đủ dấu hiệu. Mục tiêu không phải chỉ làm CPC thấp hơn, mà là kéo traffic sạch hơn và đúng nhu cầu hơn.</p>
+
+            <div class="perf-metrics">
+              <div class="perf-metric"><strong>6,66%</strong><span>Google Search CTR</span></div>
+              <div class="perf-metric"><strong>735đ</strong><span>Average CPC</span></div>
+              <div class="perf-metric"><strong>~218K</strong><span>Cost / Call-Click Action</span></div>
+            </div>
+
+            <p style="margin-top:24px;">Sau lớp media, tôi vẫn kiểm chứng bằng business result: khoảng <b style="color:#fff;">12 confirmed leads</b> và hơn <b style="color:#fff;">30 triệu đồng giá trị cơ hội kinh doanh</b> được ghi nhận từ Google.</p>
+            <p class="road-quote" style="margin-top:28px;">Test → đọc tín hiệu → tìm nguyên nhân → điều chỉnh → đo lại → scale thứ đang đúng.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="capabilities">
+      <div class="shell">
+        <p class="eyebrow reveal">05 / Skills &amp; MarTech</p>
+        <h2 class="reveal">Những mảng tôi có thể trực tiếp làm và phối hợp.</h2>
+        <p class="skills-lead reveal">Work là nơi chứng minh kết quả. Phần này giúp recruiter nhìn nhanh phạm vi năng lực và các công cụ tôi sử dụng trong công việc hằng ngày.</p>
+
+        <div class="capability-grid">
+          <article class="capability reveal"><span class="capability-index">01</span><h3>Performance &amp; Paid Media</h3><p>Meta Ads · Google Ads · LinkedIn Ads · Testing · Scaling · Budget Allocation</p></article>
+          <article class="capability reveal reveal-delay-1"><span class="capability-index">02</span><h3>Growth &amp; Conversion</h3><p>Funnel Analysis · Landing Page · CRO · Lead Qualification · Attribution · Revenue Tracking</p></article>
+          <article class="capability reveal reveal-delay-2"><span class="capability-index">03</span><h3>SEO &amp; Search</h3><p>Keyword Research · Search Intent · Content SEO · Search Console · AI Search Visibility</p></article>
+          <article class="capability reveal"><span class="capability-index">04</span><h3>CRM &amp; Demand Generation</h3><p>Lead Management · Email · Webinar · Event · Community · Lead Nurturing · Sales Handoff</p></article>
+          <article class="capability reveal reveal-delay-1"><span class="capability-index">05</span><h3>Data &amp; Business Insight</h3><p>Marketing Analytics · Funnel Analysis · Market Research · Competitor Research · Business Reporting</p></article>
+          <article class="capability reveal reveal-delay-2"><span class="capability-index">06</span><h3>Leadership &amp; Execution</h3><p>Team Leadership · Cross-functional Communication · Sales Alignment · Campaign Planning · Stakeholder Coordination</p></article>
+        </div>
+
+        <div class="tools-row reveal" aria-label="Tools & MarTech">
+          <span class="tool">Meta Ads Manager</span><span class="tool">Google Ads</span><span class="tool">LinkedIn Ads</span><span class="tool">Google Analytics</span><span class="tool">Search Console</span><span class="tool">Google Sheets</span><span class="tool">Power BI</span><span class="tool">WordPress</span><span class="tool">MISA AMIS CRM</span><span class="tool">Email Marketing</span><span class="tool">Canva</span><span class="tool">Adobe Photoshop</span><span class="tool">Illustrator</span><span class="tool">CapCut</span><span class="tool">Premiere</span><span class="tool">ChatGPT &amp; AI Research</span>
         </div>
       </div>
     </section>
 
     <section class="section dark" id="journey">
       <div class="shell">
-        <p class="eyebrow reveal">06 / The Road Before</p>
-        <h2 class="reveal">Trước khi Digital Marketing trở thành con đường chính.</h2>
-        <p class="performance-intro reveal">Tôi đã đi qua hai môi trường gần như đối lập. Một bên là doanh nghiệp sản xuất quy mô lớn với quy trình và báo cáo. Một bên là Blockchain, nơi Marketing trước hết phải giải quyết một bài toán khó hơn rất nhiều: niềm tin.</p>
+        <p class="eyebrow reveal">06 / Journey</p>
+        <h2 class="reveal">Trước khi Digital Marketing trở thành công việc chính.</h2>
+        <p class="performance-intro reveal">Tôi đã có vài năm làm những việc khá khác với hiện tại. Có thứ liên quan trực tiếp đến Marketing, có thứ không — nhưng đó đều là những chặng có thật trong hành trình nghề nghiệp của tôi.</p>
 
         <div class="road-grid">
           <article class="road-card reveal">
             <div class="road-meta">2018 — 2021 · Foxconn / Fushan Technology Vietnam</div>
             <h3>Nơi tôi học cách làm việc trong một tổ chức lớn.</h3>
             <p>Tôi bắt đầu sự nghiệp với vai trò Learning &amp; Development Specialist: xây dựng nội dung e-learning, theo dõi hoạt động đào tạo và sử dụng Power BI để đưa dữ liệu rời rạc thành báo cáo dễ theo dõi hơn.</p>
-            <p>Công việc chưa phải Marketing, nhưng đây là nơi tôi sớm quen với một thực tế: một đầu việc không bao giờ đứng một mình. Nó đi qua quy trình, nhiều bộ phận, deadline, người chịu trách nhiệm và cuối cùng phải có thứ đủ rõ để báo cáo lại cho người ra quyết định.</p>
-            <div class="road-quote">Foxconn không dạy tôi chạy quảng cáo. Nhưng nó dạy tôi cách làm việc trong một hệ thống lớn.</div>
+            <p>Công việc chưa phải Marketing. Nhưng nó khiến tôi quen sớm với quy trình, deadline, nhiều bên cùng tham gia và việc một đầu việc chỉ thật sự xong khi người phía sau có thể tiếp tục sử dụng kết quả của mình.</p>
           </article>
 
           <article class="road-card reveal reveal-delay-1">
             <div class="road-meta">2022 — 2023 · UniRealChain</div>
             <h3>Trong Blockchain, Marketing trước hết là bài toán về niềm tin.</h3>
-            <p>Khách hàng không chỉ mua một sản phẩm. Họ đang cân nhắc đặt tiền và niềm tin vào một dự án còn phải tiếp tục chứng minh chính mình. Vì vậy Marketing phải giúp họ hiểu dự án là gì, đội ngũ phía sau có đáng tin không và vì sao họ nên tiếp tục ở lại cùng cộng đồng.</p>
-            <p>Tôi tham gia xây dựng cộng đồng hơn <b style="color:#fff;">10.000 nhà đầu tư</b> và phối hợp với hơn <b style="color:#fff;">200 KOL/Influencer quốc tế</b>. Nhưng số lượng chỉ là phần dễ nhìn thấy nhất.</p>
-            <div class="road-quote">Phần khó hơn là hiểu một người đang nghi ngờ điều gì, họ cần thêm thông tin gì để bớt nghi ngờ, điều gì khiến họ bắt đầu tin tưởng và điều gì đủ sức giữ họ ở lại lâu hơn với dự án.</div>
+            <p>Người tham gia không đơn thuần mua một sản phẩm. Họ đang quyết định có tin vào đội ngũ, hướng đi và khả năng thành công của một dự án đủ để đặt tiền của mình vào đó hay không.</p>
+            <p>Tôi tham gia xây dựng cộng đồng hơn <b style="color:#fff;">10.000 nhà đầu tư</b> và phối hợp với hơn <b style="color:#fff;">200 KOL/Influencer quốc tế</b>. Community hay KOL vì thế không chỉ là kênh kéo reach; đó là nơi mọi người quan sát dự án, hỏi nhau, nghi ngờ, kiểm chứng và dần hình thành niềm tin.</p>
+            <div class="road-quote">Phần khó hơn là hiểu một người đang nghi ngờ điều gì, họ cần thêm thông tin gì để bớt nghi ngờ và điều gì đủ sức giữ họ ở lại lâu hơn với dự án.</div>
           </article>
         </div>
 
         <div class="career-summary reveal">
-          <strong>Từ 2018 đến 2026, hơn 7 năm thực chiến đã đưa tôi qua nhiều điểm chạm rất khác nhau:</strong> sản xuất, Blockchain, giáo dục B2C và B2B Technology. Không phải chặng nào cũng liên quan trực tiếp đến nhau, nhưng mỗi chặng đều cho tôi thêm kinh nghiệm về con người, dữ liệu, cách vận hành và cách một doanh nghiệp tạo ra kết quả.<br><br>
-          Còn một điều gần như không thay đổi: <strong>với tôi, trách nhiệm luôn được đặt lên hàng đầu.</strong> Đã nhận một công việc thì không chỉ cần hoàn thành phần của mình, mà phải quan tâm xem kết quả cuối cùng có thực sự đi đến nơi hay chưa.
+          <strong>Từ 2018 đến 2026, hơn 7 năm thực chiến đã cho tôi khá nhiều điểm chạm:</strong> sản xuất, Blockchain, giáo dục B2C và B2B Technology. Không phải công việc nào cũng liên quan trực tiếp với nhau, và tôi cũng không cố biến chúng thành một đường thẳng hoàn hảo.<br><br>
+          <strong>Nhưng có một điều tôi luôn giữ: trách nhiệm với công việc phải đi xa hơn việc hoàn thành task của mình.</strong> Đã nhận một bài toán thì tôi muốn biết cuối cùng nó có thực sự đi đến nơi hay chưa.
         </div>
       </div>
     </section>
@@ -1050,7 +1124,7 @@
     <section class="section gold-wash" id="education">
       <div class="shell">
         <p class="eyebrow reveal">07 / Education &amp; Continuous Learning</p>
-        <h2 class="reveal">Business trước. Marketing sau. Rồi tôi tự học thêm Design và Code.</h2>
+        <h2 class="reveal">Tôi học Quản trị Kinh doanh trước khi biết mình sẽ làm Marketing.</h2>
 
         <div class="education-grid">
           <article class="degree-card reveal">
@@ -1058,7 +1132,7 @@
             <h3>Bachelor of Business Administration</h3>
             <div class="degree-meta"><span class="degree-chip">2014 — 2018</span><span class="degree-chip">GPA 3.45 / 4.00</span><span class="degree-chip">Very Good</span></div>
             <p>Trong những năm đại học, tôi thực hiện <b>6 nghiên cứu và báo cáo</b> xoay quanh Sales &amp; Marketing, Human Resources, Business Strategy, Project Management và Entrepreneurship.</p>
-            <p>Khi đó tôi chưa biết mình sẽ đi sâu vào Digital Marketing, nhưng việc phải nhìn một doanh nghiệp từ nhiều góc độ đã cho tôi nền tảng để sau này không nhìn Marketing như một bộ phận đứng riêng khỏi vận hành và tăng trưởng.</p>
+            <p>Sau khi tốt nghiệp, tôi học thêm Design tại Rio Class và Front-end/Python cơ bản tại MindX — nơi nhóm của tôi đạt <b>1st Place, Hackathon Project</b>.</p>
           </article>
 
           <div class="learning-stack">
@@ -1072,43 +1146,28 @@
               <h4>Apprenticed Designer</h4>
               <p>Branding toolkit development · Creative ideation · Idea pitching</p>
             </article>
+            <article class="learning-card reveal">
+              <div class="school-small">Recognition · NP Education</div>
+              <h4>✦ Trưởng phòng Triển vọng</h4>
+              <p>Ghi nhận nội bộ trong giai đoạn tôi dẫn dắt hoạt động Marketing tại NP Education.</p>
+            </article>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section white" id="capabilities">
-      <div class="shell">
-        <p class="eyebrow reveal">Capabilities &amp; MarTech</p>
-        <h2 class="reveal">Một hệ thống tăng trưởng, không phải những kênh chạy rời rạc.</h2>
-
-        <div class="capability-grid">
-          <article class="capability reveal"><span class="capability-index">01</span><h3>Performance Marketing</h3><p>Meta Ads · Google Ads · LinkedIn Ads · Budget Allocation · Experimentation · Scaling</p></article>
-          <article class="capability reveal reveal-delay-1"><span class="capability-index">02</span><h3>Funnel &amp; Conversion</h3><p>Lead Generation · CRO · Landing Page · Qualification · SQL · Opportunity · Revenue Tracking</p></article>
-          <article class="capability reveal reveal-delay-2"><span class="capability-index">03</span><h3>SEO &amp; Organic Growth</h3><p>Keyword Research · Search Intent · Content SEO · Search Console · AI Search Visibility</p></article>
-          <article class="capability reveal"><span class="capability-index">04</span><h3>CRM &amp; Demand Generation</h3><p>Lead Management · Nurturing · Email · Webinar · Event · Community · Sales Handoff</p></article>
-          <article class="capability reveal reveal-delay-1"><span class="capability-index">05</span><h3>Data, Research &amp; Reporting</h3><p>Marketing Analytics · Attribution · Funnel Analysis · Market Research · Competitor Research · Business Reporting</p></article>
-          <article class="capability reveal reveal-delay-2"><span class="capability-index">06</span><h3>Leadership &amp; Collaboration</h3><p>Team Leadership · Sales Alignment · BU Collaboration · Agency/Partner Coordination · Stakeholder Communication</p></article>
-        </div>
-
-        <div class="tools-row reveal" aria-label="Tools & MarTech">
-          <span class="tool">Meta Ads Manager</span><span class="tool">Google Ads</span><span class="tool">LinkedIn Ads</span><span class="tool">Google Analytics</span><span class="tool">Search Console</span><span class="tool">Google Sheets</span><span class="tool">Power BI</span><span class="tool">WordPress</span><span class="tool">MISA AMIS CRM</span><span class="tool">Email Marketing</span><span class="tool">Canva</span><span class="tool">Adobe Photoshop</span><span class="tool">Illustrator</span><span class="tool">CapCut</span><span class="tool">Premiere</span><span class="tool">ChatGPT &amp; AI Research</span>
         </div>
       </div>
     </section>
 
     <section class="closing" id="contact">
       <div class="shell">
-        <p class="eyebrow reveal">Let’s Build What Grows</p>
-        <h2 class="reveal">Lead is a Milestone.<br>Growth is the Destination.</h2>
-        <p class="reveal">Tôi đang tìm kiếm những bài toán Digital Performance &amp; Growth nơi Marketing được kỳ vọng tạo ra không chỉ traffic hay lead, mà cả kết quả kinh doanh có thể theo dõi, kiểm chứng và tiếp tục mở rộng.</p>
+        <p class="eyebrow reveal">Contact</p>
+        <h2 class="reveal">Tôi vẫn muốn đi tiếp với những bài toán khó hơn.</h2>
+        <p class="reveal">Tôi đang tìm một môi trường nơi Digital Marketing không chỉ được giao mục tiêu traffic hay lead, mà được tham gia sâu hơn vào tăng trưởng, dữ liệu và kết quả kinh doanh. Nếu đó cũng là bài toán bạn đang cần giải, chúng ta có thể bắt đầu bằng một cuộc trò chuyện.</p>
         <div class="action-row reveal">
           <a class="button gold" href="mailto:longhenry96.biz@gmail.com">longhenry96.biz@gmail.com</a>
           <a class="button" href="tel:+84968331496">096 833 1496</a>
           <a class="button" href="https://www.linkedin.com/in/longbruce96" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-          <a class="button" href="assets/long-nguyen-senior-digital-marketer-performance.pdf" download>Tải CV</a>
+          <a class="button" href="long-nguyen-senior-digital-marketer-performance.pdf" download>Tải CV</a>
         </div>
-        <div class="footer-note">Long Nguyen · Hanoi, Vietnam · Digital Performance & Growth Marketing</div>
+        <div class="footer-note">Long Nguyen · Hanoi, Vietnam · Digital Performance &amp; Growth Marketing</div>
       </div>
     </section>
   </main>
@@ -1138,6 +1197,26 @@
         revealEls.forEach(el => observer.observe(el));
       } else {
         revealEls.forEach(el => el.classList.add('visible'));
+      }
+
+
+
+      const menuButton = document.querySelector('.menu-toggle');
+      const mobileNav = document.querySelector('.mobile-nav');
+      if (menuButton && mobileNav) {
+        const closeMenu = () => {
+          menuButton.setAttribute('aria-expanded', 'false');
+          mobileNav.classList.remove('open');
+        };
+        menuButton.addEventListener('click', () => {
+          const open = menuButton.getAttribute('aria-expanded') === 'true';
+          menuButton.setAttribute('aria-expanded', String(!open));
+          mobileNav.classList.toggle('open', !open);
+        });
+        mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 760) closeMenu();
+        });
       }
 
       const hero = document.querySelector('.hero');
